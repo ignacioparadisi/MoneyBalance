@@ -35,6 +35,7 @@ class MainViewController: UITabBarController {
         }
     }
     
+    /// Sets view controller's tabBarItem images
     private func setTabBarItemsImages() {
         homeViewController.tabBarItem.image = UIImage(named: "wallet")
         movementsViewController.tabBarItem.image = UIImage(named: "movements")
