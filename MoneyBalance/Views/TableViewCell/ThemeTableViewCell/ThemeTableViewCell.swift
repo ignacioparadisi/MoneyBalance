@@ -11,6 +11,7 @@ import UIKit
 class ThemeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
+    /// Switch that activates or deactivates the dark theme
     @IBOutlet weak var themeSwitch: UISwitch!
     
     override func awakeFromNib() {
@@ -24,6 +25,9 @@ class ThemeTableViewCell: UITableViewCell {
         }
     }
     
+    /// Changes the app's theme
+    ///
+    /// - Parameter sender: UISwitch changed
     @IBAction func changeTheme(_ sender: UISwitch) {
         if sender.isOn {
             ThemeManager.applayTheme(.dark)
