@@ -12,6 +12,7 @@ import LocalAuthentication
 
 class HomeViewController: BaseViewController {
     
+    /// NavigationBar title labe for adding a TapGestureRecognizer
     let titleNavbarLabel: UILabel = {
         let title = UILabel()
         title.text = "USD"
@@ -30,7 +31,7 @@ class HomeViewController: BaseViewController {
         tableView.setConstraints(topAnchor: view.topAnchor, leadingAnchor: view.leadingAnchor, bottomAnchor: view.bottomAnchor, trailingAnchor: view.trailingAnchor)
     }
     
-    /// Adds a clickable title view for showing the bottom sheet
+    /// Adds a TapGestureRecognizer to titleNavbarLabel for opening the bottom sheet
     private func setupNavigationBarTitle() {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(presentAccounts))
         titleNavbarLabel.addGestureRecognizer(tapGestureRecognizer)
@@ -39,6 +40,7 @@ class HomeViewController: BaseViewController {
         navigationItem.titleView = titleNavbarLabel
     }
     
+    /// Present bottom sheet when titleNavbarLabel is tapped
     @objc private func presentAccounts() {
         let viewController = AccountsViewController()
         let bottomSheet = MDCBottomSheetController(contentViewController: viewController)
