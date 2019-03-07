@@ -10,12 +10,14 @@ import UIKit
 
 class AccountsViewController: BaseViewController {
     
+    /// Top center small line
     let topLine: UIView = {
        let view = UIView()
         view.backgroundColor = .lightGray
         return view
     }()
     
+    /// Views title
     let accountsLabel: UILabel = {
         let label = UILabel()
         label.text = "Accounts".localized()
