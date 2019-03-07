@@ -31,6 +31,7 @@ class AuthenticationFailedView: UIView {
         setupXib()
     }
     
+    /// Gets authentication failed view from xib and adds texts
     private func setupXib() {
         Bundle.main.loadNibNamed("AuthenticationFailedView", owner: self, options: nil)
         addSubview(view)
@@ -43,6 +44,9 @@ class AuthenticationFailedView: UIView {
         touchIdButton.setTitle("Use Touch ID".localized(), for: .normal)
     }
     
+    /// Shows authentication alert if button is tapped
+    ///
+    /// - Parameter sender: UIButton tapped
     @IBAction func authenticateAction(_ sender: Any) {
         delegate?.authenticate()
     }
