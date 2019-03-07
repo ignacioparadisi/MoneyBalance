@@ -10,6 +10,7 @@ import UIKit
 
 class SettingsViewController: BaseViewController {
     
+    // Identifier for theme selection cell
     private let themeCellIdentifier = "themeCellIdentifier"
 
     override func setupNavigationBar() {
@@ -28,6 +29,7 @@ class SettingsViewController: BaseViewController {
         tableView.register(UINib(nibName: "ThemeTableViewCell", bundle: nil), forCellReuseIdentifier: themeCellIdentifier)
     }
     
+    /// Overrides the tableView for setting a grouped style
     private func createTableView() {
         tableView = UITableView(frame: .zero, style: .grouped)
         tableView.delegate = self
