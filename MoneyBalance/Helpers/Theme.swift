@@ -10,6 +10,7 @@ import UIKit
 
 let THEME_KEY = "SelectedTheme"
 
+/// Defines the variables for the app theme
 enum Theme: Int {
     case light, dark
 
@@ -68,8 +69,12 @@ enum Theme: Int {
     }
 }
 
+/// Manages the theme changing and gets the current theme
 struct ThemeManager {
 
+    /// Defines which theme to use
+    ///
+    /// - Returns: Current selected theme
     static func currentTheme() ->  Theme {
         if let storedTheme = (UserDefaults.standard.value(forKey: THEME_KEY) as AnyObject).integerValue {
             return Theme(rawValue: storedTheme)!
@@ -78,6 +83,9 @@ struct ThemeManager {
         }
     }
 
+    /// Adds a transition when changing the theme
+    ///
+    /// - Parameter theme: Selected theme
     static func applayTheme(_ theme: Theme) {
         if let window = UIApplication.shared.delegate?.window, let unwrappedWindow = window {
             UIView.transition(
@@ -92,6 +100,9 @@ struct ThemeManager {
         }
     }
     
+    /// Sets the current theme in UserDefaults and makes the changes to the global views
+    ///
+    /// - Parameter theme: Selected theme
     private static func apply(_ theme: Theme) {
         UserDefaults.standard.setValue(theme.rawValue, forKey: THEME_KEY)
         UserDefaults.standard.synchronize()
@@ -111,24 +122,40 @@ struct ThemeManager {
         }
     }
     
+    /// Applies changes to all UINavigationBars
+    ///
+    /// - Parameter theme: Selected theme
     private static func setupNavigationBarAppearance(_ theme: Theme) {
         UINavigationBar.appearance().barStyle = theme.barStyle
     }
     
+    /// Applies changes to all UITabBars
+    ///
+    /// - Parameter theme: Selected theme
     private static func setupTabBarAppearance(_ theme: Theme) {
         UITabBar.appearance().barStyle = theme.barStyle
         UITabBar.appearance().tintColor = theme.accentColor
     }
     
+    /// Applies changes to all UILabels
+    ///
+    /// - Parameter theme: Selected theme
     private static func setupLabelAppearance(_ theme: Theme) {
         UILabel.appearance().textColor = theme.textColor
     }
     
+    /// Applies changes to all UITableViews
+    ///
+    /// - Parameter theme: Selected theme
     private static func setupTableViewAppearance(_ theme: Theme) {
         UITableView.appearance().backgroundColor = theme.tableViewBackgroundColor
     }
     
+    /// Applies changes to all UITableCells
+    ///
+    /// - Parameter theme: Selected theme
     private static func setupTableViewCellAppearance(_ theme: Theme) {
         UITableViewCell.appearance().backgroundColor = theme.backgroundColor
     }
+    
 }
