@@ -10,7 +10,9 @@ import UIKit
 
 class BaseViewController: UIViewController {
     
+    /// Default identifier for a table view cell
     let cellIdentifier = "cellIdentifier"
+    /// Table view
     lazy var tableView: UITableView = {
         let tv = UITableView()
         tv.delegate = self
@@ -29,14 +31,17 @@ class BaseViewController: UIViewController {
         setupNavigationBar()
     }
     
+    /// Sets up the view
     func setupView() {
     }
     
+    /// Sets up the navigation bar
     func setupNavigationBar() {
     }
 
 }
 
+// MARK: - [extension] UITableViewDataSource
 extension BaseViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 0
@@ -47,5 +52,5 @@ extension BaseViewController: UITableViewDataSource {
     }
 }
 
-extension BaseViewController: UITableViewDelegate {
-}
+// MARK: - [extension] UITableViewDelegate
+extension BaseViewController: UITableViewDelegate {}
