@@ -11,6 +11,21 @@ import UIKit
 // MARK: - UIView
 
 extension UIView {
+    /// Sets constraints to the view
+    ///
+    /// - Parameters:
+    ///   - topAnchor: Top constraint for the view
+    ///   - leadingAnchor: Leading constraint for the view
+    ///   - bottomAnchor: Bottom constraint for the view
+    ///   - trailingAnchor: Trailing constraint for the view
+    ///   - centerXAnchor: Center X constraint for the view
+    ///   - centerYAnchor: Center Y constraint for the view
+    ///   - topConstant: Top margin
+    ///   - leadingConstant: Leading margin
+    ///   - bottomConstant: Bottom margin
+    ///   - trailingConstant: Trailing margin
+    ///   - widthConstant: Width of the view
+    ///   - heightConstant: Height of the view
     func setConstraints(topAnchor: NSLayoutYAxisAnchor? = nil, leadingAnchor: NSLayoutXAxisAnchor? = nil, bottomAnchor: NSLayoutYAxisAnchor? = nil, trailingAnchor: NSLayoutXAxisAnchor? = nil, centerXAnchor: NSLayoutXAxisAnchor? = nil, centerYAnchor: NSLayoutYAxisAnchor? = nil, topConstant: CGFloat = 0, leadingConstant: CGFloat = 0, bottomConstant: CGFloat = 0, trailingConstant: CGFloat = 0, widthConstant: CGFloat? = nil, heightConstant: CGFloat? = nil) {
         
         translatesAutoresizingMaskIntoConstraints = false
@@ -57,6 +72,9 @@ extension UIView {
 // MARK: - String
 
 extension String {
+    /// Localized a string
+    ///
+    /// - Returns: Localized string
     func localized() -> String {
         return Localize.localizeString(self) ?? ""
     }
@@ -65,6 +83,9 @@ extension String {
 // MARK: - UIColor
 
 extension UIColor {
+    /// Creates a UIColor from hexadecimal value
+    ///
+    /// - Parameter hex: Hexadecimal string representation
     convenience init(_ hex: String) {
         var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         
@@ -92,6 +113,9 @@ extension UIColor {
 // MARK: - UIImageView
 
 extension UIImageView {
+    /// Sets a color for an icon
+    ///
+    /// - Parameter color: Color for the icon
     func setImageColor(color: UIColor) {
         let templateImage = self.image?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
         self.image = templateImage
