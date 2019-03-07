@@ -13,5 +13,6 @@ class Account: Object {
     
     @objc dynamic var currency: LocaleCurrency?
     @objc dynamic var money: Double = 0.0
+    @objc dynamic var selected: Bool = false
     
 }

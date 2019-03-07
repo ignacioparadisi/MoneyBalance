@@ -17,6 +17,7 @@ class HomeViewController: BaseViewController {
         let title = UILabel()
         title.text = "USD"
         title.font = UIFont(name: "HelveticaNeue-Medium", size: 17)
+        title.textColor = ThemeManager.currentTheme().textColor
         return title
     }()
     
