@@ -8,12 +8,15 @@
 
 import Foundation
 
+/// Key for getting the selected language from UserDefaults
 let LANGUAGE_KEY: String = "LanguageKey"
 
 class Localize {
     
+    /// Bundle for selected language
     private static var languageBundle: Bundle? = .main
     
+    /// Sets selected language Bundle from file
     static func verifyLanguage() {
         if UserDefaults.standard.value(forKey: LANGUAGE_KEY) == nil {
             setLanguage("Base")
@@ -27,11 +30,18 @@ class Localize {
     
     }
     
+    /// Changes the selected language
+    ///
+    /// - Parameter language: Selected language
     static func setLanguage(_ language: String) {
         UserDefaults.standard.set(language, forKey: LANGUAGE_KEY)
         UserDefaults.standard.synchronize()
     }
     
+    /// Localizes a string with the selected language bundle
+    ///
+    /// - Parameter string: String key to be localized
+    /// - Returns: Localized string
     static func localizeString(_ string: String) -> String? {
         return languageBundle?.localizedString(forKey: string, value: nil, table: nil)
     }
