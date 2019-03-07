@@ -11,8 +11,10 @@ import LocalAuthentication
 
 class LauncherViewController: UIViewController, AuthenticationFailedViewDelegate {
     
+    /// ViewController that holds the tabBar
     lazy var viewController: UIViewController = MainViewController()
     
+    /// View that is shown when canceling the authentication
     lazy var contentView: AuthenticationFailedView = {
         let view = AuthenticationFailedView()
         view.backgroundColor = .clear
@@ -22,6 +24,10 @@ class LauncherViewController: UIViewController, AuthenticationFailedViewDelegate
         return view
     }()
     
+    
+    /// Sets the view controller that should be shown if authentication is successful
+    ///
+    /// - Parameter viewController: View controller that should be shown if authentication is successful
     init(_ viewController: UIViewController? = MainViewController()) {
         super.init(nibName: nil, bundle: nil)
         if let vc = viewController {
@@ -44,6 +50,7 @@ class LauncherViewController: UIViewController, AuthenticationFailedViewDelegate
         authenticate()
     }
     
+    /// Shows authentication alert with deviceOwnerAuthentication (Face ID or Touch ID)
     internal func authenticate() {
         let context = LAContext()
         var error: NSError?
@@ -65,7 +72,7 @@ class LauncherViewController: UIViewController, AuthenticationFailedViewDelegate
                 }
             }
         } else {
-
+            // TODO: - Show error alert
         }
     }
 
