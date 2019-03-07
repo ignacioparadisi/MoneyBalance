@@ -1,0 +1,22 @@
+/* 
+  Localizable.strings
+  MoneyBalance
+
+  Created by Ignacio Paradisi on 3/4/19.
+  Copyright © 2019 Ignacio Paradisi. All rights reserved.
+*/
+
+// Authentication
+"Touch ID is required to use this app." = "Touch ID es requetido para usar esta app.";
+"Use Touch ID" = "Usar Touch ID";
+"Application Locked" = "Aplicación Bloqueada";
+"Unlock with Touch ID to open" = "Desbloquea con Touch ID para usar la app";
+
+"Movements" = "Movimientos";
+"Accounts" = "Cuentas";
+"Settings" = "Ajustes";
+
+// Settings
+"Dark Theme" = "Tema Oscuro";
+"English" = "Inglés";
+"Spanish" = "Español";

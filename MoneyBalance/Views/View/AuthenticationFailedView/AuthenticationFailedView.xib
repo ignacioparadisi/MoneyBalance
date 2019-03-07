@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AuthenticationFailedView" customModule="MoneyBalance" customModuleProvider="target">
+            <connections>
+                <outlet property="descriptionLabel" destination="fUh-6w-RYQ" id="I8v-K2-LRQ"/>
+                <outlet property="titleLabel" destination="DeA-Dq-BZu" id="zbA-X6-m0V"/>
+                <outlet property="touchIdButton" destination="81m-iS-8CQ" id="bEQ-J7-WQT"/>
+                <outlet property="view" destination="iN0-l3-epB" id="vJW-js-ghn"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="124"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Application Locked" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DeA-Dq-BZu">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unlock with Touch ID to open" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fUh-6w-RYQ">
+                    <rect key="frame" x="0.0" y="40" width="375" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="81m-iS-8CQ">
+                    <rect key="frame" x="136.5" y="91" width="102" height="33"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" title="Use Touch ID"/>
+                    <connections>
+                        <action selector="authenticateAction:" destination="-1" eventType="touchUpInside" id="6rm-nm-70o"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="DeA-Dq-BZu" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="26z-Mk-Ug8"/>
+                <constraint firstItem="fUh-6w-RYQ" firstAttribute="top" secondItem="DeA-Dq-BZu" secondAttribute="bottom" constant="10" id="5Te-vk-VI7"/>
+                <constraint firstItem="DeA-Dq-BZu" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="A2w-pE-EjH"/>
+                <constraint firstItem="fUh-6w-RYQ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="G1Q-6K-1zG"/>
+                <constraint firstAttribute="trailing" secondItem="DeA-Dq-BZu" secondAttribute="trailing" id="I6q-1s-IyJ"/>
+                <constraint firstAttribute="trailing" secondItem="fUh-6w-RYQ" secondAttribute="trailing" id="ShZ-o6-dlB"/>
+                <constraint firstItem="81m-iS-8CQ" firstAttribute="top" secondItem="fUh-6w-RYQ" secondAttribute="bottom" constant="30" id="bKM-Bd-Evc"/>
+                <constraint firstItem="81m-iS-8CQ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="kl4-O1-ja4"/>
+                <constraint firstAttribute="bottom" secondItem="81m-iS-8CQ" secondAttribute="bottom" id="toW-GJ-BiW"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="63.200000000000003" y="88.15592203898052"/>
+        </view>
+    </objects>
+</document>
