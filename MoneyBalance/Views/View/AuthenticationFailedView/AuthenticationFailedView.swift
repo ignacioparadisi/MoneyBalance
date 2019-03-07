@@ -27,7 +27,6 @@ class AuthenticationFailedView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        Bundle.main.loadNibNamed("AuthenticationFailedView", owner: self, options: nil)
         setupXib()
     }
     

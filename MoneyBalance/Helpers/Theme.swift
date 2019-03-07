@@ -14,6 +14,10 @@ let THEME_KEY = "SelectedTheme"
 enum Theme: Int {
     case light, dark
 
+    var titleFont: String {
+        return "HelveticaNeue-Medium"
+    }
+    
     var accentColor: UIColor {
         switch self {
         case .light:
