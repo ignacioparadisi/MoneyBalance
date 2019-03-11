@@ -17,6 +17,14 @@
 "Settings" = "Ajustes";
 
 // Settings
+"Language" = "Lenguaje";
+"Screen Lock" = "Pantalla de Bloqueo";
 "Dark Theme" = "Tema Oscuro";
+"Require Touch ID to unlock this app" = "Requerir Touch ID para desbloquear esta app.";
+"Change app's language" = "Cambiar lenguaje de la app.";
+
+"Select the desired language for the app" = "Selecciona el lenguaje deseado para la app.";
 "English" = "Inglés";
 "Spanish" = "Español";
+"Require Touch ID" = "Requerir Touch ID";
+"When enabled, you'll need to use Touch ID to unlock this app." = "Cuando está habilitado, se usará el Touch ID para desbloquear la app.";

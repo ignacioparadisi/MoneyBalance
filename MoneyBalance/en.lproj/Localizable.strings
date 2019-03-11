@@ -17,7 +17,16 @@
 "Settings" = "Settings";
 
 // Settings
+"Language" = "Language";
+"Screen Lock" = "Screen Lock";
 "Dark Theme" = "Dark Theme";
+"Change app's language" = "Change app's language.";
+
+"Select the desired language for the app" = "Select the desired language for the app.";
 "English" = "English";
 "Spanish" = "Spanish";
+"Require Touch ID to unlock this app" = "Require Touch ID to unlock this app.";
+
+"Require Touch ID" = "Require Touch ID";
+"When enabled, you'll need to use Touch ID to unlock this app." = "When enabled, you'll need to use Touch ID to unlock this app.";
 

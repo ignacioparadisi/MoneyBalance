@@ -53,6 +53,15 @@ enum Theme: Int {
             return UIColor("#FFFFFF")
         }
     }
+    
+    var lightTextColor: UIColor {
+        switch self {
+        case .light:
+            return .lightGray
+        case .dark:
+            return .white
+        }
+    }
 
     var bottomSheetColor: UIColor {
         switch self {

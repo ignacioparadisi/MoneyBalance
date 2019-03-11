@@ -20,6 +20,14 @@ class BaseViewController: UIViewController {
         tv.tableFooterView = UIView()
         return tv
     }()
+    
+    lazy var groupedTableView: UITableView = {
+        let tv = UITableView(frame: .zero, style: .grouped)
+        tv.delegate = self
+        tv.dataSource = self
+        tv.tableFooterView = UIView()
+        return tv
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +45,20 @@ class BaseViewController: UIViewController {
     
     /// Sets up the navigation bar
     func setupNavigationBar() {
+    }
+    
+    internal func tag(for indexPath: IndexPath) -> Int {
+        let section = indexPath.section
+        let row = indexPath.row
+        return (section * 10) + row
+    }
+    
+    internal func section(from tag: Int) -> Int {
+        return tag / 10
+    }
+    
+    internal func row(from tag: Int) -> Int {
+        return tag - section(from: tag)
     }
 
 }

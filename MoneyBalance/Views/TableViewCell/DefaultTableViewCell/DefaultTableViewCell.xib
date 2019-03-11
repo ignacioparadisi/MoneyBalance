@@ -12,30 +12,41 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="DefaultTableViewCell" customModule="MoneyBalance" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="KGk-i7-Jjw" customClass="DefaultTableViewCell" customModule="MoneyBalance" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="286" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fas-MI-QGb">
-                        <rect key="frame" x="16" y="22" width="288" height="0.0"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Value" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LwE-tR-N8p">
+                        <rect key="frame" x="153" y="12" width="125" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OfJ-5N-C7a">
+                        <rect key="frame" x="16" y="12" width="129" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Fas-MI-QGb" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="16G-lv-cq1"/>
-                    <constraint firstAttribute="trailing" secondItem="Fas-MI-QGb" secondAttribute="trailing" constant="16" id="3Tg-0z-iRl"/>
-                    <constraint firstItem="Fas-MI-QGb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="GkA-98-813"/>
+                    <constraint firstItem="LwE-tR-N8p" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="4AY-1A-aaH"/>
+                    <constraint firstItem="OfJ-5N-C7a" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="E75-j3-dE1"/>
+                    <constraint firstItem="LwE-tR-N8p" firstAttribute="leading" secondItem="OfJ-5N-C7a" secondAttribute="trailing" id="gNI-HU-pYK"/>
+                    <constraint firstItem="LwE-tR-N8p" firstAttribute="leading" secondItem="OfJ-5N-C7a" secondAttribute="trailing" id="pUG-eq-dwy"/>
+                    <constraint firstItem="LwE-tR-N8p" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="zPd-ep-Ngb"/>
+                    <constraint firstItem="OfJ-5N-C7a" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="zgd-rs-D88"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="label" destination="Fas-MI-QGb" id="2wF-HJ-b87"/>
+                <outlet property="selectedValueLabel" destination="LwE-tR-N8p" id="VW2-0q-uPU"/>
+                <outlet property="titleLabel" destination="OfJ-5N-C7a" id="dPS-y6-xf1"/>
             </connections>
+            <point key="canvasLocation" x="169.59999999999999" y="112.44377811094454"/>
         </tableViewCell>
     </objects>
 </document>

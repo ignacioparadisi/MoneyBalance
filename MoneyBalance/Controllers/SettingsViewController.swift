@@ -10,8 +10,12 @@ import UIKit
 
 class SettingsViewController: BaseViewController {
     
+    private let LANGUAGE_SECTION = 0
+    private let THEME_SECTION = 1
+    private let AUTHENTICATION_SECTION = 2
+    
     // Identifier for theme selection cell
-    private let themeCellIdentifier = "themeCellIdentifier"
+    private let switchCellIdentifier = "switchCellIdentifier"
 
     override func setupNavigationBar() {
         super.setupNavigationBar()
@@ -20,61 +24,85 @@ class SettingsViewController: BaseViewController {
     
     override func setupView() {
         super.setupView()
-    
-        createTableView()
-        
-        view.addSubview(tableView)
-        tableView.setConstraints(topAnchor: view.topAnchor, leadingAnchor: view.leadingAnchor, bottomAnchor: view.bottomAnchor, trailingAnchor: view.trailingAnchor)
-        tableView.register(UINib(nibName: "DefaultTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
-        tableView.register(UINib(nibName: "ThemeTableViewCell", bundle: nil), forCellReuseIdentifier: themeCellIdentifier)
-    }
-    
-    /// Overrides the tableView for setting a grouped style
-    private func createTableView() {
-        tableView = UITableView(frame: .zero, style: .grouped)
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.tableFooterView = UIView()
+        view.addSubview(groupedTableView)
+        groupedTableView.setConstraints(topAnchor: view.topAnchor, leadingAnchor: view.leadingAnchor, bottomAnchor: view.bottomAnchor, trailingAnchor: view.trailingAnchor)
+        groupedTableView.register(UINib(nibName: "DefaultTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        groupedTableView.register(UINib(nibName: "SwitchTableViewCell", bundle: nil), forCellReuseIdentifier: switchCellIdentifier)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 2
-        }
         return 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let section = indexPath.section
-        let row = indexPath.row
         
-        if section == 0 {
+        switch section {
+        case LANGUAGE_SECTION:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! DefaultTableViewCell
-            
-            if row == 0 {
-                cell.label.text = "English".localized()
-            } else {
-                cell.label.text = "Spanish".localized()
-            }
+            cell.configureWith(title: "Language".localized(), accessoryType: .disclosureIndicator, selectedValue: Localize.getSelectedLanguageName())
             
             return cell
+            
+        case THEME_SECTION:
+            let cell = tableView.dequeueReusableCell(withIdentifier: switchCellIdentifier, for: indexPath) as! SwitchTableViewCell
+            cell.tag = tag(for: indexPath)
+            cell.configureWith(theme: ThemeManager.currentTheme())
+            cell.delegate = self
+            return cell
+            
+        case AUTHENTICATION_SECTION:
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! DefaultTableViewCell
+            cell.configureWith(title: "Screen Lock".localized(), accessoryType: .disclosureIndicator)
+            return cell
+        default:
+            return UITableViewCell()
         }
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: themeCellIdentifier, for: indexPath) as! ThemeTableViewCell
-        return cell
         
     }
     
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        switch section {
+        case LANGUAGE_SECTION:
+            return "Change app's language".localized()
+        case AUTHENTICATION_SECTION:
+            return "Require Touch ID to unlock this app".localized()
+        default:
+            return nil
+        }
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
-            Localize.setLanguage("en")
-        } else {
-            Localize.setLanguage("es-US")
+        switch indexPath.section {
+        case LANGUAGE_SECTION:
+            let viewController = LanguageSettingsViewController()
+            navigationController?.pushViewController(viewController, animated: true)
+            break
+        case AUTHENTICATION_SECTION:
+            let viewController = ScreenLockSettingsViewController()
+            navigationController?.pushViewController(viewController, animated: true)
+        default:
+            break
         }
     }
 
+}
+
+extension SettingsViewController: SwitchTableViewCellDelegate {
+    func switchValueChanged(isOn: Bool, tag: Int) {
+        switch section(from: tag) {
+        case 1:
+            if isOn {
+                ThemeManager.applayTheme(.dark)
+            } else {
+                ThemeManager.applayTheme(.light)
+            }
+        default:
+            break
+        }
+    }
 }

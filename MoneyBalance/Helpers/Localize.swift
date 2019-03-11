@@ -30,6 +30,20 @@ class Localize {
     
     }
     
+    static func getSelectedLanguageName() -> String {
+        if UserDefaults.standard.value(forKey: LANGUAGE_KEY) == nil {
+            return "English".localized()
+        }
+        switch UserDefaults.standard.string(forKey: LANGUAGE_KEY) {
+        case "en":
+            return "English".localized()
+        case "es-US":
+            return "Spanish".localized()
+        default:
+            return "English".localized()
+        }
+    }
+    
     /// Changes the selected language
     ///
     /// - Parameter language: Selected language
