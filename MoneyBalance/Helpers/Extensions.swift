@@ -67,16 +67,20 @@ extension UIView {
         
         constraints.forEach { $0.isActive = true }
     }
-}
-
-// MARK: - String
-
-extension String {
-    /// Localized a string
-    ///
-    /// - Returns: Localized string
-    func localized() -> String {
-        return Localize.localizeString(self) ?? ""
+    
+    func makeSnapshot() -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0.0)
+        drawHierarchy(in: bounds, afterScreenUpdates: true)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
+    
+    func roundCorners(corners: UIRectCorner, radius: CGFloat) {
+        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        layer.mask = mask
     }
 }
 
@@ -122,3 +126,27 @@ extension UIImageView {
         self.tintColor = color
     }
 }
+
+// MARK: - Double
+
+extension Double {
+    func toCurrency() -> String? {
+        let currencyFormatter = NumberFormatter()
+        currencyFormatter.locale = Locale(identifier: "en_US")
+        currencyFormatter.usesGroupingSeparator = true
+        currencyFormatter.numberStyle = .currency
+        return currencyFormatter.string(from: NSNumber(value: self))
+    }
+}
+
+// MARK: - String
+
+extension String {
+    /// Localized a string
+    ///
+    /// - Returns: Localized string
+    func localized() -> String {
+        return Localize.localizeString(self) ?? ""
+    }
+}
+

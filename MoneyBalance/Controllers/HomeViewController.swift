@@ -28,6 +28,7 @@ class HomeViewController: BaseViewController {
         super.setupView()
         view.addSubview(tableView)
         tableView.setConstraints(topAnchor: view.topAnchor, leadingAnchor: view.leadingAnchor, bottomAnchor: view.bottomAnchor, trailingAnchor: view.trailingAnchor)
+        tableView.register(UINib(nibName: "BankTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
     }
     
     /// Creates the design of the navigationItem.titleView and adds tapGestureRecognizer
@@ -52,9 +53,22 @@ class HomeViewController: BaseViewController {
     
     }
     
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+        return cell
+    }
+    
     @objc func presentAccountsView() {
-        let viewController = AccountsViewController()
+//        let viewController = AccountsViewController()
+//        let bottomSheet = MDCBottomSheetController(contentViewController: viewController)
+//        present(bottomSheet, animated: true)
+        let viewController = AccountsViewController(nibName: "AccountsViewController", bundle: nil)
         let bottomSheet = MDCBottomSheetController(contentViewController: viewController)
         present(bottomSheet, animated: true)
+
     }
 }
