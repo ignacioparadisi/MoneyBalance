@@ -27,12 +27,14 @@
 		4F6950A4222D94EC008FD9EA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6950A3222D94EC008FD9EA /* BaseViewController.swift */; };
 		4F6950A6222D95E8008FD9EA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6950A5222D95E8008FD9EA /* HomeViewController.swift */; };
 		4F6950A8222D994C008FD9EA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6950A7222D994C008FD9EA /* Extensions.swift */; };
-		4F6950AA222DFC47008FD9EA /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6950A9222DFC47008FD9EA /* Account.swift */; };
+		4F6950AA222DFC47008FD9EA /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6950A9222DFC47008FD9EA /* Currency.swift */; };
 		4F7E3D4D222EA18A00112275 /* LauncherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7E3D4C222EA18A00112275 /* LauncherViewController.swift */; };
 		4F7E3D53222EBE5D00112275 /* AuthenticationFailedView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F7E3D52222EBE5D00112275 /* AuthenticationFailedView.xib */; };
 		4F7E3D55222EBF0200112275 /* AuthenticationFailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7E3D54222EBF0200112275 /* AuthenticationFailedView.swift */; };
 		4F7E3D57222EC84F00112275 /* Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7E3D56222EC84F00112275 /* Localize.swift */; };
 		4F7E3D5A222ED13900112275 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7E3D59222ED13900112275 /* SettingsViewController.swift */; };
+		4F95969A2238687700205D3D /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9596992238687700205D3D /* Account.swift */; };
+		4F95969C22386A5A00205D3D /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F95969B22386A5A00205D3D /* RealmManager.swift */; };
 		4F975E55222F3ACC009DA03C /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F975E54222F3ACC009DA03C /* Theme.swift */; };
 		4F975E6B222F71E5009DA03C /* DefaultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F975E69222F71E5009DA03C /* DefaultTableViewCell.swift */; };
 		4F975E6C222F71E5009DA03C /* DefaultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F975E6A222F71E5009DA03C /* DefaultTableViewCell.xib */; };
@@ -68,13 +70,15 @@
 		4F6950A3222D94EC008FD9EA /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		4F6950A5222D95E8008FD9EA /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		4F6950A7222D994C008FD9EA /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		4F6950A9222DFC47008FD9EA /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		4F6950A9222DFC47008FD9EA /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		4F7E3D4C222EA18A00112275 /* LauncherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauncherViewController.swift; sourceTree = "<group>"; };
 		4F7E3D52222EBE5D00112275 /* AuthenticationFailedView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthenticationFailedView.xib; sourceTree = "<group>"; };
 		4F7E3D54222EBF0200112275 /* AuthenticationFailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationFailedView.swift; sourceTree = "<group>"; };
 		4F7E3D56222EC84F00112275 /* Localize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localize.swift; sourceTree = "<group>"; };
 		4F7E3D58222ECBAE00112275 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4F7E3D59222ED13900112275 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		4F9596992238687700205D3D /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		4F95969B22386A5A00205D3D /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		4F975E54222F3ACC009DA03C /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		4F975E5B222F4BCF009DA03C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		4F975E69222F71E5009DA03C /* DefaultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTableViewCell.swift; sourceTree = "<group>"; };
@@ -130,6 +134,7 @@
 		4F5CA0A3222E134700ED29D4 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				4F95969B22386A5A00205D3D /* RealmManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -183,9 +188,10 @@
 		4F69509D222D930D008FD9EA /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				4F6950A9222DFC47008FD9EA /* Account.swift */,
+				4F6950A9222DFC47008FD9EA /* Currency.swift */,
 				4F5CA0A4222E13A900ED29D4 /* Movement.swift */,
 				4F5CA0A6222E170800ED29D4 /* LocaleCurrency.swift */,
+				4F9596992238687700205D3D /* Account.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -213,7 +219,6 @@
 				4FAE5CA22237138A00762300 /* ScreenLockSettingsViewController.swift */,
 				4FAE5CA42237160300762300 /* LanguageSettingsViewController.swift */,
 				4F53897F22384D1D004832B5 /* AccountsViewController.swift */,
-				4F53898022384D1D004832B5 /* AccountsViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -231,6 +236,7 @@
 		4FED8A04222FF23D009E3965 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4F53898022384D1D004832B5 /* AccountsViewController.xib */,
 				4FED8A05222FF25C009E3965 /* AuthenticationFailedView */,
 			);
 			path = View;
@@ -417,10 +423,12 @@
 				4F6950A8222D994C008FD9EA /* Extensions.swift in Sources */,
 				4F5CA0A7222E170800ED29D4 /* LocaleCurrency.swift in Sources */,
 				4F69508E222D919E008FD9EA /* MainViewController.swift in Sources */,
+				4F95969A2238687700205D3D /* Account.swift in Sources */,
 				4F53897B22383FE1004832B5 /* BankCollectionViewCell.swift in Sources */,
 				4FAE5CA52237160300762300 /* LanguageSettingsViewController.swift in Sources */,
 				4FAE5C9E2236FFA600762300 /* SwitchTableViewCell.swift in Sources */,
 				4FAE5CA32237138A00762300 /* ScreenLockSettingsViewController.swift in Sources */,
+				4F95969C22386A5A00205D3D /* RealmManager.swift in Sources */,
 				4F7E3D4D222EA18A00112275 /* LauncherViewController.swift in Sources */,
 				4F7E3D57222EC84F00112275 /* Localize.swift in Sources */,
 				4F975E6B222F71E5009DA03C /* DefaultTableViewCell.swift in Sources */,
@@ -434,7 +442,7 @@
 				4F6950A6222D95E8008FD9EA /* HomeViewController.swift in Sources */,
 				4F5CA0A2222E0C7B00ED29D4 /* MovementsViewController.swift in Sources */,
 				4FAE5CA1223703EC00762300 /* Utils.swift in Sources */,
-				4F6950AA222DFC47008FD9EA /* Account.swift in Sources */,
+				4F6950AA222DFC47008FD9EA /* Currency.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

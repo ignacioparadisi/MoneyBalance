@@ -11,7 +11,12 @@ import RealmSwift
 
 class LocaleCurrency: Object {
     
+    @objc dynamic var id: Int = 0
     @objc dynamic var name: String?
     @objc dynamic var identifier: String?
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
     
 }

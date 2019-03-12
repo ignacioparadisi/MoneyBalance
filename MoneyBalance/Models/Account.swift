@@ -2,7 +2,7 @@
 //  Account.swift
 //  MoneyBalance
 //
-//  Created by Ignacio Paradisi on 3/4/19.
+//  Created by Ignacio Paradisi on 3/12/19.
 //  Copyright © 2019 Ignacio Paradisi. All rights reserved.
 //
 
@@ -11,8 +11,14 @@ import RealmSwift
 
 class Account: Object {
     
-    @objc dynamic var currency: LocaleCurrency?
-    @objc dynamic var money: Double = 0.0
-    @objc dynamic var selected: Bool = false
+    @objc dynamic var id: Int = 0
+    @objc dynamic var money: Double = 0
+    @objc dynamic var bankName: String = ""
+    @objc dynamic var number: Double = 0
+    @objc dynamic var currency: Currency?
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
     
 }

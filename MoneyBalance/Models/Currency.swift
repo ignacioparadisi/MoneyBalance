@@ -1,5 +1,5 @@
 //
-//  Movement.swift
+//  Account.swift
 //  MoneyBalance
 //
 //  Created by Ignacio Paradisi on 3/4/19.
@@ -9,13 +9,12 @@
 import Foundation
 import RealmSwift
 
-class Movement: Object {
+class Currency: Object {
     
     @objc dynamic var id: Int = 0
-    @objc dynamic var account: Account?
-    @objc dynamic var type: String?
-    @objc dynamic var amount: Double = 0.0
-    @objc dynamic var movDescription: String?
+    @objc dynamic var name: String?
+    @objc dynamic var identifier: String?
+    @objc dynamic var selected: Bool = false
     
     override static func primaryKey() -> String? {
         return "id"

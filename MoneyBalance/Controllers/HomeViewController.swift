@@ -22,6 +22,8 @@ class HomeViewController: BaseViewController {
     override func setupNavigationBar() {
         super.setupNavigationBar()
         setupNavigationBarTitle()
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
+        navigationItem.setRightBarButton(addButton, animated: false)
     }
     
     override func setupView() {
@@ -63,9 +65,6 @@ class HomeViewController: BaseViewController {
     }
     
     @objc func presentAccountsView() {
-//        let viewController = AccountsViewController()
-//        let bottomSheet = MDCBottomSheetController(contentViewController: viewController)
-//        present(bottomSheet, animated: true)
         let viewController = AccountsViewController(nibName: "AccountsViewController", bundle: nil)
         let bottomSheet = MDCBottomSheetController(contentViewController: viewController)
         present(bottomSheet, animated: true)
