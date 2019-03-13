@@ -12,8 +12,8 @@
 		4F53897722383E41004832B5 /* BankTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F53897522383E41004832B5 /* BankTableViewCell.xib */; };
 		4F53897B22383FE1004832B5 /* BankCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F53897922383FE1004832B5 /* BankCollectionViewCell.swift */; };
 		4F53897C22383FE1004832B5 /* BankCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F53897A22383FE1004832B5 /* BankCollectionViewCell.xib */; };
-		4F53898122384D1D004832B5 /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F53897F22384D1D004832B5 /* AccountsViewController.swift */; };
-		4F53898222384D1D004832B5 /* AccountsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F53898022384D1D004832B5 /* AccountsViewController.xib */; };
+		4F53898122384D1D004832B5 /* CurrenciesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F53897F22384D1D004832B5 /* CurrenciesViewController.swift */; };
+		4F53898222384D1D004832B5 /* CurrenciesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F53898022384D1D004832B5 /* CurrenciesViewController.xib */; };
 		4F5CA0A2222E0C7B00ED29D4 /* MovementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5CA0A1222E0C7B00ED29D4 /* MovementsViewController.swift */; };
 		4F5CA0A5222E13A900ED29D4 /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5CA0A4222E13A900ED29D4 /* Movement.swift */; };
 		4F5CA0A7222E170800ED29D4 /* LocaleCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5CA0A6222E170800ED29D4 /* LocaleCurrency.swift */; };
@@ -43,7 +43,6 @@
 		4FAE5CA1223703EC00762300 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAE5CA0223703EC00762300 /* Utils.swift */; };
 		4FAE5CA32237138A00762300 /* ScreenLockSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAE5CA22237138A00762300 /* ScreenLockSettingsViewController.swift */; };
 		4FAE5CA52237160300762300 /* LanguageSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAE5CA42237160300762300 /* LanguageSettingsViewController.swift */; };
-		4FAF5BD922387AE900105EDE /* CountryCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAF5BD822387AE900105EDE /* CountryCurrency.swift */; };
 		4FAF5BDB2238833600105EDE /* AddNewCurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAF5BDA2238833600105EDE /* AddNewCurrencyViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,8 +52,8 @@
 		4F53897522383E41004832B5 /* BankTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BankTableViewCell.xib; sourceTree = "<group>"; };
 		4F53897922383FE1004832B5 /* BankCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCollectionViewCell.swift; sourceTree = "<group>"; };
 		4F53897A22383FE1004832B5 /* BankCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BankCollectionViewCell.xib; sourceTree = "<group>"; };
-		4F53897F22384D1D004832B5 /* AccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewController.swift; sourceTree = "<group>"; };
-		4F53898022384D1D004832B5 /* AccountsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountsViewController.xib; sourceTree = "<group>"; };
+		4F53897F22384D1D004832B5 /* CurrenciesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesViewController.swift; sourceTree = "<group>"; };
+		4F53898022384D1D004832B5 /* CurrenciesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrenciesViewController.xib; sourceTree = "<group>"; };
 		4F5CA0A1222E0C7B00ED29D4 /* MovementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementsViewController.swift; sourceTree = "<group>"; };
 		4F5CA0A4222E13A900ED29D4 /* Movement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movement.swift; sourceTree = "<group>"; };
 		4F5CA0A6222E170800ED29D4 /* LocaleCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleCurrency.swift; sourceTree = "<group>"; };
@@ -90,7 +89,6 @@
 		4FAE5CA0223703EC00762300 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		4FAE5CA22237138A00762300 /* ScreenLockSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenLockSettingsViewController.swift; sourceTree = "<group>"; };
 		4FAE5CA42237160300762300 /* LanguageSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSettingsViewController.swift; sourceTree = "<group>"; };
-		4FAF5BD822387AE900105EDE /* CountryCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCurrency.swift; sourceTree = "<group>"; };
 		4FAF5BDA2238833600105EDE /* AddNewCurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCurrencyViewController.swift; sourceTree = "<group>"; };
 		BEE5FE5E3E410EAC92F3321B /* Pods-MoneyBalance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoneyBalance.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MoneyBalance/Pods-MoneyBalance.debug.xcconfig"; sourceTree = "<group>"; };
 		F2532F3C39538BB9246994B5 /* Pods_MoneyBalance.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoneyBalance.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,13 +115,13 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		4F53897322383E23004832B5 /* BankTableViewCell */ = {
+		4F53897322383E23004832B5 /* CurrencyTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				4F53897422383E41004832B5 /* BankTableViewCell.swift */,
 				4F53897522383E41004832B5 /* BankTableViewCell.xib */,
 			);
-			path = BankTableViewCell;
+			path = CurrencyTableViewCell;
 			sourceTree = "<group>";
 		};
 		4F53897822383FBB004832B5 /* CollectionViewCell */ = {
@@ -146,10 +144,10 @@
 		4F5CA0B0222E2B2A00ED29D4 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				4F53897322383E23004832B5 /* BankTableViewCell */,
+				4F53897322383E23004832B5 /* CurrencyTableViewCell */,
 				4FED8A08222FF292009E3965 /* SwitchTableViewCell */,
 				4FED8A07222FF283009E3965 /* DefaultTableViewCell */,
-				4FED8A06222FF274009E3965 /* AccountTableViewCell */,
+				4FED8A06222FF274009E3965 /* OwnedCurrencyTableViewCell */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -196,7 +194,6 @@
 				4F5CA0A4222E13A900ED29D4 /* Movement.swift */,
 				4F5CA0A6222E170800ED29D4 /* LocaleCurrency.swift */,
 				4F9596992238687700205D3D /* Account.swift */,
-				4FAF5BD822387AE900105EDE /* CountryCurrency.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -223,7 +220,7 @@
 				4F7E3D59222ED13900112275 /* SettingsViewController.swift */,
 				4FAE5CA22237138A00762300 /* ScreenLockSettingsViewController.swift */,
 				4FAE5CA42237160300762300 /* LanguageSettingsViewController.swift */,
-				4F53897F22384D1D004832B5 /* AccountsViewController.swift */,
+				4F53897F22384D1D004832B5 /* CurrenciesViewController.swift */,
 				4FAF5BDA2238833600105EDE /* AddNewCurrencyViewController.swift */,
 			);
 			path = Controllers;
@@ -242,7 +239,7 @@
 		4FED8A04222FF23D009E3965 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4F53898022384D1D004832B5 /* AccountsViewController.xib */,
+				4F53898022384D1D004832B5 /* CurrenciesViewController.xib */,
 				4FED8A05222FF25C009E3965 /* AuthenticationFailedView */,
 			);
 			path = View;
@@ -257,13 +254,13 @@
 			path = AuthenticationFailedView;
 			sourceTree = "<group>";
 		};
-		4FED8A06222FF274009E3965 /* AccountTableViewCell */ = {
+		4FED8A06222FF274009E3965 /* OwnedCurrencyTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				4F5CA0B1222E2B4900ED29D4 /* AccountTableViewCell.swift */,
 				4F5CA0B2222E2B4900ED29D4 /* AccountTableViewCell.xib */,
 			);
-			path = AccountTableViewCell;
+			path = OwnedCurrencyTableViewCell;
 			sourceTree = "<group>";
 		};
 		4FED8A07222FF283009E3965 /* DefaultTableViewCell */ = {
@@ -303,6 +300,7 @@
 				4F695084222D919E008FD9EA /* Sources */,
 				4F695085222D919E008FD9EA /* Frameworks */,
 				4F695086222D919E008FD9EA /* Resources */,
+				D119BAFD9BDE14CFC6672CF6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -356,7 +354,7 @@
 				4F5CA0B4222E2B4900ED29D4 /* AccountTableViewCell.xib in Resources */,
 				4F7E3D53222EBE5D00112275 /* AuthenticationFailedView.xib in Resources */,
 				4FAE5C9F2236FFA600762300 /* SwitchTableViewCell.xib in Resources */,
-				4F53898222384D1D004832B5 /* AccountsViewController.xib in Resources */,
+				4F53898222384D1D004832B5 /* CurrenciesViewController.xib in Resources */,
 				4F5CA0AB222E18C800ED29D4 /* Localizable.strings in Resources */,
 				4F53897C22383FE1004832B5 /* BankCollectionViewCell.xib in Resources */,
 				4F53897722383E41004832B5 /* BankTableViewCell.xib in Resources */,
@@ -390,6 +388,34 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D119BAFD9BDE14CFC6672CF6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MoneyBalance/Pods-MoneyBalance-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MoneyBalance/Pods-MoneyBalance-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -398,7 +424,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F7E3D55222EBF0200112275 /* AuthenticationFailedView.swift in Sources */,
-				4F53898122384D1D004832B5 /* AccountsViewController.swift in Sources */,
+				4F53898122384D1D004832B5 /* CurrenciesViewController.swift in Sources */,
 				4F6950A8222D994C008FD9EA /* Extensions.swift in Sources */,
 				4F5CA0A7222E170800ED29D4 /* LocaleCurrency.swift in Sources */,
 				4F69508E222D919E008FD9EA /* MainViewController.swift in Sources */,
@@ -413,7 +439,6 @@
 				4F7E3D57222EC84F00112275 /* Localize.swift in Sources */,
 				4F975E6B222F71E5009DA03C /* DefaultTableViewCell.swift in Sources */,
 				4F69508C222D919E008FD9EA /* AppDelegate.swift in Sources */,
-				4FAF5BD922387AE900105EDE /* CountryCurrency.swift in Sources */,
 				4F7E3D5A222ED13900112275 /* SettingsViewController.swift in Sources */,
 				4F975E55222F3ACC009DA03C /* Theme.swift in Sources */,
 				4F5CA0B3222E2B4900ED29D4 /* AccountTableViewCell.swift in Sources */,

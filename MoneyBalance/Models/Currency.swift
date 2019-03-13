@@ -12,8 +12,11 @@ import RealmSwift
 class Currency: Object {
     
     @objc dynamic var id: Int = 0
-    @objc dynamic var countryCurrency: CountryCurrency?
+    @objc dynamic var country: String = ""
+    @objc dynamic var identifier: String = ""
+    @objc dynamic var currency: String = ""
     @objc dynamic var selected: Bool = false
+    @objc dynamic var owned: Bool = false
     
     override static func primaryKey() -> String? {
         return "id"

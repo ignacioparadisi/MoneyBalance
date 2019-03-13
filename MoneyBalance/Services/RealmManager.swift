@@ -19,10 +19,7 @@ class RealmManager {
         print("Realm File: \(database.configuration.fileURL)")
     }
     
-    func getCurrencies() -> [Currency]? {
-        let results: Results<Currency> = database.objects(Currency.self)
-        return results.toArray(ofType: Currency.self) as [Currency]
-    }
+    // MARK: - CREATE
     
     func add(_ object: Object) {
         try! self.database.write {
@@ -30,21 +27,16 @@ class RealmManager {
         }
     }
     
-    func get(_ type: Object.Type) -> [Object] {
-        let results: Results<Object> = database.objects(type)
-        return results.toArray(ofType: type) as [Object]
-    }
-    
-    func createCountryCurrencies() {
-        if get(CountryCurrency.self).count == 0 {
-            let bs = CountryCurrency()
+    func createCurrencies() {
+        if get(Currency.self).count == 0 {
+            let bs = Currency()
             bs.id = 0
             bs.country = "Venezuela"
             bs.currency = "Bs. S"
             bs.identifier = "es_VE"
             add(bs)
             
-            let usd = CountryCurrency()
+            let usd = Currency()
             usd.id = 1
             usd.country = "Estados Unidos"
             usd.currency = "USD"
@@ -52,6 +44,32 @@ class RealmManager {
             add(usd)
         }
     }
+    
+    // MARK: - GET
+    
+    private func get(_ type: Object.Type) -> Results<Object> {
+        let results: Results<Object> = database.objects(type)
+        return results
+    }
+    
+    func getArray(ofType type: Object.Type, filter: String? = nil) -> [Object] {
+        var results = get(type)
+        if let filt = filter {
+            results = results.filter(filt)
+        }
+        return results.toArray(ofType: type) as [Object]
+    }
+    
+    // MARK: - UPDATE
+    
+    func createCurrency(_ currency: Currency) {
+        try! database.write {
+            currency.owned = true
+        }
+    }
+    
+    // MARK: - DELETE
+    
 }
 
 extension Results {

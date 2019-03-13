@@ -1,3 +1,49 @@
-PODFILE CHECKSUM: 97377fd30dd1b86c9c743065795f75b2fc5b3a1b
+PODS:
+  - Charts (3.2.2):
+    - Charts/Core (= 3.2.2)
+  - Charts/Core (3.2.2)
+  - MaterialComponents/BottomSheet (79.0.1):
+    - MaterialComponents/private/KeyboardWatcher
+    - MaterialComponents/private/Math
+    - MaterialComponents/ShapeLibrary
+    - MaterialComponents/Shapes
+  - MaterialComponents/private/Application (79.0.1)
+  - MaterialComponents/private/KeyboardWatcher (79.0.1):
+    - MaterialComponents/private/Application
+  - MaterialComponents/private/Math (79.0.1)
+  - MaterialComponents/ShadowElevations (79.0.1)
+  - MaterialComponents/ShadowLayer (79.0.1):
+    - MaterialComponents/ShadowElevations
+  - MaterialComponents/ShapeLibrary (79.0.1):
+    - MaterialComponents/private/Math
+    - MaterialComponents/Shapes
+  - MaterialComponents/Shapes (79.0.1):
+    - MaterialComponents/private/Math
+    - MaterialComponents/ShadowLayer
+  - Realm (3.13.1):
+    - Realm/Headers (= 3.13.1)
+  - Realm/Headers (3.13.1)
+  - RealmSwift (3.13.1):
+    - Realm (= 3.13.1)
+
+DEPENDENCIES:
+  - Charts
+  - MaterialComponents/BottomSheet
+  - RealmSwift
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Charts
+    - MaterialComponents
+    - Realm
+    - RealmSwift
+
+SPEC CHECKSUMS:
+  Charts: f69cf0518b6d1d62608ca504248f1bbe0b6ae77e
+  MaterialComponents: 79d641efdaa3993390aa04117228653f3652434c
+  Realm: 50071da38fe079e0735e47c9f2eae738c68c5996
+  RealmSwift: 8a1e6a02b7a08cd17a31e3115143fb69fe5f3fb9
+
+PODFILE CHECKSUM: 4548fb69bd87a898bf3bd44e4ebe769a2f4562c9
 
 COCOAPODS: 1.5.3

@@ -8,12 +8,18 @@
 
 import UIKit
 
+protocol AddNewCurrencyViewControllerDelegate {
+    func newCurrencyAdded(currency: Currency)
+}
+
 class AddNewCurrencyViewController: BaseViewController {
     
-    private var currencies: [CountryCurrency] = []
+    private var currencies: [Currency] = []
+    var delegate: AddNewCurrencyViewControllerDelegate?
 
     override func setupNavigationBar() {
         super.setupNavigationBar()
+        title = "Currencies".localized()
     }
     
     override func setupView() {
@@ -25,7 +31,7 @@ class AddNewCurrencyViewController: BaseViewController {
     }
     
     private func fetchCurrencies() {
-        currencies = RealmManager.shared.get(CountryCurrency.self) as! [CountryCurrency]
+        currencies = RealmManager.shared.getArray(ofType: Currency.self) as! [Currency]
         tableView.reloadData()
     }
     
@@ -40,4 +46,9 @@ class AddNewCurrencyViewController: BaseViewController {
         return cell
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let currency = currencies[indexPath.row]
+        RealmManager.shared.createCurrency(currency)
+        navigationController?.popViewController(animated: true)
+    }
 }

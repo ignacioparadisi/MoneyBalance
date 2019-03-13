@@ -13,8 +13,8 @@ class AccountTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var moneyLabel: UILabel!
     @IBOutlet weak var currentAccountImageView: UIImageView!
-    var account: Account = Account()
-    var isCurrentAccount: Bool = false {
+    private var currency: Currency = Currency()
+    private var isCurrentAccount: Bool = false {
         didSet {
             setSelectedState()
         }
@@ -28,11 +28,12 @@ class AccountTableViewCell: UITableViewCell {
         currentAccountImageView.layer.borderColor = ThemeManager.currentTheme().accentColor.cgColor
         currentAccountImageView.layer.cornerRadius = 15
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    func configureWith(currency: Currency) {
+        self.currency = currency
+        nameLabel.text = currency.currency
+        moneyLabel.text = currency.country
+        isCurrentAccount = currency.selected
     }
     
     /// Sets the selected state of the cell

@@ -19,6 +19,8 @@ class HomeViewController: BaseViewController {
         return view
     }()
     
+    private var bottomSheet: MDCBottomSheetController?
+    
     override func setupNavigationBar() {
         super.setupNavigationBar()
         setupNavigationBarTitle()
@@ -60,15 +62,15 @@ class HomeViewController: BaseViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! BankTableViewCell
         return cell
     }
     
     @objc func presentAccountsView() {
-        let viewController = AccountsViewController(nibName: "AccountsViewController", bundle: nil)
+        let viewController = CurrenciesViewController(nibName: "CurrenciesViewController", bundle: nil)
         viewController.delegate = self
-        let bottomSheet = MDCBottomSheetController(contentViewController: viewController)
-        present(bottomSheet, animated: true)
+        bottomSheet = MDCBottomSheetController(contentViewController: viewController)
+        present(bottomSheet!, animated: true)
 
     }
 }
@@ -76,6 +78,8 @@ class HomeViewController: BaseViewController {
 extension HomeViewController: CurrenciesViewControllerDelegate {
     func goToAddCurrency() {
         let controller = AddNewCurrencyViewController()
-        navigationController?.pushViewController(controller, animated: true)
+        bottomSheet!.dismiss(animated: true) {
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
     }
 }

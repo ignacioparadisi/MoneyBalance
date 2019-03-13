@@ -16,7 +16,7 @@ class DefaultTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        selectionStyle = .none
+        selectionStyle = .default
         selectedValueLabel.isHidden = true
         // selectedValueLabel.textColor = ThemeManager.currentTheme().lightTextColor
         selectedValueLabel.textColor = .lightGray

@@ -1,5 +1,5 @@
 //
-//  AccountsViewController.swift
+//  CurrenciesViewController.swift
 //  MoneyBalance
 //
 //  Created by Ignacio Paradisi on 3/12/19.
@@ -12,7 +12,7 @@ protocol CurrenciesViewControllerDelegate {
     func goToAddCurrency()
 }
 
-class AccountsViewController: UIViewController {
+class CurrenciesViewController: UIViewController {
 
     private let cellIdentifier = "cellIdentifier"
     @IBOutlet weak var navigationBar: UINavigationBar!
@@ -41,10 +41,8 @@ class AccountsViewController: UIViewController {
     }
     
     private func fetchData() {
-        if let currencies = RealmManager.shared.getCurrencies() {
-            self.currencies = currencies
-            tableView.reloadData()
-        }
+        currencies = RealmManager.shared.getArray(ofType: Currency.self, filter: "owned == true") as! [Currency]
+        tableView.reloadData()
     }
     
     @objc private func addCurrency() {
@@ -52,14 +50,14 @@ class AccountsViewController: UIViewController {
     }
 }
 
-extension AccountsViewController: UITableViewDelegate, UITableViewDataSource {
+extension CurrenciesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currencies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! AccountTableViewCell
-        cell.isCurrentAccount = indexPath.row == 0 ? true : false
+        cell.configureWith(currency: currencies[indexPath.row])
         return cell
     }
 }
