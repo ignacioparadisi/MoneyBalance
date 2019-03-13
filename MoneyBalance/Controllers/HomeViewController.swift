@@ -66,8 +66,16 @@ class HomeViewController: BaseViewController {
     
     @objc func presentAccountsView() {
         let viewController = AccountsViewController(nibName: "AccountsViewController", bundle: nil)
+        viewController.delegate = self
         let bottomSheet = MDCBottomSheetController(contentViewController: viewController)
         present(bottomSheet, animated: true)
 
+    }
+}
+
+extension HomeViewController: CurrenciesViewControllerDelegate {
+    func goToAddCurrency() {
+        let controller = AddNewCurrencyViewController()
+        navigationController?.pushViewController(controller, animated: true)
     }
 }

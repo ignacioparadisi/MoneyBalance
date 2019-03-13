@@ -8,12 +8,17 @@
 
 import UIKit
 
+protocol CurrenciesViewControllerDelegate {
+    func goToAddCurrency()
+}
+
 class AccountsViewController: UIViewController {
 
     private let cellIdentifier = "cellIdentifier"
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var tableView: UITableView!
     private var currencies: [Currency] = []
+    var delegate: CurrenciesViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,11 +48,7 @@ class AccountsViewController: UIViewController {
     }
     
     @objc private func addCurrency() {
-        let controller = AddNewCurrencyViewController()
-        present(controller, animated: true)
-//        let currency = Currency()
-//        currency.selected = true
-//        RealmManager.shared.add(currency: currency)
+        delegate?.goToAddCurrency()
     }
 }
 
