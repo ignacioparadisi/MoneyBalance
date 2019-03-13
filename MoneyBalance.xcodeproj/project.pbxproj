@@ -43,6 +43,8 @@
 		4FAE5CA1223703EC00762300 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAE5CA0223703EC00762300 /* Utils.swift */; };
 		4FAE5CA32237138A00762300 /* ScreenLockSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAE5CA22237138A00762300 /* ScreenLockSettingsViewController.swift */; };
 		4FAE5CA52237160300762300 /* LanguageSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAE5CA42237160300762300 /* LanguageSettingsViewController.swift */; };
+		4FAF5BD922387AE900105EDE /* CountryCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAF5BD822387AE900105EDE /* CountryCurrency.swift */; };
+		4FAF5BDB2238833600105EDE /* AddNewCurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAF5BDA2238833600105EDE /* AddNewCurrencyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +90,8 @@
 		4FAE5CA0223703EC00762300 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		4FAE5CA22237138A00762300 /* ScreenLockSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenLockSettingsViewController.swift; sourceTree = "<group>"; };
 		4FAE5CA42237160300762300 /* LanguageSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSettingsViewController.swift; sourceTree = "<group>"; };
+		4FAF5BD822387AE900105EDE /* CountryCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCurrency.swift; sourceTree = "<group>"; };
+		4FAF5BDA2238833600105EDE /* AddNewCurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCurrencyViewController.swift; sourceTree = "<group>"; };
 		BEE5FE5E3E410EAC92F3321B /* Pods-MoneyBalance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoneyBalance.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MoneyBalance/Pods-MoneyBalance.debug.xcconfig"; sourceTree = "<group>"; };
 		F2532F3C39538BB9246994B5 /* Pods_MoneyBalance.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoneyBalance.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -192,6 +196,7 @@
 				4F5CA0A4222E13A900ED29D4 /* Movement.swift */,
 				4F5CA0A6222E170800ED29D4 /* LocaleCurrency.swift */,
 				4F9596992238687700205D3D /* Account.swift */,
+				4FAF5BD822387AE900105EDE /* CountryCurrency.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -219,6 +224,7 @@
 				4FAE5CA22237138A00762300 /* ScreenLockSettingsViewController.swift */,
 				4FAE5CA42237160300762300 /* LanguageSettingsViewController.swift */,
 				4F53897F22384D1D004832B5 /* AccountsViewController.swift */,
+				4FAF5BDA2238833600105EDE /* AddNewCurrencyViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -428,11 +434,13 @@
 				4FAE5CA52237160300762300 /* LanguageSettingsViewController.swift in Sources */,
 				4FAE5C9E2236FFA600762300 /* SwitchTableViewCell.swift in Sources */,
 				4FAE5CA32237138A00762300 /* ScreenLockSettingsViewController.swift in Sources */,
+				4FAF5BDB2238833600105EDE /* AddNewCurrencyViewController.swift in Sources */,
 				4F95969C22386A5A00205D3D /* RealmManager.swift in Sources */,
 				4F7E3D4D222EA18A00112275 /* LauncherViewController.swift in Sources */,
 				4F7E3D57222EC84F00112275 /* Localize.swift in Sources */,
 				4F975E6B222F71E5009DA03C /* DefaultTableViewCell.swift in Sources */,
 				4F69508C222D919E008FD9EA /* AppDelegate.swift in Sources */,
+				4FAF5BD922387AE900105EDE /* CountryCurrency.swift in Sources */,
 				4F7E3D5A222ED13900112275 /* SettingsViewController.swift in Sources */,
 				4F975E55222F3ACC009DA03C /* Theme.swift in Sources */,
 				4F5CA0B3222E2B4900ED29D4 /* AccountTableViewCell.swift in Sources */,

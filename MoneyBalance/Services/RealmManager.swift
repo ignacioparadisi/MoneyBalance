@@ -24,9 +24,32 @@ class RealmManager {
         return results.toArray(ofType: Currency.self) as [Currency]
     }
     
-    func add(currency: Currency) {
-        try! database.write {
-            database.add(currency, update: true)
+    func add(_ object: Object) {
+        try! self.database.write {
+            self.database.add(object)
+        }
+    }
+    
+    func get(_ type: Object.Type) -> [Object] {
+        let results: Results<Object> = database.objects(type)
+        return results.toArray(ofType: type) as [Object]
+    }
+    
+    func createCountryCurrencies() {
+        if get(CountryCurrency.self).count == 0 {
+            let bs = CountryCurrency()
+            bs.id = 0
+            bs.country = "Venezuela"
+            bs.currency = "Bs. S"
+            bs.identifier = "es_VE"
+            add(bs)
+            
+            let usd = CountryCurrency()
+            usd.id = 1
+            usd.country = "Estados Unidos"
+            usd.currency = "USD"
+            usd.identifier = "en_US"
+            add(usd)
         }
     }
 }

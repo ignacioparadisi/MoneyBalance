@@ -43,11 +43,11 @@ class AccountsViewController: UIViewController {
     }
     
     @objc private func addCurrency() {
-        let currency = Currency()
-        currency.identifier = "en_US"
-        currency.name = "USD"
-        currency.selected = true
-        RealmManager.shared.add(currency: currency)
+        let controller = AddNewCurrencyViewController()
+        present(controller, animated: true)
+//        let currency = Currency()
+//        currency.selected = true
+//        RealmManager.shared.add(currency: currency)
     }
 }
 

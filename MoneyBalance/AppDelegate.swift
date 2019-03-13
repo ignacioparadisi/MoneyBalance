@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Apply theme before showing the views
         // TODO: - Cuando se ejecuta no cambia el color de las letras de la celda de idioma
         ThemeManager.applayTheme(ThemeManager.currentTheme())
+        RealmManager.shared.createCountryCurrencies()
         
         window?.makeKeyAndVisible()
         
