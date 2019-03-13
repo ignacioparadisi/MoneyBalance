@@ -31,7 +31,7 @@ class AccountTableViewCell: UITableViewCell {
     
     func configureWith(currency: Currency) {
         self.currency = currency
-        nameLabel.text = currency.currency
+        nameLabel.text = currency.name
         moneyLabel.text = currency.country
         isCurrentAccount = currency.selected
     }

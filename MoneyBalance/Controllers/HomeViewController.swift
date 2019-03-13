@@ -18,6 +18,12 @@ class HomeViewController: BaseViewController {
         view.backgroundColor = .clear
         return view
     }()
+    var titleLabel: UILabel = {
+        let title = UILabel()
+        title.font = UIFont(name: ThemeManager.currentTheme().titleFont, size: 17.0)
+        title.textColor = ThemeManager.currentTheme().textColor
+        return title
+    }()
     
     private var bottomSheet: MDCBottomSheetController?
     
@@ -37,18 +43,15 @@ class HomeViewController: BaseViewController {
     
     /// Creates the design of the navigationItem.titleView and adds tapGestureRecognizer
     private func setupNavigationBarTitle() {
-        let title = UILabel()
-        title.font = UIFont(name: ThemeManager.currentTheme().titleFont, size: 17.0)
-        title.text = "USD"
-        title.textColor = ThemeManager.currentTheme().textColor
-        titleNavbarView.addSubview(title)
+        titleLabel.text = Currency.current?.name ?? "Currency".localized()
+        titleNavbarView.addSubview(titleLabel)
         
         let arrowImageView = UIImageView(image: UIImage(named: "expand-arrow"))
         arrowImageView.setImageColor(color: ThemeManager.currentTheme().textColor)
         titleNavbarView.addSubview(arrowImageView)
         
-        title.setConstraints(topAnchor: titleNavbarView.topAnchor, leadingAnchor: titleNavbarView.leadingAnchor, bottomAnchor: titleNavbarView.bottomAnchor, trailingAnchor: arrowImageView.leadingAnchor, trailingConstant: -8)
-        arrowImageView.setConstraints(trailingAnchor: titleNavbarView.trailingAnchor, centerYAnchor: title.centerYAnchor, widthConstant: 15, heightConstant: 15)
+        titleLabel.setConstraints(topAnchor: titleNavbarView.topAnchor, leadingAnchor: titleNavbarView.leadingAnchor, bottomAnchor: titleNavbarView.bottomAnchor, trailingAnchor: arrowImageView.leadingAnchor, trailingConstant: -8)
+        arrowImageView.setConstraints(trailingAnchor: titleNavbarView.trailingAnchor, centerYAnchor: titleLabel.centerYAnchor, widthConstant: 15, heightConstant: 15)
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(presentAccountsView))
         titleNavbarView.addGestureRecognizer(tapGestureRecognizer)
@@ -75,11 +78,16 @@ class HomeViewController: BaseViewController {
     }
 }
 
-extension HomeViewController: CurrenciesViewControllerDelegate {
+extension HomeViewController: CurrenciesViewControllerDelegate, AddNewCurrencyViewControllerDelegate {
     func goToAddCurrency() {
         let controller = AddNewCurrencyViewController()
+        controller.delegate = self
         bottomSheet!.dismiss(animated: true) {
             self.navigationController?.pushViewController(controller, animated: true)
         }
+    }
+    
+    func selectedCurrencyChanged() {
+        titleLabel.text = Currency.current?.name
     }
 }

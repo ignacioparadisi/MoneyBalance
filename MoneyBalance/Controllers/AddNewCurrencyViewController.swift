@@ -9,7 +9,7 @@
 import UIKit
 
 protocol AddNewCurrencyViewControllerDelegate {
-    func newCurrencyAdded(currency: Currency)
+    func selectedCurrencyChanged()
 }
 
 class AddNewCurrencyViewController: BaseViewController {
@@ -42,13 +42,14 @@ class AddNewCurrencyViewController: BaseViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let currency = currencies[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! DefaultTableViewCell
-        cell.configureWith(title: currency.currency, selectedValue: currency.country)
+        cell.configureWith(title: currency.name, selectedValue: currency.country)
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let currency = currencies[indexPath.row]
         RealmManager.shared.createCurrency(currency)
+        delegate?.selectedCurrencyChanged()
         navigationController?.popViewController(animated: true)
     }
 }

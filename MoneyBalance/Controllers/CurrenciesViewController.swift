@@ -10,6 +10,7 @@ import UIKit
 
 protocol CurrenciesViewControllerDelegate {
     func goToAddCurrency()
+    func selectedCurrencyChanged()
 }
 
 class CurrenciesViewController: UIViewController {
@@ -42,6 +43,9 @@ class CurrenciesViewController: UIViewController {
     
     private func fetchData() {
         currencies = RealmManager.shared.getArray(ofType: Currency.self, filter: "owned == true") as! [Currency]
+        currencies.sort { (currency1, currency2) -> Bool in
+            return currency1.selected && !currency2.selected
+        }
         tableView.reloadData()
     }
     
@@ -59,5 +63,26 @@ extension CurrenciesViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! AccountTableViewCell
         cell.configureWith(currency: currencies[indexPath.row])
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let currency = currencies[indexPath.row]
+        Currency.setCurrent(currency)
+        let firstIndexPath = IndexPath(row: 0, section: 0)
+        currencies.sort { (currency1, currency2) -> Bool in
+            return currency1.selected && !currency2.selected
+        }
+        tableView.reloadData()
+        tableView.moveRow(at: indexPath, to: firstIndexPath)
+        delegate?.selectedCurrencyChanged()
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let currency = currencies[indexPath.row]
+            RealmManager.shared.deleteCurrency(currency)
+            currencies.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .left)
+        }
     }
 }

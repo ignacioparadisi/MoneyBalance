@@ -28,6 +28,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // TODO: - Cuando se ejecuta no cambia el color de las letras de la celda de idioma
         ThemeManager.applayTheme(ThemeManager.currentTheme())
         RealmManager.shared.createCurrencies()
+        if let currentCurrency = RealmManager.shared.getArray(ofType: Currency.self, filter: "selected == true") as? [Currency], currentCurrency.count > 0 {
+            Currency.setCurrent(currentCurrency[0])
+        }
         
         window?.makeKeyAndVisible()
         
