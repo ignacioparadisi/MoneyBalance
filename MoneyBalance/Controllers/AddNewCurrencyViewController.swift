@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SPStorkController
 
 protocol AddNewCurrencyViewControllerDelegate {
     func selectedCurrencyChanged()
@@ -20,6 +21,7 @@ class AddNewCurrencyViewController: BaseViewController {
     override func setupNavigationBar() {
         super.setupNavigationBar()
         title = "Currencies".localized()
+        navigationItem.setLeftBarButton(cancelButton, animated: false)
     }
     
     override func setupView() {
@@ -51,5 +53,9 @@ class AddNewCurrencyViewController: BaseViewController {
         RealmManager.shared.createCurrency(currency)
         delegate?.selectedCurrencyChanged()
         navigationController?.popViewController(animated: true)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        SPStorkController.scrollViewDidScroll(scrollView)
     }
 }

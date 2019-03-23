@@ -9,6 +9,7 @@ target 'MoneyBalance' do
   pod 'RealmSwift'
   pod 'Charts'
   pod 'SPStorkController'
+  pod 'SparrowKit'
 #  pod 'ChartsRealm', '~> 3.2.1'
 
 end

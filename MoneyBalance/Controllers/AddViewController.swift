@@ -19,7 +19,6 @@ class AddViewController: BaseViewController {
     override func setupNavigationBar() {
         super.setupNavigationBar()
         navigationController?.navigationBar.prefersLargeTitles = true
-        let cancelButton = UIBarButtonItem(title: "Cancel".localized(), style: .plain, target: self, action: #selector(dismissPanel))
         navigationItem.setLeftBarButton(cancelButton, animated: false)
     }
     
@@ -30,10 +29,6 @@ class AddViewController: BaseViewController {
         addButton.setTitle("Add".localized(), for: .normal)
         addButton.setTitleColor(.white, for: .normal)
         scrollView.backgroundColor = ThemeManager.currentTheme().backgroundColor
-    }
-    
-    @objc private func dismissPanel() {
-        dismiss(animated: true)
     }
 
     @IBAction func addButtonAction(_ sender: Any) {

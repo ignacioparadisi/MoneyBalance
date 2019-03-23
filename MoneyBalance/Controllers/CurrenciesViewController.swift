@@ -9,114 +9,89 @@
 import UIKit
 
 protocol CurrenciesViewControllerDelegate {
-    func goTo(viewController: UIViewController)
     func selectedCurrencyChanged()
 }
 
-class CurrenciesViewController: UIViewController {
+class CurrenciesViewController: BaseViewController {
 
-    private let cellIdentifier = "cellIdentifier"
-    @IBOutlet weak var tableView: UITableView!
+    private let sectionInsets: CGFloat = 10
     private var currencies: [Currency] = []
     var delegate: CurrenciesViewControllerDelegate?
+    @IBOutlet weak var collectionView: UICollectionView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func setupNavigationBar() {
+        super.setupNavigationBar()
         title = "Currencies".localized()
-        setupView()
-        fetchData()
-    }
-    
-    private func setupView() {
-        view.backgroundColor = ThemeManager.currentTheme().bottomSheetColor
         navigationController?.navigationBar.prefersLargeTitles = true
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addCurrency))
         addButton.tintColor = ThemeManager.currentTheme().accentColor
         navigationItem.setRightBarButton(addButton, animated: false)
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(UINib(nibName: "OwnedCurrencyTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
-        view.addSubview(UIView())
-        
-//        let topLine = UIView()
-//        topLine.backgroundColor = .lightGray
-//        navigationController?.navigationBar.addSubview(topLine)
-//        topLine.setConstraints(topAnchor: navigationController?.navigationBar.topAnchor, centerXAnchor: navigationController?.navigationBar.centerXAnchor, topConstant: 10, widthConstant: 35, heightConstant: 3)
-        
+        navigationItem.setLeftBarButton(cancelButton, animated: false)
+    }
+    
+    override func setupView() {
+        super.setupView()
+        view.backgroundColor = ThemeManager.currentTheme().bottomSheetColor
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.backgroundColor = .clear
+        collectionView.register(UINib(nibName: "CurrencyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
+        fetchData()
     }
     
     private func fetchData() {
         currencies = RealmManager.shared.getArray(ofType: Currency.self, filter: "owned == true") as! [Currency]
         currencies.sort { (currency1, currency2) -> Bool in
-            return currency1.selected && !currency2.selected
+            return currency1.name < currency2.name
         }
-        tableView.reloadData()
+        collectionView.reloadData()
     }
     
     @objc private func addCurrency() {
         let controller = AddNewCurrencyViewController()
-        controller.delegate = delegate as? AddNewCurrencyViewControllerDelegate
-        dismiss(animated: true) {
-            self.delegate?.goTo(viewController: controller)
-        }
-    }
-    
-    @IBAction func goToSettings(_ sender: Any) {
-        dismiss(animated: true) {
-            let settingsViewController = SettingsViewController()
-            self.delegate?.goTo(viewController: settingsViewController)
-        }
+        presentAsStork(UINavigationController(rootViewController: controller))
     }
     
 }
 
-extension CurrenciesViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension CurrenciesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return currencies.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! OwnedCurrencyTableViewCell
-        cell.tag = indexPath.row
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! CurrencyCollectionViewCell
         cell.delegate = self
-        cell.configureWith(currency: currencies[indexPath.row])
+        cell.tag = indexPath.item
+        cell.configuereWith(currency: currencies[indexPath.item])
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let currency = currencies[indexPath.row]
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let index = indexPath.item
+        let currency = currencies[index]
+        RealmManager.shared.changeCurrency(currency)
         Currency.setCurrent(currency)
-        let firstIndexPath = IndexPath(row: 0, section: 0)
-        currencies.sort { (currency1, currency2) -> Bool in
-            return currency1.selected && !currency2.selected
-        }
-        tableView.reloadData()
-        tableView.moveRow(at: indexPath, to: firstIndexPath)
         delegate?.selectedCurrencyChanged()
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let currency = currencies[indexPath.row]
-            RealmManager.shared.deleteCurrency(currency)
-            currencies.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .left)
-        }
+        fetchData()
     }
 }
 
-extension CurrenciesViewController: OwnedCurrencyTableViewCellDelegate {
-    func deleteAccount(at index: Int) {
-        let currency = currencies[index]
-        let indexPath = IndexPath(row: index, section: 0)
-        let alert = UIAlertController(title: "Delete account", message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] alert in
-            RealmManager.shared.deleteCurrency(currency)
-            self?.currencies.remove(at: index)
-            self?.tableView.deleteRows(at: [indexPath], with: .left)
-        }))
-        present(alert, animated: true)
+extension CurrenciesViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width / 3 - (sectionInsets * 2), height: 55)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: sectionInsets, left: sectionInsets, bottom: sectionInsets, right: sectionInsets)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInsets * 2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInsets * 2
     }
 }
 
@@ -124,4 +99,15 @@ extension CurrenciesViewController: AddNewCurrencyViewControllerDelegate {
     func selectedCurrencyChanged() {
         fetchData()
     }
+}
+
+extension CurrenciesViewController: CurrencyCollectionViewCellDelegate {
+    func deleteCurrency(at index: Int) {
+        let alert = UIAlertController(title: "Delete".localized(), message: "Delete currency".localized(), preferredStyle: .alert)
+        let deleteAction = UIAlertAction(title: "Delete".localized(), style: .destructive, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil)
+        alert.addAction(deleteAction)
+        alert.addAction(cancelAction)
+    }
+    
 }

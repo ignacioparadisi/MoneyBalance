@@ -20,6 +20,10 @@ class BaseViewController: UIViewController {
         tv.tableFooterView = UIView()
         return tv
     }()
+    lazy var cancelButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(title: "Cancel".localized(), style: .plain, target: self, action: #selector(dismissPanel))
+        return button
+    }()
     
     lazy var groupedTableView: UITableView = {
         let tv = UITableView(frame: .zero, style: .grouped)
@@ -59,6 +63,10 @@ class BaseViewController: UIViewController {
     
     internal func row(from tag: Int) -> Int {
         return tag - section(from: tag)
+    }
+    
+    @objc private func dismissPanel() {
+        dismiss(animated: true)
     }
 
 }

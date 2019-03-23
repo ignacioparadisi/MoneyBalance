@@ -82,7 +82,8 @@ class HomeViewController: BaseViewController {
     
     @objc private func presentCurrenciesView() {
         let viewController = CurrenciesViewController(nibName: "CurrenciesViewController", bundle: nil)
-        presentAsStork(UINavigationController(rootViewController: viewController), height: 400, showIndicator: true)
+        viewController.delegate = self
+        presentAsStork(UINavigationController(rootViewController: viewController), height: 365, showIndicator: true)
     }
     
     @objc private func goToAddMovement() {
@@ -103,16 +104,7 @@ class HomeViewController: BaseViewController {
     
 }
 
-extension HomeViewController: CurrenciesViewControllerDelegate, AddNewCurrencyViewControllerDelegate {
-    func goTo(viewController: UIViewController) {
-        if let vc = viewController as? AddNewCurrencyViewController {
-            vc.delegate = self
-            navigationController?.pushViewController(vc, animated: true)
-            return
-        }
-        navigationController?.pushViewController(viewController, animated: true)
-    }
-    
+extension HomeViewController: CurrenciesViewControllerDelegate, AddNewCurrencyViewControllerDelegate {    
     func selectedCurrencyChanged() {
         titleLabel.text = Currency.current?.name
     }

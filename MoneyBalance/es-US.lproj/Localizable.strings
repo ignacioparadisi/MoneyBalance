@@ -20,7 +20,9 @@
 
 "Add" = "Agregar";
 "Add Movement" = "Agregar Movimiento";
+"Add Account" = "Agregar Cuenta";
 "Cancel" = "Cancelar";
+"Delete" = "Eliminar";
 
 // Settings
 "Language" = "Lenguaje";

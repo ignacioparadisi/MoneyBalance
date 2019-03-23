@@ -7,11 +7,13 @@ PODS:
   - Realm/Headers (3.13.1)
   - RealmSwift (3.13.1):
     - Realm (= 3.13.1)
+  - SparrowKit (1.5.3)
   - SPStorkController (1.5.4)
 
 DEPENDENCIES:
   - Charts
   - RealmSwift
+  - SparrowKit
   - SPStorkController
 
 SPEC REPOS:
@@ -19,14 +21,16 @@ SPEC REPOS:
     - Charts
     - Realm
     - RealmSwift
+    - SparrowKit
     - SPStorkController
 
 SPEC CHECKSUMS:
   Charts: f69cf0518b6d1d62608ca504248f1bbe0b6ae77e
   Realm: 50071da38fe079e0735e47c9f2eae738c68c5996
   RealmSwift: 8a1e6a02b7a08cd17a31e3115143fb69fe5f3fb9
+  SparrowKit: 8a2991c81d6ab3038d4a41a98a1a73ea17d1a977
   SPStorkController: 6c34a0375ef1254299e460784886ff4e929b82ed
 
-PODFILE CHECKSUM: d7eb13ca7292aa391481cc154e5798290f9d79ad
+PODFILE CHECKSUM: 52dfede9ce4ab8cafdb6804a640bdccfe551e58b
 
 COCOAPODS: 1.6.1
