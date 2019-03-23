@@ -65,7 +65,7 @@ class BaseViewController: UIViewController {
         return tag - section(from: tag)
     }
     
-    @objc private func dismissPanel() {
+    @objc internal func dismissPanel() {
         dismiss(animated: true)
     }
 

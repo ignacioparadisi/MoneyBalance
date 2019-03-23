@@ -26,7 +26,8 @@ class CurrenciesViewController: BaseViewController {
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addCurrency))
         addButton.tintColor = ThemeManager.currentTheme().accentColor
         navigationItem.setRightBarButton(addButton, animated: false)
-        navigationItem.setLeftBarButton(cancelButton, animated: false)
+        let hideButton = UIBarButtonItem(title: "Hide".localized(), style: .done, target: self, action: #selector(dismissPanel))
+        navigationItem.setLeftBarButton(hideButton, animated: false)
     }
     
     override func setupView() {
