@@ -19,7 +19,7 @@ class SettingsViewController: BaseViewController {
 
     override func setupNavigationBar() {
         super.setupNavigationBar()
-        navigationItem.title = "Settings".localized()
+        title = "Settings".localized()
     }
     
     override func setupView() {

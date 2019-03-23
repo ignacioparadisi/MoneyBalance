@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BankCollectionViewCell: UICollectionViewCell {
+class AccountCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var bankNameLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
@@ -20,7 +20,7 @@ class BankCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupView() {
-        backgroundColor = #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)
+        // backgroundColor = ThemeManager.currentTheme().accentColor
         layer.cornerRadius = 10
         layer.masksToBounds = false
         

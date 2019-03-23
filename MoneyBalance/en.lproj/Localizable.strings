@@ -18,6 +18,10 @@
 "Currency" = "Currency";
 "Settings" = "Settings";
 
+"Add" = "Add";
+"Add Movement" = "Add Movement";
+"Cancel" = "Cancel";
+
 // Settings
 "Language" = "Language";
 "Screen Lock" = "Screen Lock";

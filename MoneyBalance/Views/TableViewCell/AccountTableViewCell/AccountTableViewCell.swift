@@ -8,42 +8,51 @@
 
 import UIKit
 
-class BankTableViewCell: UITableViewCell {
+protocol AccountTableViewCellDelegate {
+    func goToAddAccount()
+}
+
+class AccountTableViewCell: UITableViewCell {
 
     private let cellIdentifier = "cellIdentifier"
     private let sectionInsets: CGFloat = 20.0
     @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet weak var titleLabel: TitleLabel!
+    @IBOutlet weak var addAccountButton: UIButton!
+    var delegate: AccountTableViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        selectionStyle = .none
+        titleLabel.text = "Accounts".localized()
+        addAccountButton.setImage(UIImage(named: "add")?.withRenderingMode(.alwaysTemplate), for: .normal)
         collectionView.backgroundColor = .clear
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(UINib(nibName: "BankCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
+        collectionView.register(UINib(nibName: "AccountCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    @IBAction func goToAddAccount(_ sender: Any) {
+        delegate?.goToAddAccount()
     }
     
 }
 
-extension BankTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+extension AccountTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! AccountCollectionViewCell
+        cell.setGradientBackground(colorOne: ThemeManager.currentTheme().accentColor, colorTwo: ThemeManager.currentTheme().gradientColor)
         return cell
     }
 }
 
-extension BankTableViewCell: UICollectionViewDelegateFlowLayout {
+extension AccountTableViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: frame.width - (sectionInsets * 2), height: frame.height - (sectionInsets * 2))
+        return CGSize(width: collectionView.frame.width - (sectionInsets * 2), height: collectionView.frame.height - (sectionInsets * 2))
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

@@ -13,16 +13,13 @@ class MainViewController: UITabBarController {
     
     let homeViewController: HomeViewController = HomeViewController()
     let movementsViewController: MovementsViewController = MovementsViewController()
-    let settingsViewController: SettingsViewController = SettingsViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setTabBarItemsImages()
         
         let viewControllersList: [UIViewController] =
-            [settingsViewController,
-             homeViewController,
+            [homeViewController,
              movementsViewController]
         
         let navigationControllers: [UINavigationController] = viewControllersList.map {
@@ -39,7 +36,6 @@ class MainViewController: UITabBarController {
     private func setTabBarItemsImages() {
         homeViewController.tabBarItem.image = UIImage(named: "wallet")
         movementsViewController.tabBarItem.image = UIImage(named: "movements")
-        settingsViewController.tabBarItem.image = UIImage(named: "settings")
     }
 
 }

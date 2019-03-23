@@ -15,7 +15,7 @@ enum Theme: Int {
     case light, dark
 
     var titleFont: String {
-        return "HelveticaNeue-Medium"
+        return "HelveticaNeue-Bold"
     }
     
     var accentColor: UIColor {
@@ -23,7 +23,18 @@ enum Theme: Int {
         case .light:
             return UIColor("007AFF")
         case .dark:
-            return UIColor("4CD963")
+            // return UIColor("4CD963")
+            return UIColor("FD2D55")
+        }
+    }
+    
+    var gradientColor: UIColor {
+        switch self {
+        case .light:
+            // return UIColor("#9300E0")
+            return UIColor("#52C6A7")
+        case .dark:
+            return UIColor("FD582F")
         }
     }
 
@@ -33,6 +44,15 @@ enum Theme: Int {
             return UIColor("#FFFFFF")
         default:
             return UIColor("#111111")
+        }
+    }
+    
+    var tabBarBackgroundColor: UIColor {
+        switch self {
+        case .light:
+            return UIColor("F5F5F7")
+        case .dark:
+            return UIColor("1B1B1B")
         }
     }
 
@@ -133,6 +153,7 @@ struct ThemeManager {
                 window.addSubview(view)
             }
         }
+        UIApplication.shared.delegate?.window??.tintColor = theme.accentColor
     }
     
     /// Applies changes to all UINavigationBars
@@ -162,6 +183,8 @@ struct ThemeManager {
     /// - Parameter theme: Selected theme
     private static func setupTableViewAppearance(_ theme: Theme) {
         UITableView.appearance().backgroundColor = theme.tableViewBackgroundColor
+        UIButton.appearance(whenContainedInInstancesOf: [UITableViewCell.self]).tintColor = theme.accentColor
+        AccountCollectionViewCell.appearance().backgroundColor = theme.accentColor
     }
     
     /// Applies changes to all UITableCells

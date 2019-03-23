@@ -7,8 +7,8 @@ target 'MoneyBalance' do
 
   # Pods for MoneyBalance
   pod 'RealmSwift'
-  pod 'MaterialComponents/BottomSheet'
   pod 'Charts'
+  pod 'SPStorkController'
 #  pod 'ChartsRealm', '~> 3.2.1'
 
 end

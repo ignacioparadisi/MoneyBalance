@@ -8,7 +8,11 @@
 
 import UIKit
 
-class AccountTableViewCell: UITableViewCell {
+protocol OwnedCurrencyTableViewCellDelegate {
+    func deleteAccount(at index: Int)
+}
+
+class OwnedCurrencyTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var moneyLabel: UILabel!
@@ -19,6 +23,7 @@ class AccountTableViewCell: UITableViewCell {
             setSelectedState()
         }
     }
+    var delegate: OwnedCurrencyTableViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,6 +32,7 @@ class AccountTableViewCell: UITableViewCell {
         currentAccountImageView.layer.borderWidth = 1
         currentAccountImageView.layer.borderColor = ThemeManager.currentTheme().accentColor.cgColor
         currentAccountImageView.layer.cornerRadius = 15
+        addLongPressRecognizer()
     }
     
     func configureWith(currency: Currency) {
@@ -44,6 +50,15 @@ class AccountTableViewCell: UITableViewCell {
         } else {
             currentAccountImageView.image = nil
         }
+    }
+    
+    private func addLongPressRecognizer() {
+        let recognizer = UILongPressGestureRecognizer(target: self, action: #selector(deleteAccount(recognizer:)))
+        addGestureRecognizer(recognizer)
+    }
+    
+    @objc private func deleteAccount(recognizer: UILongPressGestureRecognizer) {
+        delegate?.deleteAccount(at: tag)
     }
     
 }

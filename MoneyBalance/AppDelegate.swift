@@ -18,8 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Localize.verifyLanguage()
         
-        let mainVC = MainViewController()
-        mainVC.selectedIndex = 1
+        let mainVC = UINavigationController(rootViewController: HomeViewController())
+        // mainVC.selectedIndex = 1
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = Utils.isAuthenticationEnabled() ? LauncherViewController(mainVC) : mainVC
@@ -45,14 +45,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        if window?.rootViewController is MainViewController {
+        // if window?.rootViewController is MainViewController {
+        // if let navigationController = window?.rootViewController as? UINavigationController, navigationController.topViewController is HomeViewController {
             currentViewController = window?.rootViewController
-        }
+        // }
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-        window?.rootViewController = Utils.isAuthenticationEnabled() ? LauncherViewController(currentViewController) : MainViewController()
+        // window?.rootViewController = Utils.isAuthenticationEnabled() ? LauncherViewController(currentViewController) : MainViewController()
+        window?.rootViewController = Utils.isAuthenticationEnabled() ? LauncherViewController(currentViewController) : currentViewController
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {

@@ -18,6 +18,10 @@
 "Currency" = "Moneda";
 "Settings" = "Ajustes";
 
+"Add" = "Agregar";
+"Add Movement" = "Agregar Movimiento";
+"Cancel" = "Cancelar";
+
 // Settings
 "Language" = "Lenguaje";
 "Screen Lock" = "Pantalla de Bloqueo";
