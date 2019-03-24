@@ -42,8 +42,17 @@ enum Theme: Int {
         switch self {
         case .light:
             return UIColor("#FFFFFF")
-        default:
+        case .dark:
             return UIColor("#111111")
+        }
+    }
+    
+    var lightBackgroundColor: UIColor {
+        switch self {
+        case .light:
+            return UIColor("EEEEEE")
+        case .dark:
+            return UIColor("333333")
         }
     }
     

@@ -25,6 +25,10 @@
 "Delete" = "Eliminar";
 "Hide" = "Ocultar";
 
+"Add a new account" = "Agregar una nueva cuenta";
+"Name" = "Nombre";
+"Enter the name of the bank" = "Ingresa el nombre del banco";
+
 // Settings
 "Language" = "Lenguaje";
 "Screen Lock" = "Pantalla de Bloqueo";

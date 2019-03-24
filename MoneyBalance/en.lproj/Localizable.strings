@@ -25,6 +25,10 @@
 "Delete" = "Delete";
 "Hide" = "Hide";
 
+"Add a new account" = "Add a new account";
+"Name" = "Name";
+"Enter the name of the bank" = "Enter the name of the bank";
+
 // Settings
 "Language" = "Language";
 "Screen Lock" = "Screen Lock";

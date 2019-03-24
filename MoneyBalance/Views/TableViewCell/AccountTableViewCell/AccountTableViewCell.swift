@@ -17,11 +17,13 @@ protocol AccountTableViewCellDelegate {
 class AccountTableViewCell: UITableViewCell {
 
     private let cellIdentifier = "cellIdentifier"
+    private let emptyAccountsCellIdentifier = "emptyAccountsCellIdentifier"
     private let sectionInsets: CGFloat = 20.0
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet weak var titleLabel: TitleLabel!
     @IBOutlet weak var addAccountButton: UIButton!
     var delegate: AccountTableViewCellDelegate?
+    var accounts: [Account] = []
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,6 +34,13 @@ class AccountTableViewCell: UITableViewCell {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "AccountCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
+        collectionView.register(UINib(nibName: "AddAccountCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: emptyAccountsCellIdentifier)
+        fetchAccounts()
+    }
+    
+    private func fetchAccounts() {
+        accounts = RealmManager.shared.getArray(ofType: Account.self) as! [Account]
+        collectionView.reloadData()
     }
     
     @IBAction func goToAddAccount(_ sender: Any) {
@@ -42,19 +51,29 @@ class AccountTableViewCell: UITableViewCell {
 
 extension AccountTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        if accounts.count == 0 {
+            return 1
+        }
+        return accounts.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if accounts.count == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: emptyAccountsCellIdentifier, for: indexPath) as! AddAccountCollectionViewCell
+            return cell
+        }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! AccountCollectionViewCell
         cell.setGradientBackground(colorOne: ThemeManager.currentTheme().accentColor, colorTwo: ThemeManager.currentTheme().gradientColor)
         return cell
+        
+
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let item = collectionView.cellForItem(at: indexPath)
-//        let selectedFrame = collectionView.convert(item!.frame, to: nil)
-//        delegate?.goToDetail(for: nil, frame: selectedFrame)
+        if accounts.count == 0 {
+            delegate?.goToAddAccount()
+            return
+        }
         delegate?.goToDetail(for: nil)
     }
 }

@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddViewController" customModule="MoneyBalance" customModuleProvider="target">
             <connections>
                 <outlet property="addButton" destination="AWn-Z6-5Mw" id="0as-CQ-ydj"/>
+                <outlet property="contentView" destination="p3H-7O-uAd" id="tfk-vO-YpY"/>
                 <outlet property="scrollView" destination="yob-Nl-fQS" id="4rC-Yq-Xd7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -22,8 +23,22 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yob-Nl-fQS">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yob-Nl-fQS">
                     <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p3H-7O-uAd">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="p3H-7O-uAd" secondAttribute="bottom" id="4wK-QG-RqG"/>
+                        <constraint firstAttribute="trailing" secondItem="p3H-7O-uAd" secondAttribute="trailing" id="65B-ya-jKI"/>
+                        <constraint firstItem="p3H-7O-uAd" firstAttribute="height" secondItem="yob-Nl-fQS" secondAttribute="height" priority="250" id="MUX-ej-cA5"/>
+                        <constraint firstItem="p3H-7O-uAd" firstAttribute="leading" secondItem="yob-Nl-fQS" secondAttribute="leading" id="YQi-b6-Hfg"/>
+                        <constraint firstItem="p3H-7O-uAd" firstAttribute="width" secondItem="yob-Nl-fQS" secondAttribute="width" id="c3y-fz-tHl"/>
+                        <constraint firstItem="p3H-7O-uAd" firstAttribute="top" secondItem="yob-Nl-fQS" secondAttribute="top" id="gYz-Tt-DOW"/>
+                    </constraints>
                 </scrollView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWn-Z6-5Mw">
                     <rect key="frame" x="20" y="597" width="335" height="50"/>

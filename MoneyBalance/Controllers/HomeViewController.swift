@@ -13,7 +13,6 @@ import SPStorkController
 
 class HomeViewController: BaseViewController {
     
-    var selectedFrame: CGRect?
     /// NavigationBar title labe for adding a TapGestureRecognizer
     let titleNavbarView: UIView = {
         let view = UIView()
@@ -118,8 +117,7 @@ extension HomeViewController: AccountTableViewCellDelegate {
         presentAsStork(UINavigationController(rootViewController: viewController), showIndicator: true)
     }
     
-    func goToDetail(for account: Account?, frame: CGRect) {
-        selectedFrame = frame
+    func goToDetail(for account: Account?) {
         let controller = AccountDetailViewController()
         navigationController?.pushViewController(controller, animated: true)
     }
