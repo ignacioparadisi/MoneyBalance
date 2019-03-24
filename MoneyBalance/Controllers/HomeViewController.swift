@@ -13,6 +13,7 @@ import SPStorkController
 
 class HomeViewController: BaseViewController {
     
+    var selectedFrame: CGRect?
     /// NavigationBar title labe for adding a TapGestureRecognizer
     let titleNavbarView: UIView = {
         let view = UIView()
@@ -47,6 +48,7 @@ class HomeViewController: BaseViewController {
     
     override func setupView() {
         super.setupView()
+        // navigationController?.delegate = self
         view.addSubview(addMovementButton)
         view.addSubview(tableView)
         addMovementButton.setConstraints(bottomAnchor: view.safeAreaLayoutGuide.bottomAnchor, centerXAnchor: view.centerXAnchor, bottomConstant: -20, widthConstant: 60, heightConstant: 60)
@@ -115,4 +117,23 @@ extension HomeViewController: AccountTableViewCellDelegate {
         let viewController = AddAccountViewController(nibName: "AddViewController", bundle: nil)
         presentAsStork(UINavigationController(rootViewController: viewController), showIndicator: true)
     }
+    
+    func goToDetail(for account: Account?, frame: CGRect) {
+        selectedFrame = frame
+        let controller = AccountDetailViewController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
 }
+
+//extension HomeViewController: UINavigationControllerDelegate {
+//    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        guard let frame = self.selectedFrame else { return nil }
+//
+//        switch operation {
+//        case .push:
+//            return AnimationController(duration: TimeInterval(UINavigationController.hideShowBarDuration), isPresenting: true, originFrame: frame)
+//        default:
+//            return AnimationController(duration: TimeInterval(UINavigationController.hideShowBarDuration), isPresenting: false, originFrame: frame)
+//        }
+//    }
+//}

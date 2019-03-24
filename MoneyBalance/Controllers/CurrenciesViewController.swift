@@ -32,7 +32,7 @@ class CurrenciesViewController: BaseViewController {
     
     override func setupView() {
         super.setupView()
-        view.backgroundColor = ThemeManager.currentTheme().bottomSheetColor
+        view.backgroundColor = ThemeManager.currentTheme().backgroundColor
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = .clear

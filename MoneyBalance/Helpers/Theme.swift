@@ -82,13 +82,13 @@ enum Theme: Int {
             return .white
         }
     }
-
-    var bottomSheetColor: UIColor {
+    
+    var highlightTableViewCellColor: UIColor {
         switch self {
         case .light:
-            return UIColor("#FFFFFF")
+            return UIColor("D9D9D9")
         case .dark:
-            return UIColor("#181818")
+            return UIColor("333333")
         }
     }
     
@@ -146,13 +146,15 @@ struct ThemeManager {
         setupTableViewAppearance(theme)
         setupTableViewCellAppearance(theme)
         
-        let windows = UIApplication.shared.windows
-        for window in windows {
-            for view in window.subviews {
-                view.removeFromSuperview()
-                window.addSubview(view)
-            }
-        }
+//        let windows = UIApplication.shared.windows
+//        for window in windows {
+//            print("Window: \(window)")
+//            for view in window.subviews {
+//                print("View: \(view)")
+//                view.removeFromSuperview()
+//                window.addSubview(view)
+//            }
+//        }
         UIApplication.shared.delegate?.window??.tintColor = theme.accentColor
     }
     
@@ -183,8 +185,6 @@ struct ThemeManager {
     /// - Parameter theme: Selected theme
     private static func setupTableViewAppearance(_ theme: Theme) {
         UITableView.appearance().backgroundColor = theme.tableViewBackgroundColor
-        UIButton.appearance(whenContainedInInstancesOf: [UITableViewCell.self]).tintColor = theme.accentColor
-        AccountCollectionViewCell.appearance().backgroundColor = theme.accentColor
     }
     
     /// Applies changes to all UITableCells

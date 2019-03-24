@@ -41,6 +41,10 @@
 		4FAE5CA32237138A00762300 /* ScreenLockSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAE5CA22237138A00762300 /* ScreenLockSettingsViewController.swift */; };
 		4FAE5CA52237160300762300 /* LanguageSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAE5CA42237160300762300 /* LanguageSettingsViewController.swift */; };
 		4FAF5BDB2238833600105EDE /* AddNewCurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAF5BDA2238833600105EDE /* AddNewCurrencyViewController.swift */; };
+		4FBB4C1E22470A4800049F9B /* AnimationControlller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBB4C1D22470A4800049F9B /* AnimationControlller.swift */; };
+		4FBB4C202247174F00049F9B /* AccountDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBB4C1F2247174F00049F9B /* AccountDetailViewController.swift */; };
+		4FBB4C2322471CD800049F9B /* AccountCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBB4C2122471CD800049F9B /* AccountCardTableViewCell.swift */; };
+		4FBB4C2422471CD800049F9B /* AccountCardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FBB4C2222471CD800049F9B /* AccountCardTableViewCell.xib */; };
 		4FD4EBF922459A5F00079935 /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD4EBF822459A5F00079935 /* TitleLabel.swift */; };
 		4FD4EBFC2245C3C100079935 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD4EBFA2245C3C100079935 /* AddViewController.swift */; };
 		4FD4EBFD2245C3C100079935 /* AddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FD4EBFB2245C3C100079935 /* AddViewController.xib */; };
@@ -96,6 +100,10 @@
 		4FAE5CA22237138A00762300 /* ScreenLockSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenLockSettingsViewController.swift; sourceTree = "<group>"; };
 		4FAE5CA42237160300762300 /* LanguageSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSettingsViewController.swift; sourceTree = "<group>"; };
 		4FAF5BDA2238833600105EDE /* AddNewCurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCurrencyViewController.swift; sourceTree = "<group>"; };
+		4FBB4C1D22470A4800049F9B /* AnimationControlller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationControlller.swift; sourceTree = "<group>"; };
+		4FBB4C1F2247174F00049F9B /* AccountDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailViewController.swift; sourceTree = "<group>"; };
+		4FBB4C2122471CD800049F9B /* AccountCardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCardTableViewCell.swift; sourceTree = "<group>"; };
+		4FBB4C2222471CD800049F9B /* AccountCardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountCardTableViewCell.xib; sourceTree = "<group>"; };
 		4FD4EBF822459A5F00079935 /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
 		4FD4EBFA2245C3C100079935 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		4FD4EBFB2245C3C100079935 /* AddViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddViewController.xib; sourceTree = "<group>"; };
@@ -162,6 +170,7 @@
 		4F5CA0B0222E2B2A00ED29D4 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				4FBB4C2522471CDE00049F9B /* AccountCardTableViewCell */,
 				4F53897322383E23004832B5 /* AccountTableViewCell */,
 				4FED8A08222FF292009E3965 /* SwitchTableViewCell */,
 				4FED8A07222FF283009E3965 /* DefaultTableViewCell */,
@@ -222,6 +231,7 @@
 				4F7E3D56222EC84F00112275 /* Localize.swift */,
 				4F975E54222F3ACC009DA03C /* Theme.swift */,
 				4FAE5CA0223703EC00762300 /* Utils.swift */,
+				4FBB4C1D22470A4800049F9B /* AnimationControlller.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -242,6 +252,7 @@
 				4FD4EBFA2245C3C100079935 /* AddViewController.swift */,
 				4FF9E84D224677DE009D4039 /* AddAccountViewController.swift */,
 				4FF9E84F22468A21009D4039 /* AddMovementViewController.swift */,
+				4FBB4C1F2247174F00049F9B /* AccountDetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -254,6 +265,15 @@
 				4F5CA0B0222E2B2A00ED29D4 /* TableViewCell */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		4FBB4C2522471CDE00049F9B /* AccountCardTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				4FBB4C2122471CD800049F9B /* AccountCardTableViewCell.swift */,
+				4FBB4C2222471CD800049F9B /* AccountCardTableViewCell.xib */,
+			);
+			path = AccountCardTableViewCell;
 			sourceTree = "<group>";
 		};
 		4FED8A04222FF23D009E3965 /* View */ = {
@@ -400,6 +420,7 @@
 				4F53898222384D1D004832B5 /* CurrenciesViewController.xib in Resources */,
 				4F5CA0AB222E18C800ED29D4 /* Localizable.strings in Resources */,
 				4F53897C22383FE1004832B5 /* AccountCollectionViewCell.xib in Resources */,
+				4FBB4C2422471CD800049F9B /* AccountCardTableViewCell.xib in Resources */,
 				4F53897722383E41004832B5 /* AccountTableViewCell.xib in Resources */,
 				4F975E6C222F71E5009DA03C /* DefaultTableViewCell.xib in Resources */,
 				4FF9E85A2246A652009D4039 /* CurrencyCollectionViewCell.xib in Resources */,
@@ -478,6 +499,7 @@
 				4F95969A2238687700205D3D /* Account.swift in Sources */,
 				4F53897B22383FE1004832B5 /* AccountCollectionViewCell.swift in Sources */,
 				4FAE5CA52237160300762300 /* LanguageSettingsViewController.swift in Sources */,
+				4FBB4C202247174F00049F9B /* AccountDetailViewController.swift in Sources */,
 				4FAE5C9E2236FFA600762300 /* SwitchTableViewCell.swift in Sources */,
 				4FAE5CA32237138A00762300 /* ScreenLockSettingsViewController.swift in Sources */,
 				4FF9E84C224673C0009D4039 /* String.swift in Sources */,
@@ -488,7 +510,9 @@
 				4FF9E8592246A652009D4039 /* CurrencyCollectionViewCell.swift in Sources */,
 				4FF9E84E224677DE009D4039 /* AddAccountViewController.swift in Sources */,
 				4FD4EBFC2245C3C100079935 /* AddViewController.swift in Sources */,
+				4FBB4C2322471CD800049F9B /* AccountCardTableViewCell.swift in Sources */,
 				4F7E3D57222EC84F00112275 /* Localize.swift in Sources */,
+				4FBB4C1E22470A4800049F9B /* AnimationControlller.swift in Sources */,
 				4F975E6B222F71E5009DA03C /* DefaultTableViewCell.swift in Sources */,
 				4F69508C222D919E008FD9EA /* AppDelegate.swift in Sources */,
 				4F7E3D5A222ED13900112275 /* SettingsViewController.swift in Sources */,

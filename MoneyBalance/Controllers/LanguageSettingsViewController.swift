@@ -45,11 +45,28 @@ class LanguageSettingsViewController: BaseViewController {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.backgroundColor = ThemeManager.currentTheme().highlightTableViewCellColor
         if indexPath.row == 0 {
             Localize.setLanguage("en")
         } else {
             Localize.setLanguage("es-US")
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.backgroundColor = ThemeManager.currentTheme().backgroundColor
+    }
+    
+    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.backgroundColor = ThemeManager.currentTheme().highlightTableViewCellColor
+    }
+    
+    func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.backgroundColor = ThemeManager.currentTheme().backgroundColor
     }
 
 }

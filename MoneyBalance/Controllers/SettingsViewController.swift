@@ -45,7 +45,6 @@ class SettingsViewController: BaseViewController {
         case LANGUAGE_SECTION:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! DefaultTableViewCell
             cell.configureWith(title: "Language".localized(), accessoryType: .disclosureIndicator, selectedValue: Localize.getSelectedLanguageName())
-            
             return cell
             
         case THEME_SECTION:
@@ -62,7 +61,16 @@ class SettingsViewController: BaseViewController {
         default:
             return UITableViewCell()
         }
-        
+    }
+    
+    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.backgroundColor = ThemeManager.currentTheme().highlightTableViewCellColor
+    }
+    
+    func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.backgroundColor = ThemeManager.currentTheme().backgroundColor
     }
     
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
@@ -89,6 +97,26 @@ class SettingsViewController: BaseViewController {
             break
         }
     }
+    
+    private func restartApplication () {
+        let viewController = HomeViewController()
+        let navigationController = UINavigationController(rootViewController: viewController)
+        
+        guard
+            let window = UIApplication.shared.keyWindow,
+            let rootViewController = window.rootViewController
+            else {
+                return
+        }
+        
+        navigationController.view.frame = rootViewController.view.frame
+        navigationController.view.layoutIfNeeded()
+        
+        UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {
+            window.rootViewController = navigationController
+        })
+        
+    }
 
 }
 
@@ -104,5 +132,6 @@ extension SettingsViewController: SwitchTableViewCellDelegate {
         default:
             break
         }
+        restartApplication()
     }
 }

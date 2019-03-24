@@ -10,6 +10,8 @@ import UIKit
 
 protocol AccountTableViewCellDelegate {
     func goToAddAccount()
+//    func goToDetail(for account: Account?, frame: CGRect)
+    func goToDetail(for account: Account?)
 }
 
 class AccountTableViewCell: UITableViewCell {
@@ -47,6 +49,13 @@ extension AccountTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! AccountCollectionViewCell
         cell.setGradientBackground(colorOne: ThemeManager.currentTheme().accentColor, colorTwo: ThemeManager.currentTheme().gradientColor)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let item = collectionView.cellForItem(at: indexPath)
+//        let selectedFrame = collectionView.convert(item!.frame, to: nil)
+//        delegate?.goToDetail(for: nil, frame: selectedFrame)
+        delegate?.goToDetail(for: nil)
     }
 }
 
