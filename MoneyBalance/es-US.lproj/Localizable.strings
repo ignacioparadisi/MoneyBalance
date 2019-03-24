@@ -28,6 +28,9 @@
 "Add a new account" = "Agregar una nueva cuenta";
 "Name" = "Nombre";
 "Enter the name of the bank" = "Ingresa el nombre del banco";
+"Bank name" = "Nombre del banco";
+"Account Number" = "Número de Cuenta";
+"Account number" = "Número de cuenta";
 
 // Settings
 "Language" = "Lenguaje";

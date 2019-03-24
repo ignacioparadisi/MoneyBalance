@@ -31,13 +31,22 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rEd-BS-33T">
+                        <rect key="frame" x="16" y="59" width="164" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="rEd-BS-33T" secondAttribute="bottom" constant="16" id="FlY-Lb-m74"/>
+                <constraint firstAttribute="trailing" secondItem="rEd-BS-33T" secondAttribute="trailing" constant="16" id="H7I-Xt-7LQ"/>
                 <constraint firstItem="dzm-NX-Lvs" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="I7J-x8-AOg"/>
                 <constraint firstItem="dzm-NX-Lvs" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Q3b-WR-dDd"/>
                 <constraint firstItem="dzm-NX-Lvs" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="hJf-Q3-hyg"/>
                 <constraint firstAttribute="trailing" secondItem="dzm-NX-Lvs" secondAttribute="trailing" constant="8" id="o8x-ot-7F9"/>
+                <constraint firstItem="rEd-BS-33T" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="q8l-0z-S7A"/>
                 <constraint firstAttribute="trailing" secondItem="Ne6-nq-x3j" secondAttribute="trailing" constant="16" id="tdU-HO-Ab8"/>
                 <constraint firstItem="Ne6-nq-x3j" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="we1-Ei-XCw"/>
                 <constraint firstItem="Ne6-nq-x3j" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="y6F-lx-RZi"/>
@@ -45,6 +54,7 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="196" height="96"/>
             <connections>
+                <outlet property="accountNumberLabel" destination="rEd-BS-33T" id="GS3-UK-sDc"/>
                 <outlet property="amountLabel" destination="dzm-NX-Lvs" id="kr0-Md-6UY"/>
                 <outlet property="bankNameLabel" destination="Ne6-nq-x3j" id="Pi8-TI-RGq"/>
             </connections>

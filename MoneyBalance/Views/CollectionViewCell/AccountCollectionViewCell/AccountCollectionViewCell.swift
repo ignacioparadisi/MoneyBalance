@@ -12,6 +12,7 @@ class AccountCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var bankNameLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var accountNumberLabel: UILabel!
     
     
     override func awakeFromNib() {
@@ -20,7 +21,6 @@ class AccountCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupView() {
-        // backgroundColor = ThemeManager.currentTheme().accentColor
         layer.cornerRadius = 10
         layer.masksToBounds = false
         
@@ -29,6 +29,13 @@ class AccountCollectionViewCell: UICollectionViewCell {
         amountLabel.textColor = .white
         amountLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 30)
         amountLabel.text = 1000.00.toCurrency()
+        accountNumberLabel.textColor = .white
+    }
+    
+    func configureWith(account: Account) {
+        bankNameLabel.text = account.bankName
+        amountLabel.text = account.money.toCurrency()
+        accountNumberLabel.text = account.number
     }
 
 }

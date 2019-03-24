@@ -28,6 +28,7 @@ class AccountTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
+        NotificationCenter.default.addObserver(self, selector: #selector(fetchAccounts), name: .didCreateAccount, object: nil)
         titleLabel.text = "Accounts".localized()
         addAccountButton.setImage(UIImage(named: "add")?.withRenderingMode(.alwaysTemplate), for: .normal)
         collectionView.backgroundColor = .clear
@@ -38,7 +39,7 @@ class AccountTableViewCell: UITableViewCell {
         fetchAccounts()
     }
     
-    private func fetchAccounts() {
+    @objc private func fetchAccounts() {
         accounts = RealmManager.shared.getArray(ofType: Account.self) as! [Account]
         collectionView.reloadData()
     }
@@ -63,6 +64,7 @@ extension AccountTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
             return cell
         }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! AccountCollectionViewCell
+        cell.configureWith(account: accounts[indexPath.item])
         cell.setGradientBackground(colorOne: ThemeManager.currentTheme().accentColor, colorTwo: ThemeManager.currentTheme().gradientColor)
         return cell
         

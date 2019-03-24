@@ -8,9 +8,31 @@
 
 import UIKit
 
+protocol AddAccountViewControllerDelegate {
+    func accountCreated()
+}
+
 class AddAccountViewController: AddViewController {
     
-    lazy var nameTextField: CustomTextField = CustomTextField()
+    private lazy var nameTitleLabel: TitleLabel = TitleLabel()
+    private lazy var nameDescriptionLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = ThemeManager.currentTheme().textColor
+        return label
+    }()
+    private lazy var nameTextField: CustomTextField = {
+        let textField = CustomTextField()
+        textField.returnKeyType = .next
+        return textField
+    }()
+    private lazy var accountNumberTitleLabel: TitleLabel = TitleLabel()
+    private lazy var accountNumberTextField: CustomTextField = {
+        let textField = CustomTextField()
+        textField.keyboardType = .numberPad
+        textField.returnKeyType = .done
+        return textField
+    }()
+    var delegate: AddAccountViewControllerDelegate?
 
     override func setupNavigationBar() {
         super.setupNavigationBar()
@@ -19,10 +41,69 @@ class AddAccountViewController: AddViewController {
     
     override func setupView() {
         super.setupView()
-        titleLabel.text = "Name".localized()
-        descriptionLabel.text = "Enter the name of the bank".localized()
+        nameTitleLabel.text = "Name".localized()
+        nameDescriptionLabel.text = "Enter the name of the bank".localized()
+        nameTextField.placeholder = "Bank name".localized()
+        accountNumberTitleLabel.text = "Account Number".localized()
+        accountNumberTextField.placeholder = "Account number".localized()
+        
+        nameTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        accountNumberTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        nameTextField.delegate = self
+        
+        contentView.addSubview(nameTitleLabel)
+        contentView.addSubview(nameDescriptionLabel)
         contentView.addSubview(nameTextField)
-        nameTextField.setConstraints(topAnchor: descriptionLabel.bottomAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: 10, leadingConstant: 16, trailingConstant: -16)
+        contentView.addSubview(accountNumberTitleLabel)
+        contentView.addSubview(accountNumberTextField)
+        
+        nameTitleLabel.setConstraints(topAnchor: contentView.topAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: 20, leadingConstant: 16, trailingConstant: -16)
+        nameDescriptionLabel.setConstraints(topAnchor: nameTitleLabel.bottomAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: 8, leadingConstant: 16, trailingConstant: -16)
+        nameTextField.setConstraints(topAnchor: nameDescriptionLabel.bottomAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: 10, leadingConstant: 16, trailingConstant: -16)
+        accountNumberTitleLabel.setConstraints(topAnchor: nameTextField.bottomAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: 20, leadingConstant: 16, trailingConstant: -16)
+        accountNumberTextField.setConstraints(topAnchor: accountNumberTitleLabel.bottomAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: 10, leadingConstant: 16, trailingConstant: -16)
+        
+        shouldEnabledButton()
+    }
+    
+    @objc private func textFieldDidChange(_ textField: UITextField) {
+        shouldEnabledButton()
+    }
+    
+    private func shouldEnabledButton() {
+        if (nameTextField.text == "" || accountNumberTextField.text == ""), addButton.isEnabled {
+            addButton.isEnabled = false
+            addButton.layer.sublayers?.remove(at: 0)
+            addButton.layer.cornerRadius = 10
+            addButton.layer.masksToBounds = false
+            addButton.backgroundColor = .lightGray
+            return
+        } else if !addButton.isEnabled {
+            addButton.backgroundColor = .clear
+            addButton.isEnabled = true
+            addButton.setGradientBackground(colorOne: ThemeManager.currentTheme().accentColor, colorTwo: ThemeManager.currentTheme().gradientColor)
+        }
+    }
+    
+    override func addButtonAction(_ sender: Any) {
+        let account = Account()
+        account.bankName = nameTextField.text ?? ""
+        account.number = accountNumberTextField.text ?? ""
+        account.currency = Currency.current
+        RealmManager.shared.add(account)
+        dismissPanel()
+        NotificationCenter.default.post(name: .didCreateAccount, object: nil)
+        // delegate?.accountCreated()
     }
 
+}
+
+extension AddAccountViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == nameTextField {
+            nameTextField.resignFirstResponder()
+            accountNumberTextField.becomeFirstResponder()
+        }
+        return true
+    }
 }

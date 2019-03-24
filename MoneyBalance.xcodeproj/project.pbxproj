@@ -25,6 +25,8 @@
 		4F6950A4222D94EC008FD9EA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6950A3222D94EC008FD9EA /* BaseViewController.swift */; };
 		4F6950A6222D95E8008FD9EA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6950A5222D95E8008FD9EA /* HomeViewController.swift */; };
 		4F6950AA222DFC47008FD9EA /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6950A9222DFC47008FD9EA /* Currency.swift */; };
+		4F77FBCD2247C29E0088A9E4 /* UViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F77FBCC2247C29E0088A9E4 /* UViewController.swift */; };
+		4F77FBCF2247CAE60088A9E4 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F77FBCE2247CAE60088A9E4 /* NotificationCenter.swift */; };
 		4F7E3D4D222EA18A00112275 /* LauncherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7E3D4C222EA18A00112275 /* LauncherViewController.swift */; };
 		4F7E3D53222EBE5D00112275 /* AuthenticationFailedView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F7E3D52222EBE5D00112275 /* AuthenticationFailedView.xib */; };
 		4F7E3D55222EBF0200112275 /* AuthenticationFailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7E3D54222EBF0200112275 /* AuthenticationFailedView.swift */; };
@@ -85,6 +87,8 @@
 		4F6950A3222D94EC008FD9EA /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		4F6950A5222D95E8008FD9EA /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		4F6950A9222DFC47008FD9EA /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		4F77FBCC2247C29E0088A9E4 /* UViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UViewController.swift; sourceTree = "<group>"; };
+		4F77FBCE2247CAE60088A9E4 /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		4F7E3D4C222EA18A00112275 /* LauncherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauncherViewController.swift; sourceTree = "<group>"; };
 		4F7E3D52222EBE5D00112275 /* AuthenticationFailedView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthenticationFailedView.xib; sourceTree = "<group>"; };
 		4F7E3D54222EBF0200112275 /* AuthenticationFailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationFailedView.swift; sourceTree = "<group>"; };
@@ -267,11 +271,21 @@
 		4F6950A1222D935E008FD9EA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4F77FBCB2247BD400088A9E4 /* CustomViews */,
 				4F53897822383FBB004832B5 /* CollectionViewCell */,
 				4FED8A04222FF23D009E3965 /* View */,
 				4F5CA0B0222E2B2A00ED29D4 /* TableViewCell */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		4F77FBCB2247BD400088A9E4 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				4FBB4C2F22473A3D00049F9B /* CustomTextField.swift */,
+				4FD4EBF822459A5F00079935 /* TitleLabel.swift */,
+			);
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 		4FBB4C2522471CDE00049F9B /* AccountCardTableViewCell */ = {
@@ -298,8 +312,6 @@
 				4FD4EBFB2245C3C100079935 /* AddViewController.xib */,
 				4F53898022384D1D004832B5 /* CurrenciesViewController.xib */,
 				4FED8A05222FF25C009E3965 /* AuthenticationFailedView */,
-				4FD4EBF822459A5F00079935 /* TitleLabel.swift */,
-				4FBB4C2F22473A3D00049F9B /* CustomTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -339,6 +351,8 @@
 				4FF9E84722467398009D4039 /* UIImageView.swift */,
 				4FF9E849224673AC009D4039 /* Double.swift */,
 				4FF9E84B224673C0009D4039 /* String.swift */,
+				4F77FBCC2247C29E0088A9E4 /* UViewController.swift */,
+				4F77FBCE2247CAE60088A9E4 /* NotificationCenter.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -512,6 +526,7 @@
 				4F53898122384D1D004832B5 /* CurrenciesViewController.swift in Sources */,
 				4FF9E84A224673AC009D4039 /* Double.swift in Sources */,
 				4F5CA0A7222E170800ED29D4 /* LocaleCurrency.swift in Sources */,
+				4F77FBCD2247C29E0088A9E4 /* UViewController.swift in Sources */,
 				4FF9E8442246734A009D4039 /* UIView.swift in Sources */,
 				4F69508E222D919E008FD9EA /* MainViewController.swift in Sources */,
 				4F95969A2238687700205D3D /* Account.swift in Sources */,
@@ -532,6 +547,7 @@
 				4FBB4C2322471CD800049F9B /* AccountCardTableViewCell.swift in Sources */,
 				4F7E3D57222EC84F00112275 /* Localize.swift in Sources */,
 				4FBB4C1E22470A4800049F9B /* AnimationControlller.swift in Sources */,
+				4F77FBCF2247CAE60088A9E4 /* NotificationCenter.swift in Sources */,
 				4F975E6B222F71E5009DA03C /* DefaultTableViewCell.swift in Sources */,
 				4F69508C222D919E008FD9EA /* AppDelegate.swift in Sources */,
 				4FBB4C3022473A3D00049F9B /* CustomTextField.swift in Sources */,

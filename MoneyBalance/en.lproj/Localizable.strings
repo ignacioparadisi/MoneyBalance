@@ -28,6 +28,9 @@
 "Add a new account" = "Add a new account";
 "Name" = "Name";
 "Enter the name of the bank" = "Enter the name of the bank";
+"Bank name" = "Bank name";
+"Account Number" = "Account Number";
+"Account number" = "Account number";
 
 // Settings
 "Language" = "Language";

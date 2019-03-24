@@ -114,12 +114,19 @@ extension HomeViewController: CurrenciesViewControllerDelegate, AddNewCurrencyVi
 extension HomeViewController: AccountTableViewCellDelegate {
     func goToAddAccount() {
         let viewController = AddAccountViewController(nibName: "AddViewController", bundle: nil)
+        viewController.delegate = self
         presentAsStork(UINavigationController(rootViewController: viewController), showIndicator: true)
     }
     
     func goToDetail(for account: Account?) {
         let controller = AccountDetailViewController()
         navigationController?.pushViewController(controller, animated: true)
+    }
+}
+
+extension HomeViewController: AddAccountViewControllerDelegate {
+    func accountCreated() {
+        tableView.reloadData()
     }
 }
 

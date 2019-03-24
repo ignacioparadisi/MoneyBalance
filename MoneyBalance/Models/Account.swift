@@ -11,10 +11,10 @@ import RealmSwift
 
 class Account: Object {
     
-    @objc dynamic var id: Int = 0
+    @objc dynamic var id: String = UUID().uuidString
     @objc dynamic var money: Double = 0
     @objc dynamic var bankName: String = ""
-    @objc dynamic var number: Double = 0
+    @objc dynamic var number: String = ""
     @objc dynamic var currency: Currency?
     
     override static func primaryKey() -> String? {
