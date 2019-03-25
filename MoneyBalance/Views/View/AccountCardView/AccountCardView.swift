@@ -8,15 +8,50 @@
 
 import UIKit
 
+protocol AccountCardViewDelegate {
+    func shareAccount( _ text: String)
+}
+
 class AccountCardView: UIView {
 
-    @IBOutlet weak var amountLabel: UILabel!
-    @IBOutlet weak var bankNameLabel: UILabel!
-    @IBOutlet weak var accountNumberLabel: UILabel!
-    @IBOutlet weak var shareButton: UIButton!
+    var delegate: AccountCardViewDelegate?
+    var amountLabel: TitleLabel = {
+        let label = TitleLabel()
+        label.textAlignment = .center
+        return label
+    }()
+    var bankNameLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .white
+        label.font = UIFont(name: ThemeManager.currentTheme().titleFont, size: 17.0)
+        return label
+    }()
+    var accountNumberLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .white
+        label.textAlignment = .center
+        return label
+    }()
+    lazy var shareButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .clear
+        let shareImage = UIImage(named: "share")?.withRenderingMode(.alwaysTemplate)
+        button.setImage(shareImage, for: .normal)
+        button.imageEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        button.backgroundColor = UIColor(white: 0, alpha: 0.3)
+        button.tintColor = .white
+        button.layer.cornerRadius = 17.5
+        button.layer.masksToBounds = false
+        return button
+    }()
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        initialize()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
         initialize()
     }
     
@@ -24,28 +59,34 @@ class AccountCardView: UIView {
         layer.cornerRadius = 10
         layer.masksToBounds = false
         backgroundColor = .clear
-        bankNameLabel.textColor = .white
-        bankNameLabel.font = UIFont(name: ThemeManager.currentTheme().titleFont, size: 17.0)
-        amountLabel.textColor = .white
-        amountLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 30)
+        
+        setupSubviews()
         amountLabel.text = 1000.00.toCurrency(with: "en_US")
-        accountNumberLabel.textColor = .white
-        let shareImage = UIImage(named: "share")?.withRenderingMode(.alwaysTemplate)
-        shareButton.setImage(shareImage, for: .normal)
-        shareButton.tintColor = .white
-        shareButton.layer.cornerRadius = 17.5
-        shareButton.layer.masksToBounds = false
-        shareButton.backgroundColor = UIColor(white: 0, alpha: 0.3)
         shareButton.addTarget(self, action: #selector(shareButtonAction), for: .touchUpInside)
     }
     
+    private func setupSubviews() {
+        addSubview(amountLabel)
+        amountLabel.setConstraints(leadingAnchor: leadingAnchor, trailingAnchor: trailingAnchor, centerXAnchor: centerXAnchor, centerYAnchor: centerYAnchor, leadingConstant: 16, trailingConstant: -16)
+        
+        addSubview(bankNameLabel)
+        bankNameLabel.setConstraints(topAnchor: topAnchor, leadingAnchor: leadingAnchor, trailingAnchor: trailingAnchor, topConstant: 16, leadingConstant: 16, trailingConstant: -16)
+        
+        addSubview(accountNumberLabel)
+        accountNumberLabel.setConstraints(leadingAnchor: leadingAnchor, bottomAnchor: bottomAnchor, trailingAnchor: trailingAnchor, leadingConstant: 16, bottomConstant: -16, trailingConstant: -16)
+        
+        addSubview(shareButton)
+        shareButton.setConstraints(topAnchor: topAnchor, trailingAnchor: trailingAnchor, topConstant: 10, trailingConstant: -10, widthConstant: 30, heightConstant: 30)
+    }
+    
+    
     @objc private func shareButtonAction() {
-//        let text = "Name".localized() + ": \n"
-//            + "ID".localized() + ": \n"
-//            + "Email".localized() + ": \n"
-//            + "Bank".localized() + ": \(account.bankName)\n"
-//            + "Account number".localized() + ": \(account.number)\n"
-//        delegate?.shareAccount(text)
+        let text = "Name".localized() + ": \n"
+            + "ID".localized() + ": \n"
+            + "Email".localized() + ": \n"
+            + "Bank".localized() + ": \(bankNameLabel.text ?? "")\n"
+            + "Account number".localized() + ": \(accountNumberLabel.text ?? "")\n"
+        delegate?.shareAccount(text)
     }
     
 }

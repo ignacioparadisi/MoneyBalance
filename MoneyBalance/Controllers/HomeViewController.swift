@@ -54,11 +54,6 @@ class HomeViewController: BaseViewController {
         tableView.setConstraints(topAnchor: view.topAnchor, leadingAnchor: view.leadingAnchor, bottomAnchor: view.bottomAnchor, trailingAnchor: view.trailingAnchor)
         tableView.register(UINib(nibName: "AccountTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
         view.bringSubviewToFront(addMovementButton)
-        
-        let cardView = Bundle.main.loadNibNamed("AccountCardView", owner: self, options: nil)?.first as! AccountCardView
-        view.addSubview(cardView)
-        cardView.setConstraints(leadingAnchor: view.leadingAnchor, bottomAnchor: view.bottomAnchor, trailingAnchor: view.trailingAnchor, heightConstant: 200)
-        
     }
     
     /// Creates the design of the navigationItem.titleView and adds tapGestureRecognizer
@@ -163,16 +158,3 @@ extension HomeViewController: AddAccountViewControllerDelegate {
         tableView.reloadData()
     }
 }
-
-//extension HomeViewController: UINavigationControllerDelegate {
-//    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-//        guard let frame = self.selectedFrame else { return nil }
-//
-//        switch operation {
-//        case .push:
-//            return AnimationController(duration: TimeInterval(UINavigationController.hideShowBarDuration), isPresenting: true, originFrame: frame)
-//        default:
-//            return AnimationController(duration: TimeInterval(UINavigationController.hideShowBarDuration), isPresenting: false, originFrame: frame)
-//        }
-//    }
-//}

@@ -35,7 +35,7 @@ class AccountTableViewCell: UITableViewCell {
         collectionView.backgroundColor = .clear
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(UINib(nibName: "AccountCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
+        collectionView.register(AccountCollectionViewCell.self, forCellWithReuseIdentifier: cellIdentifier)
         collectionView.register(UINib(nibName: "AddAccountCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: emptyAccountsCellIdentifier)
         fetchAccounts()
     }

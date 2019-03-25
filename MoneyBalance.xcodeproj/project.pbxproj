@@ -11,7 +11,6 @@
 		4F53897622383E41004832B5 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F53897422383E41004832B5 /* AccountTableViewCell.swift */; };
 		4F53897722383E41004832B5 /* AccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F53897522383E41004832B5 /* AccountTableViewCell.xib */; };
 		4F53897B22383FE1004832B5 /* AccountCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F53897922383FE1004832B5 /* AccountCollectionViewCell.swift */; };
-		4F53897C22383FE1004832B5 /* AccountCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F53897A22383FE1004832B5 /* AccountCollectionViewCell.xib */; };
 		4F53898122384D1D004832B5 /* CurrenciesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F53897F22384D1D004832B5 /* CurrenciesViewController.swift */; };
 		4F53898222384D1D004832B5 /* CurrenciesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F53898022384D1D004832B5 /* CurrenciesViewController.xib */; };
 		4F5CA0A2222E0C7B00ED29D4 /* MovementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5CA0A1222E0C7B00ED29D4 /* MovementsViewController.swift */; };
@@ -26,7 +25,6 @@
 		4F6950A6222D95E8008FD9EA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6950A5222D95E8008FD9EA /* HomeViewController.swift */; };
 		4F6950AA222DFC47008FD9EA /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6950A9222DFC47008FD9EA /* Currency.swift */; };
 		4F71770F22497F1F00F6C6CE /* AccountCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F71770E22497F1F00F6C6CE /* AccountCardView.swift */; };
-		4F71771122497F2D00F6C6CE /* AccountCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F71771022497F2D00F6C6CE /* AccountCardView.xib */; };
 		4F77FBCD2247C29E0088A9E4 /* UViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F77FBCC2247C29E0088A9E4 /* UViewController.swift */; };
 		4F77FBCF2247CAE60088A9E4 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F77FBCE2247CAE60088A9E4 /* NotificationCenter.swift */; };
 		4F77FBD7224817E90088A9E4 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F77FBD6224817E90088A9E4 /* Category.swift */; };
@@ -53,7 +51,6 @@
 		4FBB4C1E22470A4800049F9B /* AnimationControlller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBB4C1D22470A4800049F9B /* AnimationControlller.swift */; };
 		4FBB4C202247174F00049F9B /* AccountDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBB4C1F2247174F00049F9B /* AccountDetailViewController.swift */; };
 		4FBB4C2322471CD800049F9B /* AccountCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBB4C2122471CD800049F9B /* AccountCardTableViewCell.swift */; };
-		4FBB4C2422471CD800049F9B /* AccountCardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FBB4C2222471CD800049F9B /* AccountCardTableViewCell.xib */; };
 		4FBB4C2C22472EB100049F9B /* AddAccountCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBB4C2A22472EB100049F9B /* AddAccountCollectionViewCell.swift */; };
 		4FBB4C2D22472EB100049F9B /* AddAccountCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FBB4C2B22472EB100049F9B /* AddAccountCollectionViewCell.xib */; };
 		4FBB4C3022473A3D00049F9B /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBB4C2F22473A3D00049F9B /* CustomTextField.swift */; };
@@ -77,7 +74,6 @@
 		4F53897422383E41004832B5 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
 		4F53897522383E41004832B5 /* AccountTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountTableViewCell.xib; sourceTree = "<group>"; };
 		4F53897922383FE1004832B5 /* AccountCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCollectionViewCell.swift; sourceTree = "<group>"; };
-		4F53897A22383FE1004832B5 /* AccountCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountCollectionViewCell.xib; sourceTree = "<group>"; };
 		4F53897F22384D1D004832B5 /* CurrenciesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesViewController.swift; sourceTree = "<group>"; };
 		4F53898022384D1D004832B5 /* CurrenciesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrenciesViewController.xib; sourceTree = "<group>"; };
 		4F5CA0A1222E0C7B00ED29D4 /* MovementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementsViewController.swift; sourceTree = "<group>"; };
@@ -96,7 +92,6 @@
 		4F6950A5222D95E8008FD9EA /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		4F6950A9222DFC47008FD9EA /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		4F71770E22497F1F00F6C6CE /* AccountCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCardView.swift; sourceTree = "<group>"; };
-		4F71771022497F2D00F6C6CE /* AccountCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountCardView.xib; sourceTree = "<group>"; };
 		4F77FBCC2247C29E0088A9E4 /* UViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UViewController.swift; sourceTree = "<group>"; };
 		4F77FBCE2247CAE60088A9E4 /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		4F77FBD6224817E90088A9E4 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -125,7 +120,6 @@
 		4FBB4C1D22470A4800049F9B /* AnimationControlller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationControlller.swift; sourceTree = "<group>"; };
 		4FBB4C1F2247174F00049F9B /* AccountDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailViewController.swift; sourceTree = "<group>"; };
 		4FBB4C2122471CD800049F9B /* AccountCardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCardTableViewCell.swift; sourceTree = "<group>"; };
-		4FBB4C2222471CD800049F9B /* AccountCardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountCardTableViewCell.xib; sourceTree = "<group>"; };
 		4FBB4C2A22472EB100049F9B /* AddAccountCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountCollectionViewCell.swift; sourceTree = "<group>"; };
 		4FBB4C2B22472EB100049F9B /* AddAccountCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddAccountCollectionViewCell.xib; sourceTree = "<group>"; };
 		4FBB4C2F22473A3D00049F9B /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
@@ -303,7 +297,6 @@
 			isa = PBXGroup;
 			children = (
 				4F71770E22497F1F00F6C6CE /* AccountCardView.swift */,
-				4F71771022497F2D00F6C6CE /* AccountCardView.xib */,
 			);
 			path = AccountCardView;
 			sourceTree = "<group>";
@@ -331,7 +324,6 @@
 			isa = PBXGroup;
 			children = (
 				4FBB4C2122471CD800049F9B /* AccountCardTableViewCell.swift */,
-				4FBB4C2222471CD800049F9B /* AccountCardTableViewCell.xib */,
 			);
 			path = AccountCardTableViewCell;
 			sourceTree = "<group>";
@@ -401,7 +393,6 @@
 			isa = PBXGroup;
 			children = (
 				4F53897922383FE1004832B5 /* AccountCollectionViewCell.swift */,
-				4F53897A22383FE1004832B5 /* AccountCollectionViewCell.xib */,
 			);
 			path = AccountCollectionViewCell;
 			sourceTree = "<group>";
@@ -492,9 +483,6 @@
 				4F5CA0AB222E18C800ED29D4 /* Localizable.strings in Resources */,
 				4FBB4C2D22472EB100049F9B /* AddAccountCollectionViewCell.xib in Resources */,
 				4F84DA2922483B2A009861F1 /* MovementTypeCollectionViewCell.xib in Resources */,
-				4F53897C22383FE1004832B5 /* AccountCollectionViewCell.xib in Resources */,
-				4FBB4C2422471CD800049F9B /* AccountCardTableViewCell.xib in Resources */,
-				4F71771122497F2D00F6C6CE /* AccountCardView.xib in Resources */,
 				4F53897722383E41004832B5 /* AccountTableViewCell.xib in Resources */,
 				4F975E6C222F71E5009DA03C /* DefaultTableViewCell.xib in Resources */,
 				4FF9E85A2246A652009D4039 /* CurrencyCollectionViewCell.xib in Resources */,
