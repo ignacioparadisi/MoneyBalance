@@ -11,7 +11,7 @@ import RealmSwift
 
 class Currency: Object {
     
-    @objc dynamic var id: Int = 0
+    @objc dynamic var id: String = UUID().uuidString
     @objc dynamic var country: String = ""
     @objc dynamic var identifier: String = ""
     @objc dynamic var name: String = ""

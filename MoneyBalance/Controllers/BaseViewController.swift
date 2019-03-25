@@ -46,6 +46,7 @@ class BaseViewController: UIViewController {
     
     /// Sets up the view
     func setupView() {
+        view.backgroundColor = ThemeManager.currentTheme().backgroundColor
     }
     
     /// Sets up the navigation bar

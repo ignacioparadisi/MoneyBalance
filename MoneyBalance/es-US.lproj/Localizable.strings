@@ -31,6 +31,22 @@
 "Bank name" = "Nombre del banco";
 "Account Number" = "Número de Cuenta";
 "Account number" = "Número de cuenta";
+"Bank" = "Banco";
+"ID" = "Cédula";
+"Email" = "Correo electrónico";
+
+"Add currency" = "Agrega una moneda";
+"For creating a new account you should first add a currency." = "Para crear una nueva cuenta necesitas añadir una modena.";
+"Income" = "Ingreso";
+"Outcome" = "Gasto";
+
+"Amount" = "Cantidad";
+"Enter amount of money" = "Ingresa la cantidad de dinero";
+"Amount of money" = "Cantidad de dinero";
+"Movement type" = "Tipo de movimiento";
+"Select a movement type" = "Selecciona un tipo de movimiento";
+"Account" = "Cuenta";
+"Select an account" = "Selecciona una cuenta";
 
 // Settings
 "Language" = "Lenguaje";

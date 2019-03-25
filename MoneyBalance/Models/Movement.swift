@@ -11,11 +11,18 @@ import RealmSwift
 
 class Movement: Object {
     
-    @objc dynamic var id: Int = 0
+    enum MovementType: String {
+        case income = "Income"
+        case outcome = "Outcome"
+    }
+    
+    @objc dynamic var id: String = UUID().uuidString
     @objc dynamic var account: Account?
     @objc dynamic var type: String?
     @objc dynamic var amount: Double = 0.0
     @objc dynamic var movDescription: String?
+    @objc dynamic var date: Date = Date()
+    @objc dynamic var category: Category?
     
     override static func primaryKey() -> String? {
         return "id"

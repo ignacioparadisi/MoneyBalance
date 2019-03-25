@@ -36,4 +36,8 @@ class CustomTextField: UITextField {
         return bounds.inset(by: padding)
     }
     
+    func setPlaceholder(_ string: String) {
+        attributedPlaceholder = NSAttributedString(string: string, attributes: [NSAttributedString.Key.foregroundColor: ThemeManager.currentTheme().placeholderColor])
+    }
+    
 }

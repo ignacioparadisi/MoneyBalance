@@ -10,9 +10,14 @@ import UIKit
 
 class AccountDetailViewController: BaseViewController {
 
+    var account: Account = Account()
+    private var movemens: [Movement] = []
+    
     override func setupNavigationBar() {
         super.setupNavigationBar()
-        title = "Detail"
+        let image = UIImage(named: "bar_chart")
+        let chartsButton = UIBarButtonItem(image: image, style: .plain, target: self, action: nil)
+        navigationItem.setRightBarButton(chartsButton, animated: false)
     }
     
     override func setupView() {
@@ -29,6 +34,7 @@ class AccountDetailViewController: BaseViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! AccountCardTableViewCell
         cell.layoutIfNeeded()
+        cell.configureWith(account: account)
         cell.cardView.setGradientBackground(colorOne: ThemeManager.currentTheme().accentColor, colorTwo: ThemeManager.currentTheme().gradientColor)
         return cell
     }

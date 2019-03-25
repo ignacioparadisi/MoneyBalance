@@ -34,15 +34,24 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WFk-hN-Mia">
+                                <rect key="frame" x="16" y="147.5" width="248" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="WFk-hN-Mia" secondAttribute="bottom" constant="16" id="67g-Br-hyp"/>
                             <constraint firstAttribute="trailing" secondItem="OHs-nF-XTW" secondAttribute="trailing" constant="16" id="IT3-42-Ml0"/>
                             <constraint firstItem="OHs-nF-XTW" firstAttribute="leading" secondItem="DMX-IL-MMs" secondAttribute="leading" constant="16" id="Qvh-jJ-moR"/>
                             <constraint firstItem="OHs-nF-XTW" firstAttribute="centerX" secondItem="DMX-IL-MMs" secondAttribute="centerX" id="RPd-Ii-ja0"/>
+                            <constraint firstItem="WFk-hN-Mia" firstAttribute="leading" secondItem="DMX-IL-MMs" secondAttribute="leading" constant="16" id="XiR-bc-Vte"/>
                             <constraint firstItem="a9m-Pm-HL7" firstAttribute="leading" secondItem="DMX-IL-MMs" secondAttribute="leading" constant="16" id="k4q-qJ-SvR"/>
                             <constraint firstItem="a9m-Pm-HL7" firstAttribute="top" secondItem="DMX-IL-MMs" secondAttribute="top" constant="16" id="pOd-B0-dwD"/>
                             <constraint firstItem="OHs-nF-XTW" firstAttribute="centerY" secondItem="DMX-IL-MMs" secondAttribute="centerY" id="unU-W4-Qp4"/>
+                            <constraint firstAttribute="trailing" secondItem="WFk-hN-Mia" secondAttribute="trailing" constant="16" id="vqY-zs-jvC"/>
                             <constraint firstAttribute="trailing" secondItem="a9m-Pm-HL7" secondAttribute="trailing" constant="16" id="zTR-BH-Dwn"/>
                         </constraints>
                     </view>
@@ -56,6 +65,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="accountNumberLabel" destination="WFk-hN-Mia" id="ANW-N9-LWc"/>
                 <outlet property="amountLabel" destination="OHs-nF-XTW" id="Gd6-UN-ilI"/>
                 <outlet property="bankNameLabel" destination="a9m-Pm-HL7" id="C1C-j1-IiG"/>
                 <outlet property="cardView" destination="DMX-IL-MMs" id="5fP-qY-c8W"/>

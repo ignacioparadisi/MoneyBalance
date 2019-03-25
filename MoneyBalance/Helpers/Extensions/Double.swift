@@ -9,9 +9,9 @@
 import UIKit
 
 extension Double {
-    func toCurrency() -> String? {
+    func toCurrency(with identifier: String) -> String? {
         let currencyFormatter = NumberFormatter()
-        currencyFormatter.locale = Locale(identifier: "en_US")
+        currencyFormatter.locale = Locale(identifier: identifier)
         currencyFormatter.usesGroupingSeparator = true
         currencyFormatter.numberStyle = .currency
         return currencyFormatter.string(from: NSNumber(value: self))

@@ -41,9 +41,9 @@
                     </constraints>
                 </scrollView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWn-Z6-5Mw">
-                    <rect key="frame" x="20" y="597" width="335" height="50"/>
+                    <rect key="frame" x="20" y="592" width="335" height="55"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="LOY-tr-pXC"/>
+                        <constraint firstAttribute="height" constant="55" id="LOY-tr-pXC"/>
                     </constraints>
                     <state key="normal" title="Button"/>
                     <connections>

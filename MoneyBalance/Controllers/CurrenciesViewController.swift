@@ -37,10 +37,35 @@ class CurrenciesViewController: BaseViewController {
         collectionView.dataSource = self
         collectionView.backgroundColor = .clear
         collectionView.register(UINib(nibName: "CurrencyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
-        fetchData()
+        fetchCurrencies()
+        
+        if currencies.count == 0 {
+            collectionView.isHidden = true
+            let addCurrencyView = UIView()
+            let addCurrencyLabel = UILabel()
+            
+            addCurrencyView.backgroundColor = ThemeManager.currentTheme().lightBackgroundColor
+            addCurrencyView.layer.cornerRadius = 10
+            addCurrencyView.layer.masksToBounds = false
+            addCurrencyLabel.textColor = .lightGray
+            addCurrencyLabel.text = "Add new currency".localized()
+            addCurrencyLabel.textAlignment = .center
+            
+            addCurrencyView.addSubview(addCurrencyLabel)
+            view.addSubview(addCurrencyView)
+            
+            addCurrencyLabel.setConstraints(leadingAnchor: addCurrencyView.leadingAnchor, trailingAnchor: addCurrencyView.trailingAnchor, centerXAnchor: addCurrencyView.centerXAnchor, centerYAnchor: addCurrencyView.centerYAnchor, leadingConstant: 16, trailingConstant: -16)
+            addCurrencyView.setConstraints(topAnchor: view.safeAreaLayoutGuide.topAnchor, leadingAnchor: view.leadingAnchor, trailingAnchor: view.trailingAnchor, topConstant: 16, leadingConstant: 16, trailingConstant: -16, heightConstant: 55)
+            
+            let tap = UITapGestureRecognizer(target: self, action: #selector(addCurrency))
+            addCurrencyView.addGestureRecognizer(tap)
+            addCurrencyView.isUserInteractionEnabled = true
+            
+            view.bringSubviewToFront(addCurrencyView)
+        }
     }
     
-    private func fetchData() {
+    private func fetchCurrencies() {
         currencies = RealmManager.shared.getArray(ofType: Currency.self, filter: "owned == true") as! [Currency]
         currencies.sort { (currency1, currency2) -> Bool in
             return currency1.name < currency2.name
@@ -50,6 +75,7 @@ class CurrenciesViewController: BaseViewController {
     
     @objc private func addCurrency() {
         let controller = AddNewCurrencyViewController()
+        controller.delegate = self
         presentAsStork(UINavigationController(rootViewController: controller))
     }
     
@@ -74,7 +100,7 @@ extension CurrenciesViewController: UICollectionViewDelegate, UICollectionViewDa
         RealmManager.shared.changeCurrency(currency)
         Currency.setCurrent(currency)
         delegate?.selectedCurrencyChanged()
-        fetchData()
+        fetchCurrencies()
     }
 }
 
@@ -98,7 +124,8 @@ extension CurrenciesViewController: UICollectionViewDelegateFlowLayout {
 
 extension CurrenciesViewController: AddNewCurrencyViewControllerDelegate {
     func selectedCurrencyChanged() {
-        fetchData()
+        fetchCurrencies()
+        delegate?.selectedCurrencyChanged()
     }
 }
 

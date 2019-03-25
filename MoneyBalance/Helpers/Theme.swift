@@ -92,6 +92,15 @@ enum Theme: Int {
         }
     }
     
+    var placeholderColor: UIColor {
+        switch self {
+        case .light:
+            return UIColor("B6B6BB")
+        case .dark:
+            return .lightGray
+        }
+    }
+    
     var highlightTableViewCellColor: UIColor {
         switch self {
         case .light:

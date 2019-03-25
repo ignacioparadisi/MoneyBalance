@@ -113,14 +113,44 @@ extension HomeViewController: CurrenciesViewControllerDelegate, AddNewCurrencyVi
 
 extension HomeViewController: AccountTableViewCellDelegate {
     func goToAddAccount() {
+        if Currency.current == nil {
+            showAddCurrencyAlert()
+            return
+        }
         let viewController = AddAccountViewController(nibName: "AddViewController", bundle: nil)
         viewController.delegate = self
         presentAsStork(UINavigationController(rootViewController: viewController), showIndicator: true)
     }
     
-    func goToDetail(for account: Account?) {
+    func goToDetail(for account: Account) {
         let controller = AccountDetailViewController()
+        controller.title = account.bankName
+        controller.account = account
         navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    private func showAddCurrencyAlert() {
+        let alert = UIAlertController(title: "Add currency".localized(), message: "For creating a new account you should first add a currency.".localized(), preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil)
+        let addCurrencyAction = UIAlertAction(title: "Add".localized(), style: .default) { action in
+            self.presentCurrenciesView()
+        }
+        
+        alert.addAction(cancelAction)
+        alert.addAction(addCurrencyAction)
+        present(alert, animated: true)
+    }
+    
+    func shareAccount(_ text: String) {
+        let activityViewController = UIActivityViewController(activityItems: [text], applicationActivities: nil)
+        activityViewController.completionWithItemsHandler = { (_, completed, _, error) in
+            if completed {
+                print("Shared")
+            } else {
+                print("Not shared")
+            }
+        }
+        present(activityViewController, animated: true)
     }
 }
 

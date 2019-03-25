@@ -31,6 +31,22 @@
 "Bank name" = "Bank name";
 "Account Number" = "Account Number";
 "Account number" = "Account number";
+"Bank" = "Bank";
+"ID" = "ID";
+"Email" = "Email";
+
+"Add currency" = "Add currency";
+"For creating a new account you should first add a currency." = "For creating a new account you should first add a currency.";
+"Income" = "Income";
+"Outcome" = "Outcome";
+
+"Amount" = "Amount";
+"Enter amount of money" = "Enter amount of money";
+"Amount of money" = "Amount of money";
+"Movement type" = "Movement type";
+"Select a movement type" = "Select a movement type";
+"Account" = "Account";
+"Select an account" = "Select an account";
 
 // Settings
 "Language" = "Language";

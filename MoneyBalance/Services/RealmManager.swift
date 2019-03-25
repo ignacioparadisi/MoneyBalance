@@ -25,19 +25,28 @@ class RealmManager {
         try! self.database.write {
             self.database.add(object)
         }
+        
+        if let movement = object as? Movement, let account =  movement.account {
+            var filter = "account.id == '\(account.id)' AND type == '\(Movement.MovementType.income.rawValue)'"
+            let income = getSum(ofType: Movement.self, property: "amount", filter: filter)
+            filter = "account.id == '\(account.id)' AND type == '\(Movement.MovementType.outcome.rawValue)'"
+            let outcome = getSum(ofType: Movement.self, property: "amount", filter: filter)
+            let balance = income - outcome
+            try! self.database.write {
+                account.money = balance
+            }
+        }
     }
     
     func createCurrencies() {
         if get(Currency.self).count == 0 {
             let bs = Currency()
-            bs.id = 0
             bs.country = "Venezuela"
             bs.name = "Bs. S"
             bs.identifier = "es_VE"
             add(bs)
             
             let usd = Currency()
-            usd.id = 1
             usd.country = "Estados Unidos"
             usd.name = "USD"
             usd.identifier = "en_US"
@@ -58,6 +67,10 @@ class RealmManager {
             results = results.filter(filt)
         }
         return results.toArray(ofType: type) as [Object]
+    }
+    
+    func getSum(ofType type: Object.Type, property: String, filter: String = "") -> Double {
+        return get(type).filter(filter).sum(ofProperty: property)
     }
     
     // MARK: - UPDATE

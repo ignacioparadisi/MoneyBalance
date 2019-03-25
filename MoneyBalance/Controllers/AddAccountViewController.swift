@@ -43,9 +43,9 @@ class AddAccountViewController: AddViewController {
         super.setupView()
         nameTitleLabel.text = "Name".localized()
         nameDescriptionLabel.text = "Enter the name of the bank".localized()
-        nameTextField.placeholder = "Bank name".localized()
+        nameTextField.setPlaceholder("Bank name".localized())
         accountNumberTitleLabel.text = "Account Number".localized()
-        accountNumberTextField.placeholder = "Account number".localized()
+        accountNumberTextField.setPlaceholder("Account number".localized())
         
         nameTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         accountNumberTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
@@ -57,11 +57,11 @@ class AddAccountViewController: AddViewController {
         contentView.addSubview(accountNumberTitleLabel)
         contentView.addSubview(accountNumberTextField)
         
-        nameTitleLabel.setConstraints(topAnchor: contentView.topAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: 20, leadingConstant: 16, trailingConstant: -16)
-        nameDescriptionLabel.setConstraints(topAnchor: nameTitleLabel.bottomAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: 8, leadingConstant: 16, trailingConstant: -16)
-        nameTextField.setConstraints(topAnchor: nameDescriptionLabel.bottomAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: 10, leadingConstant: 16, trailingConstant: -16)
-        accountNumberTitleLabel.setConstraints(topAnchor: nameTextField.bottomAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: 20, leadingConstant: 16, trailingConstant: -16)
-        accountNumberTextField.setConstraints(topAnchor: accountNumberTitleLabel.bottomAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: 10, leadingConstant: 16, trailingConstant: -16)
+        nameTitleLabel.setConstraints(topAnchor: contentView.topAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: titleTopConstant, leadingConstant: leadingConstant, trailingConstant: trailingConstant)
+        nameDescriptionLabel.setConstraints(topAnchor: nameTitleLabel.bottomAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: descriptionTopConstant, leadingConstant: leadingConstant, trailingConstant: trailingConstant)
+        nameTextField.setConstraints(topAnchor: nameDescriptionLabel.bottomAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: textFieldTopConstant, leadingConstant: leadingConstant, trailingConstant: trailingConstant)
+        accountNumberTitleLabel.setConstraints(topAnchor: nameTextField.bottomAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: titleTopConstant, leadingConstant: leadingConstant, trailingConstant: trailingConstant)
+        accountNumberTextField.setConstraints(topAnchor: accountNumberTitleLabel.bottomAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: textFieldTopConstant, leadingConstant: leadingConstant, trailingConstant: trailingConstant)
         
         shouldEnabledButton()
     }

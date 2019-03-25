@@ -37,12 +37,22 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hYV-MJ-TlM">
+                        <rect key="frame" x="151" y="10" width="35" height="35"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="35" id="JRZ-dX-eZz"/>
+                            <constraint firstAttribute="height" constant="35" id="stf-tJ-2Y5"/>
+                        </constraints>
+                        <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                    </button>
                 </subviews>
             </view>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="hYV-MJ-TlM" secondAttribute="trailing" constant="10" id="97R-fM-A6K"/>
                 <constraint firstAttribute="bottom" secondItem="rEd-BS-33T" secondAttribute="bottom" constant="16" id="FlY-Lb-m74"/>
                 <constraint firstAttribute="trailing" secondItem="rEd-BS-33T" secondAttribute="trailing" constant="16" id="H7I-Xt-7LQ"/>
                 <constraint firstItem="dzm-NX-Lvs" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="I7J-x8-AOg"/>
+                <constraint firstItem="hYV-MJ-TlM" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="KmC-hY-ECD"/>
                 <constraint firstItem="dzm-NX-Lvs" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Q3b-WR-dDd"/>
                 <constraint firstItem="dzm-NX-Lvs" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="hJf-Q3-hyg"/>
                 <constraint firstAttribute="trailing" secondItem="dzm-NX-Lvs" secondAttribute="trailing" constant="8" id="o8x-ot-7F9"/>
@@ -57,6 +67,7 @@
                 <outlet property="accountNumberLabel" destination="rEd-BS-33T" id="GS3-UK-sDc"/>
                 <outlet property="amountLabel" destination="dzm-NX-Lvs" id="kr0-Md-6UY"/>
                 <outlet property="bankNameLabel" destination="Ne6-nq-x3j" id="Pi8-TI-RGq"/>
+                <outlet property="shareButton" destination="hYV-MJ-TlM" id="1nM-EN-YLr"/>
             </connections>
             <point key="canvasLocation" x="112" y="159.22038980509745"/>
         </collectionViewCell>

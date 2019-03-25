@@ -11,7 +11,8 @@ import UIKit
 protocol AccountTableViewCellDelegate {
     func goToAddAccount()
 //    func goToDetail(for account: Account?, frame: CGRect)
-    func goToDetail(for account: Account?)
+    func goToDetail(for account: Account)
+    func shareAccount(_ text: String)
 }
 
 class AccountTableViewCell: UITableViewCell {
@@ -40,7 +41,9 @@ class AccountTableViewCell: UITableViewCell {
     }
     
     @objc private func fetchAccounts() {
-        accounts = RealmManager.shared.getArray(ofType: Account.self) as! [Account]
+        if let currentCurrency = Currency.current {
+            accounts = RealmManager.shared.getArray(ofType: Account.self, filter: "currency.id == '\(currentCurrency.id)'") as! [Account]
+        }
         collectionView.reloadData()
     }
     
@@ -64,6 +67,7 @@ extension AccountTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
             return cell
         }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! AccountCollectionViewCell
+        cell.delegate = self
         cell.configureWith(account: accounts[indexPath.item])
         cell.setGradientBackground(colorOne: ThemeManager.currentTheme().accentColor, colorTwo: ThemeManager.currentTheme().gradientColor)
         return cell
@@ -76,7 +80,8 @@ extension AccountTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
             delegate?.goToAddAccount()
             return
         }
-        delegate?.goToDetail(for: nil)
+        let account = accounts[indexPath.item]
+        delegate?.goToDetail(for: account)
     }
 }
 
@@ -95,5 +100,11 @@ extension AccountTableViewCell: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return sectionInsets * 2
+    }
+}
+
+extension AccountTableViewCell: AccountCollectionViewCellDelegate {
+    func shareAccount(_ text: String) {
+        delegate?.shareAccount(text)
     }
 }

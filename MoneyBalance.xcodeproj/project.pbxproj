@@ -27,11 +27,16 @@
 		4F6950AA222DFC47008FD9EA /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6950A9222DFC47008FD9EA /* Currency.swift */; };
 		4F77FBCD2247C29E0088A9E4 /* UViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F77FBCC2247C29E0088A9E4 /* UViewController.swift */; };
 		4F77FBCF2247CAE60088A9E4 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F77FBCE2247CAE60088A9E4 /* NotificationCenter.swift */; };
+		4F77FBD7224817E90088A9E4 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F77FBD6224817E90088A9E4 /* Category.swift */; };
 		4F7E3D4D222EA18A00112275 /* LauncherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7E3D4C222EA18A00112275 /* LauncherViewController.swift */; };
 		4F7E3D53222EBE5D00112275 /* AuthenticationFailedView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F7E3D52222EBE5D00112275 /* AuthenticationFailedView.xib */; };
 		4F7E3D55222EBF0200112275 /* AuthenticationFailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7E3D54222EBF0200112275 /* AuthenticationFailedView.swift */; };
 		4F7E3D57222EC84F00112275 /* Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7E3D56222EC84F00112275 /* Localize.swift */; };
 		4F7E3D5A222ED13900112275 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7E3D59222ED13900112275 /* SettingsViewController.swift */; };
+		4F84DA2822483B2A009861F1 /* MovementTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F84DA2622483B2A009861F1 /* MovementTypeCollectionViewCell.swift */; };
+		4F84DA2922483B2A009861F1 /* MovementTypeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F84DA2722483B2A009861F1 /* MovementTypeCollectionViewCell.xib */; };
+		4F84DA2C22484852009861F1 /* PickButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F84DA2B22484852009861F1 /* PickButton.swift */; };
+		4F84DA2E22485458009861F1 /* AccountSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F84DA2D22485458009861F1 /* AccountSelectionViewController.swift */; };
 		4F95969A2238687700205D3D /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9596992238687700205D3D /* Account.swift */; };
 		4F95969C22386A5A00205D3D /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F95969B22386A5A00205D3D /* RealmManager.swift */; };
 		4F975E55222F3ACC009DA03C /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F975E54222F3ACC009DA03C /* Theme.swift */; };
@@ -89,12 +94,17 @@
 		4F6950A9222DFC47008FD9EA /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		4F77FBCC2247C29E0088A9E4 /* UViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UViewController.swift; sourceTree = "<group>"; };
 		4F77FBCE2247CAE60088A9E4 /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
+		4F77FBD6224817E90088A9E4 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		4F7E3D4C222EA18A00112275 /* LauncherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauncherViewController.swift; sourceTree = "<group>"; };
 		4F7E3D52222EBE5D00112275 /* AuthenticationFailedView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthenticationFailedView.xib; sourceTree = "<group>"; };
 		4F7E3D54222EBF0200112275 /* AuthenticationFailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationFailedView.swift; sourceTree = "<group>"; };
 		4F7E3D56222EC84F00112275 /* Localize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localize.swift; sourceTree = "<group>"; };
 		4F7E3D58222ECBAE00112275 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4F7E3D59222ED13900112275 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		4F84DA2622483B2A009861F1 /* MovementTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementTypeCollectionViewCell.swift; sourceTree = "<group>"; };
+		4F84DA2722483B2A009861F1 /* MovementTypeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovementTypeCollectionViewCell.xib; sourceTree = "<group>"; };
+		4F84DA2B22484852009861F1 /* PickButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickButton.swift; sourceTree = "<group>"; };
+		4F84DA2D22485458009861F1 /* AccountSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSelectionViewController.swift; sourceTree = "<group>"; };
 		4F9596992238687700205D3D /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		4F95969B22386A5A00205D3D /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		4F975E54222F3ACC009DA03C /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -163,6 +173,7 @@
 		4F53897822383FBB004832B5 /* CollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				4F84DA2A22483B2F009861F1 /* MovementTypeCollectionViewCell */,
 				4FBB4C2E2247325200049F9B /* AddAccountCollectionViewCell */,
 				4FF9E8562246A627009D4039 /* CurrencyCollectionViewCell */,
 				4FF9E8552246A61A009D4039 /* AccountCollectionViewCell */,
@@ -231,6 +242,7 @@
 				4F5CA0A4222E13A900ED29D4 /* Movement.swift */,
 				4F5CA0A6222E170800ED29D4 /* LocaleCurrency.swift */,
 				4F9596992238687700205D3D /* Account.swift */,
+				4F77FBD6224817E90088A9E4 /* Category.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -264,6 +276,7 @@
 				4FF9E84D224677DE009D4039 /* AddAccountViewController.swift */,
 				4FF9E84F22468A21009D4039 /* AddMovementViewController.swift */,
 				4FBB4C1F2247174F00049F9B /* AccountDetailViewController.swift */,
+				4F84DA2D22485458009861F1 /* AccountSelectionViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -284,8 +297,18 @@
 			children = (
 				4FBB4C2F22473A3D00049F9B /* CustomTextField.swift */,
 				4FD4EBF822459A5F00079935 /* TitleLabel.swift */,
+				4F84DA2B22484852009861F1 /* PickButton.swift */,
 			);
 			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		4F84DA2A22483B2F009861F1 /* MovementTypeCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				4F84DA2622483B2A009861F1 /* MovementTypeCollectionViewCell.swift */,
+				4F84DA2722483B2A009861F1 /* MovementTypeCollectionViewCell.xib */,
+			);
+			path = MovementTypeCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		4FBB4C2522471CDE00049F9B /* AccountCardTableViewCell */ = {
@@ -451,6 +474,7 @@
 				4F53898222384D1D004832B5 /* CurrenciesViewController.xib in Resources */,
 				4F5CA0AB222E18C800ED29D4 /* Localizable.strings in Resources */,
 				4FBB4C2D22472EB100049F9B /* AddAccountCollectionViewCell.xib in Resources */,
+				4F84DA2922483B2A009861F1 /* MovementTypeCollectionViewCell.xib in Resources */,
 				4F53897C22383FE1004832B5 /* AccountCollectionViewCell.xib in Resources */,
 				4FBB4C2422471CD800049F9B /* AccountCardTableViewCell.xib in Resources */,
 				4F53897722383E41004832B5 /* AccountTableViewCell.xib in Resources */,
@@ -536,9 +560,11 @@
 				4FAE5C9E2236FFA600762300 /* SwitchTableViewCell.swift in Sources */,
 				4FAE5CA32237138A00762300 /* ScreenLockSettingsViewController.swift in Sources */,
 				4FF9E84C224673C0009D4039 /* String.swift in Sources */,
+				4F84DA2822483B2A009861F1 /* MovementTypeCollectionViewCell.swift in Sources */,
 				4FAF5BDB2238833600105EDE /* AddNewCurrencyViewController.swift in Sources */,
 				4FBB4C2C22472EB100049F9B /* AddAccountCollectionViewCell.swift in Sources */,
 				4F95969C22386A5A00205D3D /* RealmManager.swift in Sources */,
+				4F84DA2C22484852009861F1 /* PickButton.swift in Sources */,
 				4F7E3D4D222EA18A00112275 /* LauncherViewController.swift in Sources */,
 				4FF9E84822467398009D4039 /* UIImageView.swift in Sources */,
 				4FF9E8592246A652009D4039 /* CurrencyCollectionViewCell.swift in Sources */,
@@ -563,6 +589,8 @@
 				4FD4EBF922459A5F00079935 /* TitleLabel.swift in Sources */,
 				4FAE5CA1223703EC00762300 /* Utils.swift in Sources */,
 				4F6950AA222DFC47008FD9EA /* Currency.swift in Sources */,
+				4F77FBD7224817E90088A9E4 /* Category.swift in Sources */,
+				4F84DA2E22485458009861F1 /* AccountSelectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
