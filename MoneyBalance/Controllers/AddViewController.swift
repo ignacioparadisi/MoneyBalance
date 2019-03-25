@@ -18,7 +18,15 @@ class AddViewController: BaseViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var contentView: UIView!
-
+    @IBOutlet weak var bottomBackgroundView: UIView!
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        addButton.setGradientBackground(colorOne: ThemeManager.currentTheme().accentColor, colorTwo: ThemeManager.currentTheme().gradientColor)
+        let white: CGFloat = ThemeManager.currentTheme() == .light ? 1 : 0
+        bottomBackgroundView.setGradientBackground2(colorOne: UIColor(white: white, alpha: 0), colorTwo: UIColor(white: white, alpha: 1))
+    }
+    
     override func setupNavigationBar() {
         super.setupNavigationBar()
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -28,14 +36,15 @@ class AddViewController: BaseViewController {
     
     override func setupView() {
         super.setupView()
-//        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 95, right: 0)
-//        scrollView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 95, right: 0)
         view.backgroundColor = ThemeManager.currentTheme().backgroundColor
-        addButton.setGradientBackground(colorOne: ThemeManager.currentTheme().accentColor, colorTwo: ThemeManager.currentTheme().gradientColor)
         addButton.setTitle("Add".localized(), for: .normal)
         addButton.setTitleColor(.white, for: .normal)
         scrollView.backgroundColor = ThemeManager.currentTheme().backgroundColor
         contentView.backgroundColor = .clear
+        addButton.backgroundColor = .lightGray
+        addButton.layer.cornerRadius = 10
+        addButton.layer.masksToBounds = false
+        bottomBackgroundView.backgroundColor = .clear
     }
     
     

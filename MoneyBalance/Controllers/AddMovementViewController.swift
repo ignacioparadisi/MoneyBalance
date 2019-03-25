@@ -30,7 +30,8 @@ class AddMovementViewController: AddViewController {
     
     override func setupView() {
         super.setupView()
-        scrollView.contentSize = CGSize(width: view.frame.width, height: 600)
+        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bottomBackgroundView.frame.height, right: 0)
+        scrollView.scrollIndicatorInsets = scrollView.contentInset
         setupAmountSection()
         setupMovementTypeSection()
         setupAccountSection()
@@ -115,7 +116,7 @@ class AddMovementViewController: AddViewController {
         contentView.addSubview(dateButton)
         
         titleLabel.setConstraints(topAnchor: accountButton.bottomAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: titleTopConstant, leadingConstant: leadingConstant, trailingConstant: trailingConstant)
-        dateButton.setConstraints(topAnchor: titleLabel.bottomAnchor, leadingAnchor: contentView.leadingAnchor,  trailingAnchor: contentView.trailingAnchor, topConstant: textFieldTopConstant, leadingConstant: leadingConstant, trailingConstant: trailingConstant, heightConstant: 55)
+        dateButton.setConstraints(topAnchor: titleLabel.bottomAnchor, leadingAnchor: contentView.leadingAnchor, bottomAnchor: contentView.bottomAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: textFieldTopConstant, leadingConstant: leadingConstant, bottomConstant: 0, trailingConstant: trailingConstant, heightConstant: 55)
     }
     
     @objc private func presentDatePicker() {
