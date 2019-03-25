@@ -88,7 +88,7 @@ class HomeViewController: BaseViewController {
     
     @objc private func goToAddMovement() {
         let viewController = AddMovementViewController(nibName: "AddViewController", bundle: nil)
-        presentAsStork(UINavigationController(rootViewController: viewController), showIndicator: true)
+        presentAsStork(UINavigationController(rootViewController: viewController))
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -23,8 +23,6 @@ class AddViewController: BaseViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         addButton.setGradientBackground(colorOne: ThemeManager.currentTheme().accentColor, colorTwo: ThemeManager.currentTheme().gradientColor)
-        let white: CGFloat = ThemeManager.currentTheme() == .light ? 1 : 0
-        bottomBackgroundView.setGradientBackground2(colorOne: UIColor(white: white, alpha: 0), colorTwo: UIColor(white: white, alpha: 1))
     }
     
     override func setupNavigationBar() {
@@ -39,12 +37,14 @@ class AddViewController: BaseViewController {
         view.backgroundColor = ThemeManager.currentTheme().backgroundColor
         addButton.setTitle("Add".localized(), for: .normal)
         addButton.setTitleColor(.white, for: .normal)
-        scrollView.backgroundColor = ThemeManager.currentTheme().backgroundColor
+        scrollView.backgroundColor = .clear
         contentView.backgroundColor = .clear
         addButton.backgroundColor = .lightGray
         addButton.layer.cornerRadius = 10
         addButton.layer.masksToBounds = false
         bottomBackgroundView.backgroundColor = .clear
+        let white: CGFloat = ThemeManager.currentTheme() == .light ? 1 : 0.07
+        bottomBackgroundView.setGradientBackground2(colorOne: UIColor(white: white, alpha: 0), colorTwo: UIColor(white: white, alpha: 1))
     }
     
     

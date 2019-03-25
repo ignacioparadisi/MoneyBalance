@@ -17,6 +17,7 @@ class AccountCardView: UIView {
     var delegate: AccountCardViewDelegate?
     var amountLabel: TitleLabel = {
         let label = TitleLabel()
+        label.textColor = .white
         label.textAlignment = .center
         return label
     }()

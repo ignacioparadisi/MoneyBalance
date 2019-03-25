@@ -25,6 +25,7 @@
 		4F6950A6222D95E8008FD9EA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6950A5222D95E8008FD9EA /* HomeViewController.swift */; };
 		4F6950AA222DFC47008FD9EA /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6950A9222DFC47008FD9EA /* Currency.swift */; };
 		4F71770F22497F1F00F6C6CE /* AccountCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F71770E22497F1F00F6C6CE /* AccountCardView.swift */; };
+		4F7177132249930500F6C6CE /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7177122249930500F6C6CE /* CustomTextView.swift */; };
 		4F77FBCD2247C29E0088A9E4 /* UViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F77FBCC2247C29E0088A9E4 /* UViewController.swift */; };
 		4F77FBCF2247CAE60088A9E4 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F77FBCE2247CAE60088A9E4 /* NotificationCenter.swift */; };
 		4F77FBD7224817E90088A9E4 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F77FBD6224817E90088A9E4 /* Category.swift */; };
@@ -92,6 +93,7 @@
 		4F6950A5222D95E8008FD9EA /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		4F6950A9222DFC47008FD9EA /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		4F71770E22497F1F00F6C6CE /* AccountCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCardView.swift; sourceTree = "<group>"; };
+		4F7177122249930500F6C6CE /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		4F77FBCC2247C29E0088A9E4 /* UViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UViewController.swift; sourceTree = "<group>"; };
 		4F77FBCE2247CAE60088A9E4 /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		4F77FBD6224817E90088A9E4 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -293,20 +295,13 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		4F71770D22497EF800F6C6CE /* AccountCardView */ = {
-			isa = PBXGroup;
-			children = (
-				4F71770E22497F1F00F6C6CE /* AccountCardView.swift */,
-			);
-			path = AccountCardView;
-			sourceTree = "<group>";
-		};
 		4F77FBCB2247BD400088A9E4 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
 				4FBB4C2F22473A3D00049F9B /* CustomTextField.swift */,
 				4FD4EBF822459A5F00079935 /* TitleLabel.swift */,
 				4F84DA2B22484852009861F1 /* PickButton.swift */,
+				4F7177122249930500F6C6CE /* CustomTextView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -340,7 +335,7 @@
 		4FED8A04222FF23D009E3965 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4F71770D22497EF800F6C6CE /* AccountCardView */,
+				4F71770E22497F1F00F6C6CE /* AccountCardView.swift */,
 				4FD4EBFB2245C3C100079935 /* AddViewController.xib */,
 				4F53898022384D1D004832B5 /* CurrenciesViewController.xib */,
 				4FED8A05222FF25C009E3965 /* AuthenticationFailedView */,
@@ -525,6 +520,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MoneyBalance/Pods-MoneyBalance-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SPStorkController/SPStorkController.framework",
@@ -535,6 +531,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SPStorkController.framework",
@@ -578,6 +575,7 @@
 				4FF9E8592246A652009D4039 /* CurrencyCollectionViewCell.swift in Sources */,
 				4FF9E84E224677DE009D4039 /* AddAccountViewController.swift in Sources */,
 				4FD4EBFC2245C3C100079935 /* AddViewController.swift in Sources */,
+				4F7177132249930500F6C6CE /* CustomTextView.swift in Sources */,
 				4FBB4C2322471CD800049F9B /* AccountCardTableViewCell.swift in Sources */,
 				4F7E3D57222EC84F00112275 /* Localize.swift in Sources */,
 				4FBB4C1E22470A4800049F9B /* AnimationControlller.swift in Sources */,

@@ -47,6 +47,8 @@
 "Select a movement type" = "Selecciona un tipo de movimiento";
 "Account" = "Cuenta";
 "Select an account" = "Selecciona una cuenta";
+"Date" = "Fecha";
+"Select a date" = "Selecciona una fecha";
 
 // Settings
 "Language" = "Lenguaje";

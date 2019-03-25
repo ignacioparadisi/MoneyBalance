@@ -13,12 +13,13 @@ class AddMovementViewController: AddViewController {
     private let movementTypes: [Movement.MovementType] = [.income, .outcome]
     private lazy var amountTextField: CustomTextField = {
         let textField = CustomTextField()
-        textField.keyboardType = .numbersAndPunctuation
+        textField.keyboardType = .decimalPad
         return textField
     }()
     private var typeCollectionView: UICollectionView!
     private lazy var accountButton: PickButton = PickButton()
     private lazy var dateButton: PickButton = PickButton()
+    private lazy var descriptionTextView: CustomTextView = CustomTextView()
     private var selectedTypeIndex = -1
     private var selectedAccount: Account?
     private var selectedDate: Date?
@@ -36,6 +37,7 @@ class AddMovementViewController: AddViewController {
         setupMovementTypeSection()
         setupAccountSection()
         setupDateSection()
+        setupDescriptionSection()
     }
     
     private func setupAmountSection() {
@@ -115,14 +117,43 @@ class AddMovementViewController: AddViewController {
         contentView.addSubview(titleLabel)
         contentView.addSubview(dateButton)
         
-        titleLabel.setConstraints(topAnchor: accountButton.bottomAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: titleTopConstant, leadingConstant: leadingConstant, trailingConstant: trailingConstant)
-        dateButton.setConstraints(topAnchor: titleLabel.bottomAnchor, leadingAnchor: contentView.leadingAnchor, bottomAnchor: contentView.bottomAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: textFieldTopConstant, leadingConstant: leadingConstant, bottomConstant: 0, trailingConstant: trailingConstant, heightConstant: 55)
+        setupConstraints(for: dateButton, titleTopConstraint: accountButton.bottomAnchor, titleLabel: titleLabel)
+        dateButton.setConstraints(heightConstant: 55)
     }
     
     @objc private func presentDatePicker() {
         let viewController =  DateSelectionViewController()
         viewController.delegate = self
         presentAsStork(UINavigationController(rootViewController: viewController), height: 300, showIndicator: false)
+    }
+    
+    private func setupDescriptionSection() {
+        let titleLabel: TitleLabel = TitleLabel()
+        titleLabel.text = "Description".localized()
+        let descriptionLabel = UILabel()
+        descriptionLabel.textColor = ThemeManager.currentTheme().textColor
+        descriptionLabel.text = "Add a description for the movement".localized()
+        
+        descriptionTextView.delegate = self
+        
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(descriptionLabel)
+        contentView.addSubview(descriptionTextView)
+        
+        setupConstraints(for: descriptionTextView, titleTopConstraint: dateButton.bottomAnchor, titleLabel: titleLabel, descriptionLabel: descriptionLabel)
+        descriptionTextView.setConstraints(bottomAnchor: contentView.bottomAnchor, bottomConstant: trailingConstant, heightConstant: 100)
+    }
+    
+    private func setupConstraints(for view: UIView, titleTopConstraint: NSLayoutYAxisAnchor, titleLabel: UILabel, descriptionLabel: UILabel? = nil) {
+        titleLabel.setConstraints(topAnchor: titleTopConstraint, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: titleTopConstant, leadingConstant: leadingConstant, trailingConstant: trailingConstant)
+        
+        var viewTopAnchor: NSLayoutYAxisAnchor = titleLabel.bottomAnchor
+        if let descriptionLbl = descriptionLabel {
+            descriptionLbl.setConstraints(topAnchor: titleLabel.bottomAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: descriptionTopConstant, leadingConstant: leadingConstant, trailingConstant: trailingConstant)
+            viewTopAnchor = descriptionLbl.bottomAnchor
+        }
+        
+        view.setConstraints(topAnchor: viewTopAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: textFieldTopConstant, leadingConstant: leadingConstant, trailingConstant: trailingConstant)
     }
     
     override func addButtonAction(_ sender: Any) {
@@ -179,6 +210,10 @@ extension AddMovementViewController: DateSelectionViewControllerDelegate {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
         let title = dateFormatter.string(from: date)
-        accountButton.setTitle(title, for: .normal)
+        dateButton.setTitle(title, for: .normal)
     }
+}
+
+extension AddMovementViewController: UITextViewDelegate {
+    
 }
