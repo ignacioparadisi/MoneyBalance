@@ -55,6 +55,10 @@ class HomeViewController: BaseViewController {
         tableView.register(UINib(nibName: "AccountTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
         view.bringSubviewToFront(addMovementButton)
         
+        let cardView = Bundle.main.loadNibNamed("AccountCardView", owner: self, options: nil)?.first as! AccountCardView
+        view.addSubview(cardView)
+        cardView.setConstraints(leadingAnchor: view.leadingAnchor, bottomAnchor: view.bottomAnchor, trailingAnchor: view.trailingAnchor, heightConstant: 200)
+        
     }
     
     /// Creates the design of the navigationItem.titleView and adds tapGestureRecognizer
