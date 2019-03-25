@@ -55,6 +55,7 @@
 		4FBB4C2C22472EB100049F9B /* AddAccountCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBB4C2A22472EB100049F9B /* AddAccountCollectionViewCell.swift */; };
 		4FBB4C2D22472EB100049F9B /* AddAccountCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FBB4C2B22472EB100049F9B /* AddAccountCollectionViewCell.xib */; };
 		4FBB4C3022473A3D00049F9B /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBB4C2F22473A3D00049F9B /* CustomTextField.swift */; };
+		4FD02422224908B000248B19 /* DateSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD02421224908B000248B19 /* DateSelectionViewController.swift */; };
 		4FD4EBF922459A5F00079935 /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD4EBF822459A5F00079935 /* TitleLabel.swift */; };
 		4FD4EBFC2245C3C100079935 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD4EBFA2245C3C100079935 /* AddViewController.swift */; };
 		4FD4EBFD2245C3C100079935 /* AddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FD4EBFB2245C3C100079935 /* AddViewController.xib */; };
@@ -124,6 +125,7 @@
 		4FBB4C2A22472EB100049F9B /* AddAccountCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountCollectionViewCell.swift; sourceTree = "<group>"; };
 		4FBB4C2B22472EB100049F9B /* AddAccountCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddAccountCollectionViewCell.xib; sourceTree = "<group>"; };
 		4FBB4C2F22473A3D00049F9B /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		4FD02421224908B000248B19 /* DateSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectionViewController.swift; sourceTree = "<group>"; };
 		4FD4EBF822459A5F00079935 /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
 		4FD4EBFA2245C3C100079935 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		4FD4EBFB2245C3C100079935 /* AddViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddViewController.xib; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 				4FF9E84F22468A21009D4039 /* AddMovementViewController.swift */,
 				4FBB4C1F2247174F00049F9B /* AccountDetailViewController.swift */,
 				4F84DA2D22485458009861F1 /* AccountSelectionViewController.swift */,
+				4FD02421224908B000248B19 /* DateSelectionViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -549,6 +552,7 @@
 				4F7E3D55222EBF0200112275 /* AuthenticationFailedView.swift in Sources */,
 				4F53898122384D1D004832B5 /* CurrenciesViewController.swift in Sources */,
 				4FF9E84A224673AC009D4039 /* Double.swift in Sources */,
+				4FD02422224908B000248B19 /* DateSelectionViewController.swift in Sources */,
 				4F5CA0A7222E170800ED29D4 /* LocaleCurrency.swift in Sources */,
 				4F77FBCD2247C29E0088A9E4 /* UViewController.swift in Sources */,
 				4FF9E8442246734A009D4039 /* UIView.swift in Sources */,

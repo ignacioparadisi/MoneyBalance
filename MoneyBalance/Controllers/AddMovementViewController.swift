@@ -18,9 +18,10 @@ class AddMovementViewController: AddViewController {
     }()
     private var typeCollectionView: UICollectionView!
     private lazy var accountButton: PickButton = PickButton()
+    private lazy var dateButton: PickButton = PickButton()
     private var selectedTypeIndex = -1
     private var selectedAccount: Account?
-    
+    private var selectedDate: Date?
 
     override func setupNavigationBar() {
         super.setupNavigationBar()
@@ -29,10 +30,11 @@ class AddMovementViewController: AddViewController {
     
     override func setupView() {
         super.setupView()
+        scrollView.contentSize = CGSize(width: view.frame.width, height: 600)
         setupAmountSection()
         setupMovementTypeSection()
         setupAccountSection()
-        
+        setupDateSection()
     }
     
     private func setupAmountSection() {
@@ -102,6 +104,26 @@ class AddMovementViewController: AddViewController {
         presentAsStork(UINavigationController(rootViewController: viewController), height: 300, showIndicator: false)
     }
     
+    private func setupDateSection() {
+        let titleLabel: TitleLabel = TitleLabel()
+        
+        titleLabel.text = "Date".localized()
+        dateButton.setTitle("Select a date".localized(), for: .normal)
+        dateButton.addTarget(self, action: #selector(presentDatePicker), for: .touchUpInside)
+        
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(dateButton)
+        
+        titleLabel.setConstraints(topAnchor: accountButton.bottomAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: titleTopConstant, leadingConstant: leadingConstant, trailingConstant: trailingConstant)
+        dateButton.setConstraints(topAnchor: titleLabel.bottomAnchor, leadingAnchor: contentView.leadingAnchor,  trailingAnchor: contentView.trailingAnchor, topConstant: textFieldTopConstant, leadingConstant: leadingConstant, trailingConstant: trailingConstant, heightConstant: 55)
+    }
+    
+    @objc private func presentDatePicker() {
+        let viewController =  DateSelectionViewController()
+        viewController.delegate = self
+        presentAsStork(UINavigationController(rootViewController: viewController), height: 300, showIndicator: false)
+    }
+    
     override func addButtonAction(_ sender: Any) {
         let movement = Movement()
         if let amount = amountTextField.text {
@@ -146,6 +168,16 @@ extension AddMovementViewController: AccountSelectionViewControllerDelegate {
     func didSelectAccount(_ account: Account) {
         selectedAccount = account
         let title = account.bankName + " - " + account.number.suffix(4)
+        accountButton.setTitle(title, for: .normal)
+    }
+}
+
+extension AddMovementViewController: DateSelectionViewControllerDelegate {
+    func didSelectDate(_ date: Date) {
+        selectedDate = date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        let title = dateFormatter.string(from: date)
         accountButton.setTitle(title, for: .normal)
     }
 }
