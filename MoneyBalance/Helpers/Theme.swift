@@ -23,7 +23,6 @@ enum Theme: Int {
         case .light:
             return UIColor("007AFF")
         case .dark:
-            // return UIColor("4CD963")
             return UIColor("FD2D55")
         }
     }
@@ -31,7 +30,6 @@ enum Theme: Int {
     var gradientColor: UIColor {
         switch self {
         case .light:
-            // return UIColor("#9300E0")
             return UIColor("#52C6A7")
         case .dark:
             return UIColor("FD582F")

@@ -83,6 +83,12 @@ class AccountDetailViewController: BaseViewController {
         viewController.delegate = self
         presentAsStork(UINavigationController(rootViewController: viewController))
     }
+    
+    func goToMovementDetails(movement: Movement) {
+        let viewController = MovementDetailViewController(nibName: "MovementDetailViewController", bundle: nil)
+        viewController.movement = movement
+        navigationController?.pushViewController(viewController, animated: true)
+    }
 }
 
 extension AccountDetailViewController {
@@ -151,7 +157,7 @@ extension AccountDetailViewController {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        goToMovementDetails(movement: movements[indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {

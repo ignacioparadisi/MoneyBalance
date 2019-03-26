@@ -60,9 +60,7 @@ class AddMovementViewController: AddViewController {
         contentView.addSubview(descriptionLabel)
         contentView.addSubview(amountTextField)
         
-        titleLabel.setConstraints(topAnchor: contentView.topAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: titleTopConstant, leadingConstant: leadingConstant, trailingConstant: trailingConstant)
-        descriptionLabel.setConstraints(topAnchor: titleLabel.bottomAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: descriptionTopConstant, leadingConstant: leadingConstant, trailingConstant: trailingConstant)
-        amountTextField.setConstraints(topAnchor: descriptionLabel.bottomAnchor, leadingAnchor: contentView.leadingAnchor,  trailingAnchor: contentView.trailingAnchor, topConstant: textFieldTopConstant, leadingConstant: leadingConstant, trailingConstant: trailingConstant)
+        setupConstraints(for: amountTextField, titleTopConstraint: contentView.topAnchor, titleLabel: titleLabel, descriptionLabel: descriptionLabel)
     }
     
     @objc private func textFieldDidChange(_ textField: UITextField) {
@@ -92,9 +90,8 @@ class AddMovementViewController: AddViewController {
         contentView.addSubview(descriptionLabel)
         contentView.addSubview(typeCollectionView)
         
-        titleLabel.setConstraints(topAnchor: amountTextField.bottomAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: titleTopConstant, leadingConstant: leadingConstant, trailingConstant: trailingConstant)
-        descriptionLabel.setConstraints(topAnchor: titleLabel.bottomAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: descriptionTopConstant, leadingConstant: leadingConstant, trailingConstant: trailingConstant)
-        typeCollectionView.setConstraints(topAnchor: descriptionLabel.bottomAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: textFieldTopConstant, heightConstant: collectionViewHeight)
+        setupConstraints(for: typeCollectionView, titleTopConstraint: amountTextField.bottomAnchor, titleLabel: titleLabel, descriptionLabel: descriptionLabel)
+        typeCollectionView.setConstraints(heightConstant: collectionViewHeight)
     }
     
     
@@ -112,8 +109,8 @@ class AddMovementViewController: AddViewController {
         contentView.addSubview(titleLabel)
         contentView.addSubview(accountButton)
         
-        titleLabel.setConstraints(topAnchor: typeCollectionView.bottomAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: titleTopConstant, leadingConstant: leadingConstant, trailingConstant: trailingConstant)
-        accountButton.setConstraints(topAnchor: titleLabel.bottomAnchor, leadingAnchor: contentView.leadingAnchor,  trailingAnchor: contentView.trailingAnchor, topConstant: textFieldTopConstant, leadingConstant: leadingConstant, trailingConstant: trailingConstant, heightConstant: 55)
+        setupConstraints(for: accountButton, titleTopConstraint: typeCollectionView.bottomAnchor, titleLabel: titleLabel)
+        accountButton.setConstraints(heightConstant: 55)
     }
     
     @objc private func presentAccountPicker() {
