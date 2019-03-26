@@ -10,13 +10,13 @@ import UIKit
 
 protocol AccountTableViewCellDelegate {
     func goToAddAccount()
-//    func goToDetail(for account: Account?, frame: CGRect)
     func goToDetail(for account: Account)
     func shareAccount(_ text: String)
 }
 
 class AccountTableViewCell: UITableViewCell {
 
+    private let ACCOUNTS_SECTION = 0
     private let cellIdentifier = "cellIdentifier"
     private let emptyAccountsCellIdentifier = "emptyAccountsCellIdentifier"
     private let sectionInsets: CGFloat = 20.0
@@ -29,7 +29,7 @@ class AccountTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
-        NotificationCenter.default.addObserver(self, selector: #selector(fetchAccounts), name: .didCreateAccount, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didCreateAccount), name: .didCreateAccount, object: nil)
         titleLabel.text = "Accounts".localized()
         addAccountButton.setImage(UIImage(named: "add")?.withRenderingMode(.alwaysTemplate), for: .normal)
         collectionView.backgroundColor = .clear
@@ -38,6 +38,12 @@ class AccountTableViewCell: UITableViewCell {
         collectionView.register(AccountCollectionViewCell.self, forCellWithReuseIdentifier: cellIdentifier)
         collectionView.register(UINib(nibName: "AddAccountCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: emptyAccountsCellIdentifier)
         fetchAccounts()
+    }
+    
+    @objc private func didCreateAccount() {
+        fetchAccounts()
+        let newAccountIndexPath = IndexPath(item: accounts.count - 1, section: ACCOUNTS_SECTION)
+        collectionView.scrollToItem(at: newAccountIndexPath, at: .centeredHorizontally, animated: true)
     }
     
     @objc private func fetchAccounts() {

@@ -74,7 +74,7 @@ class AccountDetailViewController: BaseViewController {
     
     private func fetchMovements() {
         movements = RealmManager.shared.getArray(ofType: Movement.self, filter: "account.id == '\(account.id)'") as! [Movement]
-        tableView.reloadSections(IndexSet(integer: 1), with: .fade)
+        tableView.reloadSections(IndexSet(integer: 1), with: .none)
     }
     
     @objc private func goToAddMovement() {
@@ -177,7 +177,6 @@ extension AccountDetailViewController {
             movements.remove(at: indexPath.item)
             tableView.deleteRows(at: [indexPath], with: .left)
             NotificationCenter.default.post(name: .updateAccountCard, object: nil)
-            tableView.reloadRows(at: [IndexPath(item: 0, section: 0)], with: .none)
         }
     }
 }
