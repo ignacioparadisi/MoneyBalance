@@ -81,7 +81,7 @@ class AddAccountViewController: AddViewController {
         } else if allFieldsAreFilled() && !addButton.isEnabled {
             addButton.backgroundColor = .clear
             addButton.isEnabled = true
-            addButton.setGradientBackground(colorOne: ThemeManager.currentTheme().accentColor, colorTwo: ThemeManager.currentTheme().gradientColor)
+            addButton.setGradientBackground(colorOne: ThemeManager.currentTheme().accentColor, colorTwo: ThemeManager.currentTheme().gradientColor, cornerRadius: 10)
         }
     }
     

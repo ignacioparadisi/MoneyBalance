@@ -43,18 +43,10 @@ class AccountCardTableViewCell: UITableViewCell {
     private func setupView() {
         backgroundColor = ThemeManager.currentTheme().backgroundColor
         view.backgroundColor = .clear
-        view.bankNameLabel.textColor = .white
-        view.bankNameLabel.font = UIFont(name: ThemeManager.currentTheme().titleFont, size: 17.0)
-        view.amountLabel.textColor = .white
-        view.amountLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 30)
-        view.amountLabel.text = 1000.00.toCurrency(with: "en_US")
-        view.accountNumberLabel.textColor = .white
     }
     
     func configureWith(account: Account) {
-        view.bankNameLabel.text = account.bankName
-        view.amountLabel.text = account.money.toCurrency(with: account.currency?.identifier ?? "en_US")
-        view.accountNumberLabel.text = account.number
+        view.configureWith(account: account)
     }
     
 }

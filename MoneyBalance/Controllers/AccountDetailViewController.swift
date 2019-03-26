@@ -11,12 +11,39 @@ import UIKit
 class AccountDetailViewController: BaseViewController {
 
     private let accountCellIdentifier = "accountCellIdentifier"
+    private let ACCOUNT_SECTION = 0
+    private let MOVEMENTS_SECTION = 1
+    var addMovementButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = ThemeManager.currentTheme().accentColor
+        button.setImage(UIImage(named: "add")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        button.tintColor = .white
+        button.layer.cornerRadius = 30
+        button.layer.masksToBounds = false
+        button.addTarget(self, action: #selector(goToAddMovement), for: .touchUpInside)
+        return button
+    }()
+    var bottomBackgroundView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
+    }()
+    var backgroundWasSet = false
     var account: Account = Account() {
         didSet {
-            fetchMovements()
+            refresh()
         }
     }
     private var movements: [Movement] = []
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if !backgroundWasSet {
+            backgroundWasSet = true
+            let white: CGFloat = ThemeManager.currentTheme() == .light ? 0.94 : 0.09
+            bottomBackgroundView.setGradientBackground(colorOne: UIColor(white: white, alpha: 0), colorTwo: UIColor(white: white, alpha: 1), locations: [0.0, 0.5], startPoint: CGPoint(x: 0.5, y: 0.0), endPoint: CGPoint(x: 0.5, y: 1.0))
+        }
+    }
     
     override func setupNavigationBar() {
         super.setupNavigationBar()
@@ -27,15 +54,34 @@ class AccountDetailViewController: BaseViewController {
     
     override func setupView() {
         super.setupView()
+        view.addSubview(bottomBackgroundView)
+        view.addSubview(addMovementButton)
         view.addSubview(tableView)
+        addMovementButton.setConstraints(bottomAnchor: view.safeAreaLayoutGuide.bottomAnchor, centerXAnchor: view.centerXAnchor, bottomConstant: -20, widthConstant: 60, heightConstant: 60)
+        bottomBackgroundView.setConstraints( leadingAnchor: view.leadingAnchor, bottomAnchor: view.bottomAnchor, trailingAnchor: view.trailingAnchor, heightConstant: 115)
         tableView.setConstraints(topAnchor: view.topAnchor, leadingAnchor: view.leadingAnchor, bottomAnchor: view.bottomAnchor, trailingAnchor: view.trailingAnchor)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 115, right: 0)
+        tableView.scrollIndicatorInsets = tableView.contentInset
         tableView.register(AccountCardTableViewCell.self, forCellReuseIdentifier: accountCellIdentifier)
         tableView.register(UINib(nibName: "MovementTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        view.bringSubviewToFront(bottomBackgroundView)
+        view.bringSubviewToFront(addMovementButton)
+    }
+    
+    override func refresh() {
+        fetchMovements()
     }
     
     private func fetchMovements() {
         movements = RealmManager.shared.getArray(ofType: Movement.self, filter: "account.id == '\(account.id)'") as! [Movement]
-        tableView.reloadData()
+        tableView.reloadSections(IndexSet(integer: 1), with: .fade)
+    }
+    
+    @objc private func goToAddMovement() {
+        let viewController = AddMovementViewController(nibName: "AddViewController", bundle: nil)
+        viewController.selectedAccount = account
+        viewController.delegate = self
+        presentAsStork(UINavigationController(rootViewController: viewController))
     }
 }
 
@@ -47,7 +93,7 @@ extension AccountDetailViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 0:
+        case ACCOUNT_SECTION:
             return 1
         default:
             return movements.count
@@ -59,12 +105,12 @@ extension AccountDetailViewController {
         let row = indexPath.row
         
         switch section {
-        case 0:
+        case ACCOUNT_SECTION:
             let cell = tableView.dequeueReusableCell(withIdentifier: accountCellIdentifier, for: indexPath) as! AccountCardTableViewCell
             cell.layoutIfNeeded()
             cell.delegate = self
             cell.configureWith(account: account)
-            cell.view.setGradientBackground(colorOne: ThemeManager.currentTheme().accentColor, colorTwo: ThemeManager.currentTheme().gradientColor)
+            cell.view.setGradientBackground(colorOne: ThemeManager.currentTheme().accentColor, colorTwo: ThemeManager.currentTheme().gradientColor, cornerRadius: 10)
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! MovementTableViewCell
@@ -75,7 +121,7 @@ extension AccountDetailViewController {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
+        if indexPath.section == ACCOUNT_SECTION {
             return view.frame.width * 2/3
         }
         return UITableView.automaticDimension
@@ -90,7 +136,7 @@ extension AccountDetailViewController {
         label.setConstraints(leadingAnchor: view.leadingAnchor, trailingAnchor: view.trailingAnchor, centerYAnchor: view.centerYAnchor, leadingConstant: 16, trailingConstant: -16)
         label.text = section == 0 ? "Account".localized().uppercased() : "Movements".localized().uppercased()
         
-        if section == 0 {
+        if section == ACCOUNT_SECTION {
             let deleteButton = UIButton()
             deleteButton.setTitle("Delete".localized(), for: .normal)
             deleteButton.setTitleColor(ThemeManager.currentTheme().accentColor, for: .normal)
@@ -117,6 +163,23 @@ extension AccountDetailViewController {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.backgroundColor = ThemeManager.currentTheme().backgroundColor
     }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        if indexPath.section == ACCOUNT_SECTION {
+            return .none
+        }
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete, indexPath.section == MOVEMENTS_SECTION {
+            RealmManager.shared.delete(movements[indexPath.item])
+            movements.remove(at: indexPath.item)
+            tableView.deleteRows(at: [indexPath], with: .left)
+            NotificationCenter.default.post(name: .updateAccountCard, object: nil)
+            tableView.reloadRows(at: [IndexPath(item: 0, section: 0)], with: .none)
+        }
+    }
 }
 
 extension AccountDetailViewController: AccountCardTableViewCellDelegate {
@@ -130,5 +193,11 @@ extension AccountDetailViewController: AccountCardTableViewCellDelegate {
             }
         }
         present(activityViewController, animated: true)
+    }
+}
+
+extension AccountDetailViewController: AddMovementViewControllerDelegate {
+    func didCreateMovement() {
+        refresh()
     }
 }

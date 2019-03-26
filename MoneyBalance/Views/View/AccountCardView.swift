@@ -15,8 +15,8 @@ protocol AccountCardViewDelegate {
 class AccountCardView: UIView {
 
     var delegate: AccountCardViewDelegate?
-    var amountLabel: TitleLabel = {
-        let label = TitleLabel()
+    var amountLabel: AnimatedLabel = {
+        let label = AnimatedLabel()
         label.textColor = .white
         label.textAlignment = .center
         return label
@@ -45,6 +45,8 @@ class AccountCardView: UIView {
         button.layer.masksToBounds = false
         return button
     }()
+    private var account: Account?
+    var currentAmount: Double = 0.0
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -57,6 +59,7 @@ class AccountCardView: UIView {
     }
     
     private func initialize() {
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshAmount), name: .updateAccountCard, object: nil)
         layer.cornerRadius = 10
         layer.masksToBounds = false
         backgroundColor = .clear
@@ -80,6 +83,15 @@ class AccountCardView: UIView {
         shareButton.setConstraints(topAnchor: topAnchor, trailingAnchor: trailingAnchor, topConstant: 10, trailingConstant: -10, widthConstant: 30, heightConstant: 30)
     }
     
+    func configureWith(account: Account) {
+        self.account = account
+        bankNameLabel.text = account.bankName
+        amountLabel.currencyIdentifier = account.currency?.identifier ?? "en-US"
+        amountLabel.text = account.money.toCurrency(with: account.currency?.identifier ?? "en-US")
+        accountNumberLabel.text = account.number
+        currentAmount = account.money
+    }
+    
     
     @objc private func shareButtonAction() {
         let text = "Name".localized() + ": \n"
@@ -90,4 +102,7 @@ class AccountCardView: UIView {
         delegate?.shareAccount(text)
     }
     
+    @objc private func refreshAmount() {
+        amountLabel.count(from: currentAmount, to: account?.money ?? 0.0)
+    }
 }

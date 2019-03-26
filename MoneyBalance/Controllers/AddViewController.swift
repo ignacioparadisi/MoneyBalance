@@ -23,11 +23,10 @@ class AddViewController: BaseViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-//        addButton.setGradientBackground(colorOne: ThemeManager.currentTheme().accentColor, colorTwo: ThemeManager.currentTheme().gradientColor)
         if !backgroundWasSet {
             backgroundWasSet = true
             let white: CGFloat = ThemeManager.currentTheme() == .light ? 1 : 0.07
-            bottomBackgroundView.setGradientBackground2(colorOne: UIColor(white: white, alpha: 0), colorTwo: UIColor(white: white, alpha: 1))
+            bottomBackgroundView.setGradientBackground(colorOne: UIColor(white: white, alpha: 0), colorTwo: UIColor(white: white, alpha: 1), locations: [0.0, 0.3], startPoint: CGPoint(x: 0.5, y: 0.0), endPoint: CGPoint(x: 0.5, y: 1.0))
         }
     }
     

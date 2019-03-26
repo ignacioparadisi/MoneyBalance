@@ -35,6 +35,21 @@ class HomeViewController: BaseViewController {
         button.addTarget(self, action: #selector(goToAddMovement), for: .touchUpInside)
         return button
     }()
+    var bottomBackgroundView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
+    }()
+    var backgroundWasSet = false
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if !backgroundWasSet {
+            backgroundWasSet = true
+            let white: CGFloat = ThemeManager.currentTheme() == .light ? 0.94 : 0.09
+            bottomBackgroundView.setGradientBackground(colorOne: UIColor(white: white, alpha: 0), colorTwo: UIColor(white: white, alpha: 1), locations: [0.0, 0.5], startPoint: CGPoint(x: 0.5, y: 0.0), endPoint: CGPoint(x: 0.5, y: 1.0))
+        }
+    }
     
     override func setupNavigationBar() {
         super.setupNavigationBar()
@@ -47,12 +62,14 @@ class HomeViewController: BaseViewController {
     
     override func setupView() {
         super.setupView()
-        // navigationController?.delegate = self
         view.addSubview(addMovementButton)
+        view.addSubview(bottomBackgroundView)
         view.addSubview(tableView)
         addMovementButton.setConstraints(bottomAnchor: view.safeAreaLayoutGuide.bottomAnchor, centerXAnchor: view.centerXAnchor, bottomConstant: -20, widthConstant: 60, heightConstant: 60)
+        bottomBackgroundView.setConstraints( leadingAnchor: view.leadingAnchor, bottomAnchor: view.bottomAnchor, trailingAnchor: view.trailingAnchor, heightConstant: 115)
         tableView.setConstraints(topAnchor: view.topAnchor, leadingAnchor: view.leadingAnchor, bottomAnchor: view.bottomAnchor, trailingAnchor: view.trailingAnchor)
         tableView.register(UINib(nibName: "AccountTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        view.bringSubviewToFront(bottomBackgroundView)
         view.bringSubviewToFront(addMovementButton)
     }
     

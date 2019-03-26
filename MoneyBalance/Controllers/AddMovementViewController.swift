@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol AddMovementViewControllerDelegate {
+    func didCreateMovement()
+}
+
 class AddMovementViewController: AddViewController {
     
     private let movementTypes: [Movement.MovementType] = [.income, .outcome]
@@ -21,8 +25,9 @@ class AddMovementViewController: AddViewController {
     private lazy var dateButton: PickButton = PickButton()
     private lazy var descriptionTextView: CustomTextView = CustomTextView()
     private var selectedTypeIndex = -1
-    private var selectedAccount: Account?
+    var selectedAccount: Account?
     private var selectedDate: Date?
+    var delegate: AddMovementViewControllerDelegate?
 
     override func setupNavigationBar() {
         super.setupNavigationBar()
@@ -97,7 +102,11 @@ class AddMovementViewController: AddViewController {
         let titleLabel: TitleLabel = TitleLabel()
         
         titleLabel.text = "Account".localized()
-        accountButton.setTitle("Select an account".localized(), for: .normal)
+        if let account = selectedAccount {
+            accountButton.setTitle(account.bankName + " - " + account.number.suffix(4), for: .normal)
+        } else {
+            accountButton.setTitle("Select an account".localized(), for: .normal)
+        }
         accountButton.addTarget(self, action: #selector(presentAccountPicker), for: .touchUpInside)
         
         contentView.addSubview(titleLabel)
@@ -173,7 +182,7 @@ class AddMovementViewController: AddViewController {
         } else if allFieldsAreFilled() && !addButton.isEnabled {
             addButton.backgroundColor = .clear
             addButton.isEnabled = true
-            addButton.setGradientBackground(colorOne: ThemeManager.currentTheme().accentColor, colorTwo: ThemeManager.currentTheme().gradientColor)
+            addButton.setGradientBackground(colorOne: ThemeManager.currentTheme().accentColor, colorTwo: ThemeManager.currentTheme().gradientColor, cornerRadius: 10)
         }
     }
     
@@ -191,7 +200,8 @@ class AddMovementViewController: AddViewController {
         movement.account = selectedAccount
         movement.movDescription = descriptionTextView.text
         RealmManager.shared.add(movement)
-        NotificationCenter.default.post(name: .didCreateAccount, object: nil)
+        NotificationCenter.default.post(name: .updateAccountCard, object: nil)
+        delegate?.didCreateMovement()
         dismissPanel()
     }
 

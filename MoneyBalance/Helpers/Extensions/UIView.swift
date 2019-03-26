@@ -73,25 +73,15 @@ extension UIView {
         layer.mask = mask
     }
     
-    func setGradientBackground(colorOne: UIColor, colorTwo: UIColor) {
+    func setGradientBackground(colorOne: UIColor, colorTwo: UIColor, locations: [NSNumber] = [0.0, 1.0], startPoint: CGPoint = CGPoint(x: 0.0, y: 0.0), endPoint: CGPoint = CGPoint(x: 1.0, y: 1.0), cornerRadius: CGFloat = 0) {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = bounds
         gradientLayer.colors = [colorOne.cgColor, colorTwo.cgColor]
-        gradientLayer.locations = [0.0, 1.0]
-        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
-        gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
-        gradientLayer.cornerRadius = 10
-        gradientLayer.masksToBounds = false
-        layer.insertSublayer(gradientLayer, at: 0)
-    }
-    
-    func setGradientBackground2(colorOne: UIColor, colorTwo: UIColor) {
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = bounds
-        gradientLayer.colors = [colorOne.cgColor, colorTwo.cgColor]
-        gradientLayer.locations = [0.0, 0.3]
-        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
-        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
+        gradientLayer.locations = locations
+        gradientLayer.startPoint = startPoint
+        gradientLayer.endPoint = endPoint
+        gradientLayer.cornerRadius = cornerRadius
+        // gradientLayer.masksToBounds = false
         layer.insertSublayer(gradientLayer, at: 0)
     }
 }

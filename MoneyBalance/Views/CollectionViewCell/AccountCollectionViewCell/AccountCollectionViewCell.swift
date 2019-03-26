@@ -40,9 +40,7 @@ class AccountCollectionViewCell: UICollectionViewCell {
     }
     
     func configureWith(account: Account) {
-        view.bankNameLabel.text = account.bankName
-        view.amountLabel.text = account.money.toCurrency(with: account.currency?.identifier ?? "en_US")
-        view.accountNumberLabel.text = account.number
+        view.configureWith(account: account)
     }
 
 }

@@ -9,5 +9,6 @@
 import Foundation
 
 extension Notification.Name {
+    static let updateAccountCard = Notification.Name("updateAccountCard")
     static let didCreateAccount = Notification.Name("didCreateAccount")
 }

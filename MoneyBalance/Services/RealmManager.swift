@@ -103,6 +103,18 @@ class RealmManager {
     // MARK: - DELETE
     
     func delete(_ object: Object) {
+        if let movement = object as? Movement, let account =  movement.account {
+            if movement.type == Movement.MovementType.income.rawValue {
+                try! self.database.write {
+                    account.money -= movement.amount
+                }
+            } else {
+                try! self.database.write {
+                    account.money += movement.amount
+                }
+            }
+            
+        }
         try! database.write {
             database.delete(object)
         }

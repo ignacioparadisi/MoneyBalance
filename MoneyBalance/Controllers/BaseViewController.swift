@@ -53,6 +53,9 @@ class BaseViewController: UIViewController {
     func setupNavigationBar() {
     }
     
+    func refresh() {
+    }
+    
     internal func tag(for indexPath: IndexPath) -> Int {
         let section = indexPath.section
         let row = indexPath.row
