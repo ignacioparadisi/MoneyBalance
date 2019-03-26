@@ -26,6 +26,8 @@
 		4F6950AA222DFC47008FD9EA /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6950A9222DFC47008FD9EA /* Currency.swift */; };
 		4F71770F22497F1F00F6C6CE /* AccountCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F71770E22497F1F00F6C6CE /* AccountCardView.swift */; };
 		4F7177132249930500F6C6CE /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7177122249930500F6C6CE /* CustomTextView.swift */; };
+		4F7177172249B10400F6C6CE /* MovementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7177152249B10400F6C6CE /* MovementTableViewCell.swift */; };
+		4F7177182249B10400F6C6CE /* MovementTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F7177162249B10400F6C6CE /* MovementTableViewCell.xib */; };
 		4F77FBCD2247C29E0088A9E4 /* UViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F77FBCC2247C29E0088A9E4 /* UViewController.swift */; };
 		4F77FBCF2247CAE60088A9E4 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F77FBCE2247CAE60088A9E4 /* NotificationCenter.swift */; };
 		4F77FBD7224817E90088A9E4 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F77FBD6224817E90088A9E4 /* Category.swift */; };
@@ -94,6 +96,8 @@
 		4F6950A9222DFC47008FD9EA /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		4F71770E22497F1F00F6C6CE /* AccountCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCardView.swift; sourceTree = "<group>"; };
 		4F7177122249930500F6C6CE /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
+		4F7177152249B10400F6C6CE /* MovementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementTableViewCell.swift; sourceTree = "<group>"; };
+		4F7177162249B10400F6C6CE /* MovementTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovementTableViewCell.xib; sourceTree = "<group>"; };
 		4F77FBCC2247C29E0088A9E4 /* UViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UViewController.swift; sourceTree = "<group>"; };
 		4F77FBCE2247CAE60088A9E4 /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		4F77FBD6224817E90088A9E4 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -194,6 +198,7 @@
 		4F5CA0B0222E2B2A00ED29D4 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				4F7177142249B0D500F6C6CE /* MovementTableViewCell */,
 				4FBB4C2522471CDE00049F9B /* AccountCardTableViewCell */,
 				4F53897322383E23004832B5 /* AccountTableViewCell */,
 				4FED8A08222FF292009E3965 /* SwitchTableViewCell */,
@@ -293,6 +298,15 @@
 				4F5CA0B0222E2B2A00ED29D4 /* TableViewCell */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		4F7177142249B0D500F6C6CE /* MovementTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				4F7177152249B10400F6C6CE /* MovementTableViewCell.swift */,
+				4F7177162249B10400F6C6CE /* MovementTableViewCell.xib */,
+			);
+			path = MovementTableViewCell;
 			sourceTree = "<group>";
 		};
 		4F77FBCB2247BD400088A9E4 /* CustomViews */ = {
@@ -477,6 +491,7 @@
 				4F53898222384D1D004832B5 /* CurrenciesViewController.xib in Resources */,
 				4F5CA0AB222E18C800ED29D4 /* Localizable.strings in Resources */,
 				4FBB4C2D22472EB100049F9B /* AddAccountCollectionViewCell.xib in Resources */,
+				4F7177182249B10400F6C6CE /* MovementTableViewCell.xib in Resources */,
 				4F84DA2922483B2A009861F1 /* MovementTypeCollectionViewCell.xib in Resources */,
 				4F53897722383E41004832B5 /* AccountTableViewCell.xib in Resources */,
 				4F975E6C222F71E5009DA03C /* DefaultTableViewCell.xib in Resources */,
@@ -591,6 +606,7 @@
 				4F6950A4222D94EC008FD9EA /* BaseViewController.swift in Sources */,
 				4F5CA0A5222E13A900ED29D4 /* Movement.swift in Sources */,
 				4F6950A6222D95E8008FD9EA /* HomeViewController.swift in Sources */,
+				4F7177172249B10400F6C6CE /* MovementTableViewCell.swift in Sources */,
 				4F5CA0A2222E0C7B00ED29D4 /* MovementsViewController.swift in Sources */,
 				4FD4EBF922459A5F00079935 /* TitleLabel.swift in Sources */,
 				4FAE5CA1223703EC00762300 /* Utils.swift in Sources */,

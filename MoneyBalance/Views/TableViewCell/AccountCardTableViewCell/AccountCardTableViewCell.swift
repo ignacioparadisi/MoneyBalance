@@ -41,7 +41,7 @@ class AccountCardTableViewCell: UITableViewCell {
     }
 
     private func setupView() {
-        backgroundColor = .clear
+        backgroundColor = ThemeManager.currentTheme().backgroundColor
         view.backgroundColor = .clear
         view.bankNameLabel.textColor = .white
         view.bankNameLabel.font = UIFont(name: ThemeManager.currentTheme().titleFont, size: 17.0)

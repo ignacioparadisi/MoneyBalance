@@ -25,6 +25,7 @@ class CustomTextView: UITextView {
     private func initialize() {
         backgroundColor = ThemeManager.currentTheme().lightBackgroundColor
         textColor = ThemeManager.currentTheme().textColor
+        font = UIFont(name: "HelveticaNeue-Regular", size: 17.0)
         layer.cornerRadius = 10
         layer.masksToBounds = false
         textContainerInset = padding

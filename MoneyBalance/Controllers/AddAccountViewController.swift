@@ -70,19 +70,23 @@ class AddAccountViewController: AddViewController {
         shouldEnabledButton()
     }
     
-    private func shouldEnabledButton() {
-        if (nameTextField.text == "" || accountNumberTextField.text == ""), addButton.isEnabled {
+    override func shouldEnabledButton() {
+        if !allFieldsAreFilled() && addButton.isEnabled {
             addButton.isEnabled = false
             addButton.layer.sublayers?.remove(at: 0)
             addButton.layer.cornerRadius = 10
             addButton.layer.masksToBounds = false
-            addButton.backgroundColor = .lightGray
+            addButton.backgroundColor = ThemeManager.currentTheme().disabledButtonBackgroundColor
             return
-        } else if !addButton.isEnabled {
+        } else if allFieldsAreFilled() && !addButton.isEnabled {
             addButton.backgroundColor = .clear
             addButton.isEnabled = true
             addButton.setGradientBackground(colorOne: ThemeManager.currentTheme().accentColor, colorTwo: ThemeManager.currentTheme().gradientColor)
         }
+    }
+    
+    private func allFieldsAreFilled() -> Bool {
+        return nameTextField.text != "" && accountNumberTextField.text != ""
     }
     
     override func addButtonAction(_ sender: Any) {

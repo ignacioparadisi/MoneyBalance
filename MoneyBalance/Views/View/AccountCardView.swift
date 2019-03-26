@@ -41,7 +41,7 @@ class AccountCardView: UIView {
         button.imageEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         button.backgroundColor = UIColor(white: 0, alpha: 0.3)
         button.tintColor = .white
-        button.layer.cornerRadius = 17.5
+        button.layer.cornerRadius = 15
         button.layer.masksToBounds = false
         return button
     }()

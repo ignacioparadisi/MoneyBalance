@@ -110,6 +110,24 @@ enum Theme: Int {
         }
     }
     
+    var disabledButtonBackgroundColor: UIColor {
+        switch self {
+        case .light:
+            return .lightGray
+        default:
+            return UIColor(white: 0.4, alpha: 1)
+        }
+    }
+    
+    var disabledButtonTextColor: UIColor {
+        switch self {
+        case .light:
+            return .white
+        default:
+            return .lightGray
+        }
+    }
+    
     var barStyle: UIBarStyle {
         switch self {
         case .light:

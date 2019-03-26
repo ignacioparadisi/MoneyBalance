@@ -38,6 +38,7 @@ class AddMovementViewController: AddViewController {
         setupAccountSection()
         setupDateSection()
         setupDescriptionSection()
+        shouldEnabledButton()
     }
     
     private func setupAmountSection() {
@@ -48,6 +49,7 @@ class AddMovementViewController: AddViewController {
         descriptionLabel.textColor = ThemeManager.currentTheme().textColor
         descriptionLabel.text = "Enter amount of money".localized()
         amountTextField.setPlaceholder("Amount of money".localized())
+        amountTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         
         contentView.addSubview(titleLabel)
         contentView.addSubview(descriptionLabel)
@@ -56,6 +58,10 @@ class AddMovementViewController: AddViewController {
         titleLabel.setConstraints(topAnchor: contentView.topAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: titleTopConstant, leadingConstant: leadingConstant, trailingConstant: trailingConstant)
         descriptionLabel.setConstraints(topAnchor: titleLabel.bottomAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: descriptionTopConstant, leadingConstant: leadingConstant, trailingConstant: trailingConstant)
         amountTextField.setConstraints(topAnchor: descriptionLabel.bottomAnchor, leadingAnchor: contentView.leadingAnchor,  trailingAnchor: contentView.trailingAnchor, topConstant: textFieldTopConstant, leadingConstant: leadingConstant, trailingConstant: trailingConstant)
+    }
+    
+    @objc private func textFieldDidChange(_ textField: UITextField) {
+        shouldEnabledButton()
     }
     
     private func setupMovementTypeSection() {
@@ -156,6 +162,26 @@ class AddMovementViewController: AddViewController {
         view.setConstraints(topAnchor: viewTopAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: textFieldTopConstant, leadingConstant: leadingConstant, trailingConstant: trailingConstant)
     }
     
+    override func shouldEnabledButton() {
+        if !allFieldsAreFilled() && addButton.isEnabled {
+            addButton.isEnabled = false
+            addButton.layer.sublayers?.remove(at: 0)
+            addButton.layer.cornerRadius = 10
+            addButton.layer.masksToBounds = false
+            addButton.backgroundColor = ThemeManager.currentTheme().disabledButtonBackgroundColor
+            return
+        } else if allFieldsAreFilled() && !addButton.isEnabled {
+            addButton.backgroundColor = .clear
+            addButton.isEnabled = true
+            addButton.setGradientBackground(colorOne: ThemeManager.currentTheme().accentColor, colorTwo: ThemeManager.currentTheme().gradientColor)
+        }
+    }
+    
+    private func allFieldsAreFilled() -> Bool {
+        return amountTextField.text != "" && selectedTypeIndex != -1
+            && selectedDate != nil && selectedAccount != nil
+    }
+    
     override func addButtonAction(_ sender: Any) {
         let movement = Movement()
         if let amount = amountTextField.text {
@@ -163,6 +189,7 @@ class AddMovementViewController: AddViewController {
         }
         movement.type = movementTypes[selectedTypeIndex].rawValue
         movement.account = selectedAccount
+        movement.movDescription = descriptionTextView.text
         RealmManager.shared.add(movement)
         NotificationCenter.default.post(name: .didCreateAccount, object: nil)
         dismissPanel()
@@ -187,6 +214,7 @@ extension AddMovementViewController: UICollectionViewDelegate, UICollectionViewD
         let cell = collectionView.cellForItem(at: indexPath) as! MovementTypeCollectionViewCell
         cell.backgroundColor = ThemeManager.currentTheme().accentColor
         cell.textLabel.textColor = .white
+        shouldEnabledButton()
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
@@ -201,6 +229,7 @@ extension AddMovementViewController: AccountSelectionViewControllerDelegate {
         selectedAccount = account
         let title = account.bankName + " - " + account.number.suffix(4)
         accountButton.setTitle(title, for: .normal)
+        shouldEnabledButton()
     }
 }
 
@@ -211,9 +240,12 @@ extension AddMovementViewController: DateSelectionViewControllerDelegate {
         dateFormatter.dateFormat = "dd/MM/yyyy"
         let title = dateFormatter.string(from: date)
         dateButton.setTitle(title, for: .normal)
+        shouldEnabledButton()
     }
 }
 
 extension AddMovementViewController: UITextViewDelegate {
-    
+    func textViewDidChange(_ textView: UITextView) {
+        shouldEnabledButton()
+    }
 }

@@ -19,10 +19,16 @@ class AddViewController: BaseViewController {
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var bottomBackgroundView: UIView!
+    var backgroundWasSet = false
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        addButton.setGradientBackground(colorOne: ThemeManager.currentTheme().accentColor, colorTwo: ThemeManager.currentTheme().gradientColor)
+//        addButton.setGradientBackground(colorOne: ThemeManager.currentTheme().accentColor, colorTwo: ThemeManager.currentTheme().gradientColor)
+        if !backgroundWasSet {
+            backgroundWasSet = true
+            let white: CGFloat = ThemeManager.currentTheme() == .light ? 1 : 0.07
+            bottomBackgroundView.setGradientBackground2(colorOne: UIColor(white: white, alpha: 0), colorTwo: UIColor(white: white, alpha: 1))
+        }
     }
     
     override func setupNavigationBar() {
@@ -42,12 +48,12 @@ class AddViewController: BaseViewController {
         addButton.backgroundColor = .lightGray
         addButton.layer.cornerRadius = 10
         addButton.layer.masksToBounds = false
+        addButton.setTitleColor(ThemeManager.currentTheme().disabledButtonTextColor, for: .disabled)
         bottomBackgroundView.backgroundColor = .clear
-        let white: CGFloat = ThemeManager.currentTheme() == .light ? 1 : 0.07
-        bottomBackgroundView.setGradientBackground2(colorOne: UIColor(white: white, alpha: 0), colorTwo: UIColor(white: white, alpha: 1))
     }
     
-    
+    internal func shouldEnabledButton() {
+    }
 
     @IBAction func addButtonAction(_ sender: Any) {
     }
