@@ -73,6 +73,11 @@ class RealmManager {
         return get(type).filter(filter).sum(ofProperty: property)
     }
     
+    func getMovements(filter: String) -> [Movement] {
+        var results = get(Movement.self)
+        results = results.filter(filter).sorted(byKeyPath: "date", ascending: false)
+        return results.toArray(ofType: Movement.self) as [Movement]
+    }
     // MARK: - UPDATE
     
     func createCurrency(_ currency: Currency) {

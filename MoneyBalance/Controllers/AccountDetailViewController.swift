@@ -73,7 +73,8 @@ class AccountDetailViewController: BaseViewController {
     }
     
     private func fetchMovements() {
-        movements = RealmManager.shared.getArray(ofType: Movement.self, filter: "account.id == '\(account.id)'") as! [Movement]
+        movements = RealmManager.shared.getMovements(filter: "account.id == '\(account.id)'")
+        // movements = RealmManager.shared.getArray(ofType: Movement.self, filter: "account.id == '\(account.id)'") as! [Movement]
         tableView.reloadSections(IndexSet(integer: 1), with: .none)
     }
     

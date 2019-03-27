@@ -90,7 +90,9 @@ class AddMovementViewController: AddViewController {
         contentView.addSubview(descriptionLabel)
         contentView.addSubview(typeCollectionView)
         
-        setupConstraints(for: typeCollectionView, titleTopConstraint: amountTextField.bottomAnchor, titleLabel: titleLabel, descriptionLabel: descriptionLabel)
+        titleLabel.setConstraints(topAnchor: amountTextField.bottomAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: titleTopConstant, leadingConstant: leadingConstant, trailingConstant: trailingConstant)
+        descriptionLabel.setConstraints(topAnchor: titleLabel.bottomAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: descriptionTopConstant, leadingConstant: leadingConstant,  trailingConstant: trailingConstant)
+        typeCollectionView.setConstraints(topAnchor: descriptionLabel.bottomAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: textFieldTopConstant, heightConstant: collectionViewHeight)
         typeCollectionView.setConstraints(heightConstant: collectionViewHeight)
     }
     
@@ -101,6 +103,7 @@ class AddMovementViewController: AddViewController {
         titleLabel.text = "Account".localized()
         if let account = selectedAccount {
             accountButton.setTitle(account.bankName + " - " + account.number.suffix(4), for: .normal)
+            accountButton.setTitleColor(ThemeManager.currentTheme().textColor, for: .normal)
         } else {
             accountButton.setTitle("Select an account".localized(), for: .normal)
         }
@@ -120,10 +123,13 @@ class AddMovementViewController: AddViewController {
     }
     
     private func setupDateSection() {
+        selectedDate = Date()
         let titleLabel: TitleLabel = TitleLabel()
         
         titleLabel.text = "Date".localized()
-        dateButton.setTitle("Select a date".localized(), for: .normal)
+        // dateButton.setTitle("Select a date".localized(), for: .normal)
+        setDate(selectedDate!)
+        dateButton.setTitleColor(ThemeManager.currentTheme().textColor, for: .normal)
         dateButton.addTarget(self, action: #selector(presentDatePicker), for: .touchUpInside)
         
         contentView.addSubview(titleLabel)
@@ -131,6 +137,13 @@ class AddMovementViewController: AddViewController {
         
         setupConstraints(for: dateButton, titleTopConstraint: accountButton.bottomAnchor, titleLabel: titleLabel)
         dateButton.setConstraints(heightConstant: 55)
+    }
+    
+    private func setDate(_ date: Date) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM d, yyyy"
+        let title = dateFormatter.string(from: date)
+        dateButton.setTitle(title, for: .normal)
     }
     
     @objc private func presentDatePicker() {
@@ -244,7 +257,7 @@ extension AddMovementViewController: DateSelectionViewControllerDelegate {
     func didSelectDate(_ date: Date) {
         selectedDate = date
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
+        dateFormatter.dateFormat = "MMM d, yyyy"
         let title = dateFormatter.string(from: date)
         dateButton.setTitle(title, for: .normal)
         shouldEnabledButton()
