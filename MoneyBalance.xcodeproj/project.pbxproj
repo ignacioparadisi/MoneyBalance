@@ -64,6 +64,8 @@
 		4FD4EBF922459A5F00079935 /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD4EBF822459A5F00079935 /* TitleLabel.swift */; };
 		4FD4EBFC2245C3C100079935 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD4EBFA2245C3C100079935 /* AddViewController.swift */; };
 		4FD4EBFD2245C3C100079935 /* AddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FD4EBFB2245C3C100079935 /* AddViewController.xib */; };
+		4FECED2A224B22F3009B8271 /* ChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FECED28224B22F3009B8271 /* ChartsViewController.swift */; };
+		4FECED2B224B22F3009B8271 /* ChartsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FECED29224B22F3009B8271 /* ChartsViewController.xib */; };
 		4FF9E8442246734A009D4039 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF9E8432246734A009D4039 /* UIView.swift */; };
 		4FF9E8462246736F009D4039 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF9E8452246736F009D4039 /* UIColor.swift */; };
 		4FF9E84822467398009D4039 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF9E84722467398009D4039 /* UIImageView.swift */; };
@@ -139,6 +141,8 @@
 		4FD4EBF822459A5F00079935 /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
 		4FD4EBFA2245C3C100079935 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		4FD4EBFB2245C3C100079935 /* AddViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddViewController.xib; sourceTree = "<group>"; };
+		4FECED28224B22F3009B8271 /* ChartsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsViewController.swift; sourceTree = "<group>"; };
+		4FECED29224B22F3009B8271 /* ChartsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChartsViewController.xib; sourceTree = "<group>"; };
 		4FF9E8432246734A009D4039 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		4FF9E8452246736F009D4039 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		4FF9E84722467398009D4039 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
@@ -292,6 +296,7 @@
 				4F84DA2D22485458009861F1 /* AccountSelectionViewController.swift */,
 				4FD02421224908B000248B19 /* DateSelectionViewController.swift */,
 				4F9B8928224ACC94002F5B6A /* MovementDetailViewController.swift */,
+				4FECED28224B22F3009B8271 /* ChartsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -300,9 +305,10 @@
 			isa = PBXGroup;
 			children = (
 				4F77FBCB2247BD400088A9E4 /* CustomViews */,
-				4F53897822383FBB004832B5 /* CollectionViewCell */,
 				4FED8A04222FF23D009E3965 /* View */,
+				4FECED2C224B2312009B8271 /* ViewController */,
 				4F5CA0B0222E2B2A00ED29D4 /* TableViewCell */,
+				4F53897822383FBB004832B5 /* CollectionViewCell */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -354,13 +360,21 @@
 			path = AddAccountCollectionViewCell;
 			sourceTree = "<group>";
 		};
+		4FECED2C224B2312009B8271 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4FD4EBFB2245C3C100079935 /* AddViewController.xib */,
+				4F53898022384D1D004832B5 /* CurrenciesViewController.xib */,
+				4F9B8929224ACC94002F5B6A /* MovementDetailViewController.xib */,
+				4FECED29224B22F3009B8271 /* ChartsViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		4FED8A04222FF23D009E3965 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				4F71770E22497F1F00F6C6CE /* AccountCardView.swift */,
-				4FD4EBFB2245C3C100079935 /* AddViewController.xib */,
-				4F53898022384D1D004832B5 /* CurrenciesViewController.xib */,
-				4F9B8929224ACC94002F5B6A /* MovementDetailViewController.xib */,
 				4FED8A05222FF25C009E3965 /* AuthenticationFailedView */,
 			);
 			path = View;
@@ -500,6 +514,7 @@
 				4F53898222384D1D004832B5 /* CurrenciesViewController.xib in Resources */,
 				4F5CA0AB222E18C800ED29D4 /* Localizable.strings in Resources */,
 				4FBB4C2D22472EB100049F9B /* AddAccountCollectionViewCell.xib in Resources */,
+				4FECED2B224B22F3009B8271 /* ChartsViewController.xib in Resources */,
 				4F7177182249B10400F6C6CE /* MovementTableViewCell.xib in Resources */,
 				4F9B892B224ACC94002F5B6A /* MovementDetailViewController.xib in Resources */,
 				4F84DA2922483B2A009861F1 /* MovementTypeCollectionViewCell.xib in Resources */,
@@ -587,6 +602,7 @@
 				4F53897B22383FE1004832B5 /* AccountCollectionViewCell.swift in Sources */,
 				4FAE5CA52237160300762300 /* LanguageSettingsViewController.swift in Sources */,
 				4FBB4C202247174F00049F9B /* AccountDetailViewController.swift in Sources */,
+				4FECED2A224B22F3009B8271 /* ChartsViewController.swift in Sources */,
 				4FAE5C9E2236FFA600762300 /* SwitchTableViewCell.swift in Sources */,
 				4FAE5CA32237138A00762300 /* ScreenLockSettingsViewController.swift in Sources */,
 				4F9B8927224A9C3D002F5B6A /* AnimatedLabel.swift in Sources */,

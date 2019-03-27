@@ -11,6 +11,8 @@ import UIKit
 class MovementTableViewCell: UITableViewCell {
 
     @IBOutlet weak var movementTypeImage: UIImageView!
+    @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,7 +22,7 @@ class MovementTableViewCell: UITableViewCell {
     
     func configureWith(movement: Movement) {
         if let currency = Currency.current {
-            textLabel?.text = movement.amount.toCurrency(with: currency.identifier)
+            amountLabel.text = movement.amount.toCurrency(with: currency.identifier)
             var image: UIImage?
             if movement.type == Movement.MovementType.income.rawValue {
                 image = UIImage(named: "income")?.withRenderingMode(.alwaysTemplate)
@@ -31,6 +33,10 @@ class MovementTableViewCell: UITableViewCell {
             }
             movementTypeImage.image = image
             
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "EEEE, MMM d, yyyy"
+            dateLabel.text = dateFormatter.string(from: movement.date)
+            dateLabel.textColor = ThemeManager.currentTheme().placeholderColor
         }
     }
 }

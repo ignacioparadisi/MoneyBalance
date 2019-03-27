@@ -48,7 +48,7 @@ class AccountDetailViewController: BaseViewController {
     override func setupNavigationBar() {
         super.setupNavigationBar()
         let image = UIImage(named: "bar_chart")
-        let chartsButton = UIBarButtonItem(image: image, style: .plain, target: self, action: nil)
+        let chartsButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(goToCharts))
         navigationItem.setRightBarButton(chartsButton, animated: false)
     }
     
@@ -85,9 +85,15 @@ class AccountDetailViewController: BaseViewController {
         presentAsStork(UINavigationController(rootViewController: viewController))
     }
     
-    func goToMovementDetails(movement: Movement) {
+    private func goToMovementDetails(movement: Movement) {
         let viewController = MovementDetailViewController(nibName: "MovementDetailViewController", bundle: nil)
         viewController.movement = movement
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    @objc private func goToCharts() {
+        let viewController = ChartsViewController()
+        viewController.account = account
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

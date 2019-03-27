@@ -56,7 +56,7 @@ class RealmManager {
     
     // MARK: - GET
     
-    private func get(_ type: Object.Type) -> Results<Object> {
+    func get(_ type: Object.Type) -> Results<Object> {
         let results: Results<Object> = database.objects(type)
         return results
     }
