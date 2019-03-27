@@ -8,15 +8,15 @@ PODS:
   - Realm/Headers (3.13.1)
   - RealmSwift (3.13.1):
     - Realm (= 3.13.1)
-  - SparrowKit (1.5.3)
-  - SPStorkController (1.5.4)
+  - SPStorkController (1.6)
+  - SwipeCellKit (2.5.4)
 
 DEPENDENCIES:
   - Charts
   - IQKeyboardManagerSwift
   - RealmSwift
-  - SparrowKit
   - SPStorkController
+  - SwipeCellKit
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -24,17 +24,17 @@ SPEC REPOS:
     - IQKeyboardManagerSwift
     - Realm
     - RealmSwift
-    - SparrowKit
     - SPStorkController
+    - SwipeCellKit
 
 SPEC CHECKSUMS:
   Charts: f69cf0518b6d1d62608ca504248f1bbe0b6ae77e
   IQKeyboardManagerSwift: b07ccf9d8cafe993dcd6cb794eb4ba34611a0c4e
   Realm: 50071da38fe079e0735e47c9f2eae738c68c5996
   RealmSwift: 8a1e6a02b7a08cd17a31e3115143fb69fe5f3fb9
-  SparrowKit: 8a2991c81d6ab3038d4a41a98a1a73ea17d1a977
-  SPStorkController: 6c34a0375ef1254299e460784886ff4e929b82ed
+  SPStorkController: 54293a8a1ca3c691a09eb6274b6e487b602e975a
+  SwipeCellKit: 4eada3884ab1bbae5e8d2fb9030c242aa23d7f42
 
-PODFILE CHECKSUM: 6c20d4d1cc9398687b6f6c7435f9d67b08f5d281
+PODFILE CHECKSUM: 8f0ecac4c5d256a9ec3415a18e3cb96c72e162b6
 
 COCOAPODS: 1.6.1

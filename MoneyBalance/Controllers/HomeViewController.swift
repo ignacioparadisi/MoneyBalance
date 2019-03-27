@@ -100,12 +100,12 @@ class HomeViewController: BaseViewController {
     @objc private func presentCurrenciesView() {
         let viewController = CurrenciesViewController(nibName: "CurrenciesViewController", bundle: nil)
         viewController.delegate = self
-        presentAsStork(UINavigationController(rootViewController: viewController), height: 365, showIndicator: true)
+        presentAsStork(UINavigationController(rootViewController: viewController), height: 365, showIndicator: true, hideIndicatorWhenScroll: true, showCloseButton: false, complection: nil)
     }
     
     @objc private func goToAddMovement() {
         let viewController = AddMovementViewController(nibName: "AddViewController", bundle: nil)
-        presentAsStork(UINavigationController(rootViewController: viewController))
+        presentAsStork(UINavigationController(rootViewController: viewController), height: nil, showIndicator: true, hideIndicatorWhenScroll: true, showCloseButton: false, complection: nil)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -135,7 +135,7 @@ extension HomeViewController: AccountTableViewCellDelegate {
         }
         let viewController = AddAccountViewController(nibName: "AddViewController", bundle: nil)
         viewController.delegate = self
-        presentAsStork(UINavigationController(rootViewController: viewController), showIndicator: true)
+        presentAsStork(UINavigationController(rootViewController: viewController), height: nil, showIndicator: true, hideIndicatorWhenScroll: true, showCloseButton: false, complection: nil)
     }
     
     func goToDetail(for account: Account) {

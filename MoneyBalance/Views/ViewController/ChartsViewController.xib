@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChartsViewController" customModule="MoneyBalance" customModuleProvider="target">
             <connections>
-                <outlet property="barView" destination="n9P-PK-Dew" id="pQ9-FL-T7v"/>
+                <outlet property="contentView" destination="Dpf-49-4lv" id="9vI-cP-aYC"/>
+                <outlet property="scrollView" destination="6UE-A8-oyx" id="fn4-MM-gdU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,19 +22,30 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n9P-PK-Dew" customClass="BarChartView" customModule="Charts">
-                    <rect key="frame" x="0.0" y="20" width="375" height="375"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6UE-A8-oyx">
+                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dpf-49-4lv">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                    </subviews>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="n9P-PK-Dew" secondAttribute="height" multiplier="1:1" id="H0T-ZE-Zkf"/>
+                        <constraint firstItem="Dpf-49-4lv" firstAttribute="top" secondItem="6UE-A8-oyx" secondAttribute="top" id="1iX-To-A87"/>
+                        <constraint firstAttribute="trailing" secondItem="Dpf-49-4lv" secondAttribute="trailing" id="DIK-ZZ-kao"/>
+                        <constraint firstAttribute="bottom" secondItem="Dpf-49-4lv" secondAttribute="bottom" id="MS4-1o-Zi6"/>
+                        <constraint firstItem="Dpf-49-4lv" firstAttribute="width" secondItem="6UE-A8-oyx" secondAttribute="width" id="jqg-k6-jap"/>
+                        <constraint firstItem="Dpf-49-4lv" firstAttribute="height" secondItem="6UE-A8-oyx" secondAttribute="height" priority="250" id="wmr-YZ-NvL"/>
+                        <constraint firstItem="Dpf-49-4lv" firstAttribute="leading" secondItem="6UE-A8-oyx" secondAttribute="leading" id="ysH-ga-L7b"/>
                     </constraints>
-                </view>
+                </scrollView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="n9P-PK-Dew" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="2Es-Jb-2FJ"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="n9P-PK-Dew" secondAttribute="trailing" id="A98-v9-xiF"/>
-                <constraint firstItem="n9P-PK-Dew" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Kzq-zv-IA9"/>
+                <constraint firstItem="6UE-A8-oyx" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="O09-MG-LDe"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="6UE-A8-oyx" secondAttribute="bottom" id="S59-Xy-ghZ"/>
+                <constraint firstItem="6UE-A8-oyx" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Xtw-EB-Kav"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6UE-A8-oyx" secondAttribute="trailing" id="t6w-zU-myn"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>

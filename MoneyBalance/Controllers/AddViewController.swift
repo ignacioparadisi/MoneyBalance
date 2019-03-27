@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SPStorkController
 
 class AddViewController: BaseViewController {
 
@@ -43,6 +44,7 @@ class AddViewController: BaseViewController {
         addButton.setTitle("Add".localized(), for: .normal)
         addButton.setTitleColor(.white, for: .normal)
         scrollView.backgroundColor = .clear
+        scrollView.delegate = self
         contentView.backgroundColor = .clear
         addButton.backgroundColor = .lightGray
         addButton.layer.cornerRadius = 10
@@ -56,4 +58,9 @@ class AddViewController: BaseViewController {
 
     @IBAction func addButtonAction(_ sender: Any) {
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        SPStorkController.scrollViewDidScroll(scrollView)
+    }
+    
 }

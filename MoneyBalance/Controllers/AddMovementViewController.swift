@@ -119,7 +119,7 @@ class AddMovementViewController: AddViewController {
     @objc private func presentAccountPicker() {
         let viewController =  AccountSelectionViewController()
         viewController.delegate = self
-        presentAsStork(UINavigationController(rootViewController: viewController), height: 300, showIndicator: false)
+        presentAsStork(UINavigationController(rootViewController: viewController), height: 300)
     }
     
     private func setupDateSection() {
@@ -149,7 +149,7 @@ class AddMovementViewController: AddViewController {
     @objc private func presentDatePicker() {
         let viewController =  DateSelectionViewController()
         viewController.delegate = self
-        presentAsStork(UINavigationController(rootViewController: viewController), height: 300, showIndicator: false)
+        presentAsStork(UINavigationController(rootViewController: viewController), height: 300)
     }
     
     private func setupDescriptionSection() {

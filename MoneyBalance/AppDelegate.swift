@@ -23,11 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Localize.verifyLanguage()
         
         let mainVC = UINavigationController(rootViewController: HomeViewController())
-        // mainVC.selectedIndex = 1
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = Utils.isAuthenticationEnabled() ? LauncherViewController(mainVC) : mainVC
-        
         // Apply theme before showing the views
         // TODO: - Cuando se ejecuta no cambia el color de las letras de la celda de idioma
         ThemeManager.applayTheme(ThemeManager.currentTheme())

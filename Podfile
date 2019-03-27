@@ -9,8 +9,8 @@ target 'MoneyBalance' do
   pod 'RealmSwift'
   pod 'Charts'
   pod 'SPStorkController'
-  pod 'SparrowKit'
   pod 'IQKeyboardManagerSwift'
+  pod 'SwipeCellKit'
 #  pod 'ChartsRealm', '~> 3.2.1'
 
 end
