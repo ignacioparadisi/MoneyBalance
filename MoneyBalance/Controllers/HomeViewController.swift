@@ -124,6 +124,7 @@ class HomeViewController: BaseViewController {
 extension HomeViewController: CurrenciesViewControllerDelegate, AddNewCurrencyViewControllerDelegate {    
     func selectedCurrencyChanged() {
         titleLabel.text = Currency.current?.name
+        tableView.reloadData()
     }
 }
 

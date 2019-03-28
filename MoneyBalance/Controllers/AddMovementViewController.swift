@@ -208,6 +208,7 @@ class AddMovementViewController: AddViewController {
         }
         movement.type = movementTypes[selectedTypeIndex].rawValue
         movement.account = selectedAccount
+        movement.date = selectedDate ?? Date()
         movement.movDescription = descriptionTextView.text
         RealmManager.shared.add(movement)
         NotificationCenter.default.post(name: .updateAccountCard, object: nil)

@@ -53,6 +53,7 @@ class AddNewCurrencyViewController: BaseViewController {
         cell?.backgroundColor = ThemeManager.currentTheme().highlightTableViewCellColor
         let currency = currencies[indexPath.row]
         RealmManager.shared.createCurrency(currency)
+        Currency.setCurrent(currency)
         delegate?.selectedCurrencyChanged()
         dismissPanel()
     }

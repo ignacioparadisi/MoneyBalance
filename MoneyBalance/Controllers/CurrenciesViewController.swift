@@ -18,6 +18,8 @@ class CurrenciesViewController: BaseViewController {
     private var currencies: [Currency] = []
     var delegate: CurrenciesViewControllerDelegate?
     @IBOutlet weak var collectionView: UICollectionView!
+    lazy var addCurrencyView = UIView()
+    private var addCurrencyViewWasSet = false
     
     override func setupNavigationBar() {
         super.setupNavigationBar()
@@ -38,31 +40,6 @@ class CurrenciesViewController: BaseViewController {
         collectionView.backgroundColor = .clear
         collectionView.register(UINib(nibName: "CurrencyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
         fetchCurrencies()
-        
-        if currencies.count == 0 {
-            collectionView.isHidden = true
-            let addCurrencyView = UIView()
-            let addCurrencyLabel = UILabel()
-            
-            addCurrencyView.backgroundColor = ThemeManager.currentTheme().lightBackgroundColor
-            addCurrencyView.layer.cornerRadius = 10
-            addCurrencyView.layer.masksToBounds = false
-            addCurrencyLabel.textColor = .lightGray
-            addCurrencyLabel.text = "Add new currency".localized()
-            addCurrencyLabel.textAlignment = .center
-            
-            addCurrencyView.addSubview(addCurrencyLabel)
-            view.addSubview(addCurrencyView)
-            
-            addCurrencyLabel.setConstraints(leadingAnchor: addCurrencyView.leadingAnchor, trailingAnchor: addCurrencyView.trailingAnchor, centerXAnchor: addCurrencyView.centerXAnchor, centerYAnchor: addCurrencyView.centerYAnchor, leadingConstant: 16, trailingConstant: -16)
-            addCurrencyView.setConstraints(topAnchor: view.safeAreaLayoutGuide.topAnchor, leadingAnchor: view.leadingAnchor, trailingAnchor: view.trailingAnchor, topConstant: 16, leadingConstant: 16, trailingConstant: -16, heightConstant: 55)
-            
-            let tap = UITapGestureRecognizer(target: self, action: #selector(addCurrency))
-            addCurrencyView.addGestureRecognizer(tap)
-            addCurrencyView.isUserInteractionEnabled = true
-            
-            view.bringSubviewToFront(addCurrencyView)
-        }
     }
     
     private func fetchCurrencies() {
@@ -70,7 +47,41 @@ class CurrenciesViewController: BaseViewController {
         currencies.sort { (currency1, currency2) -> Bool in
             return currency1.name < currency2.name
         }
-        collectionView.reloadData()
+        if currencies.count == 0 {
+            setupAddCurrenciesView()
+        } else {
+            if addCurrencyViewWasSet {
+                addCurrencyView.removeFromSuperview()
+                addCurrencyViewWasSet = false
+            }
+            collectionView.isHidden = false
+            collectionView.reloadData()
+        }
+    }
+    
+    private func setupAddCurrenciesView() {
+        addCurrencyViewWasSet = true
+        collectionView.isHidden = true
+        let addCurrencyLabel = UILabel()
+        
+        addCurrencyView.backgroundColor = ThemeManager.currentTheme().lightBackgroundColor
+        addCurrencyView.layer.cornerRadius = 10
+        addCurrencyView.layer.masksToBounds = false
+        addCurrencyLabel.textColor = .lightGray
+        addCurrencyLabel.text = "Add new currency".localized()
+        addCurrencyLabel.textAlignment = .center
+        
+        addCurrencyView.addSubview(addCurrencyLabel)
+        view.addSubview(addCurrencyView)
+        
+        addCurrencyLabel.setConstraints(leadingAnchor: addCurrencyView.leadingAnchor, trailingAnchor: addCurrencyView.trailingAnchor, centerXAnchor: addCurrencyView.centerXAnchor, centerYAnchor: addCurrencyView.centerYAnchor, leadingConstant: 16, trailingConstant: -16)
+        addCurrencyView.setConstraints(topAnchor: view.safeAreaLayoutGuide.topAnchor, leadingAnchor: view.leadingAnchor, trailingAnchor: view.trailingAnchor, topConstant: 16, leadingConstant: 16, trailingConstant: -16, heightConstant: 55)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(addCurrency))
+        addCurrencyView.addGestureRecognizer(tap)
+        addCurrencyView.isUserInteractionEnabled = true
+        
+        view.bringSubviewToFront(addCurrencyView)
     }
     
     @objc private func addCurrency() {

@@ -84,7 +84,6 @@ class RealmManager {
         try! database.write {
             currency.owned = true
         }
-        changeCurrency(currency)
     }
     
     func changeCurrency(_ currency: Currency) {

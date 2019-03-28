@@ -46,7 +46,7 @@ class AccountCardView: UIView {
         return button
     }()
     private var account: Account?
-    var currentAmount: Double = 0.0
+    // var currentAmount: Double = 0.0
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -65,7 +65,7 @@ class AccountCardView: UIView {
         backgroundColor = .clear
         
         setupSubviews()
-        amountLabel.text = 1000.00.toCurrency(with: "en_US")
+        amountLabel.text = 0.00.toCurrency(with: "en_US")
         shareButton.addTarget(self, action: #selector(shareButtonAction), for: .touchUpInside)
     }
     
@@ -87,9 +87,8 @@ class AccountCardView: UIView {
         self.account = account
         bankNameLabel.text = account.bankName
         amountLabel.currencyIdentifier = account.currency?.identifier ?? "en-US"
-        amountLabel.text = account.money.toCurrency(with: account.currency?.identifier ?? "en-US")
+        amountLabel.countFromZero(to: account.money, duration: .none)
         accountNumberLabel.text = account.number
-        currentAmount = account.money
     }
     
     
@@ -103,6 +102,6 @@ class AccountCardView: UIView {
     }
     
     @objc private func refreshAmount() {
-        amountLabel.count(from: currentAmount, to: account?.money ?? 0.0)
+        amountLabel.countFromCurrent(to: account?.money ?? 0.0)
     }
 }
