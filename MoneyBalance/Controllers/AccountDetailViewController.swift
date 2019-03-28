@@ -97,6 +97,17 @@ class AccountDetailViewController: BaseViewController {
         viewController.account = account
         navigationController?.pushViewController(viewController, animated: true)
     }
+    
+    private func showDeleteAlert(with title: String, message: String?, handler: ((UIAlertAction) -> Void)?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let deleteAction = UIAlertAction(title: "Delete".localized(), style: .destructive, handler: handler)
+        let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil)
+        
+        alert.addAction(deleteAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true)
+    }
 }
 
 extension AccountDetailViewController {
@@ -155,10 +166,15 @@ extension AccountDetailViewController {
             let deleteButton = UIButton()
             deleteButton.setTitle("Delete".localized(), for: .normal)
             deleteButton.setTitleColor(ThemeManager.currentTheme().accentColor, for: .normal)
+            deleteButton.addTarget(self, action: #selector(deleteAccount), for: .touchUpInside)
             view.addSubview(deleteButton)
             deleteButton.setConstraints(trailingAnchor: view.trailingAnchor, centerYAnchor: view.centerYAnchor, trailingConstant: -16)
         }
         return view
+    }
+    
+    @objc private func deleteAccount() {
+        showDeleteAlert(with: "Delete account?".localized(), message: "Deleting this account is permanent, you won't be able to get ir back.", handler: nil)
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -228,10 +244,12 @@ extension AccountDetailViewController: SwipeTableViewCellDelegate {
             guard orientation == .right else { return nil }
             
             let deleteAction = SwipeAction(style: .destructive, title: "Delete".localized()) { (action, indexPath) in
-                RealmManager.shared.delete(self.movements[indexPath.item])
-                self.movements.remove(at: indexPath.item)
-                action.fulfill(with: .delete)
-                NotificationCenter.default.post(name: .updateAccountCard, object: nil)
+                self.showDeleteAlert(with: "Delete movement?".localized(), message: "", handler: { _ in
+                    RealmManager.shared.delete(self.movements[indexPath.item])
+                    self.movements.remove(at: indexPath.item)
+                    action.fulfill(with: .delete)
+                    NotificationCenter.default.post(name: .updateAccountCard, object: nil)
+                })
             }
             
             deleteAction.image = UIImage(named: "trash")

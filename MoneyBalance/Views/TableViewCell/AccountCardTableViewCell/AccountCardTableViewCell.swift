@@ -95,9 +95,6 @@ class AccountCardTableViewCell: UITableViewCell {
         if gestureRecognizer.state == .ended {
             UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
                 if self.view.center.x < self.center.x - 40 {
-                    if self.view.center.x < self.frame.width / 100 {
-                        self.editAccount()
-                    }
                     self.view.center.x = self.center.x - 80
                 } else {
                     self.view.center.x = self.center.x
