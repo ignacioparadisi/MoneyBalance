@@ -33,6 +33,7 @@ class AddAccountViewController: AddViewController {
         return textField
     }()
     var delegate: AddAccountViewControllerDelegate?
+    var account: Account?
 
     override func setupNavigationBar() {
         super.setupNavigationBar()
@@ -46,6 +47,11 @@ class AddAccountViewController: AddViewController {
         nameTextField.setPlaceholder("Bank name".localized())
         accountNumberTitleLabel.text = "Account Number".localized()
         accountNumberTextField.setPlaceholder("Account number".localized())
+        
+        if let account = account {
+            nameTextField.text = account.bankName
+            accountNumberTextField.text = "\(account.number)"
+        }
         
         nameTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         accountNumberTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwipeCellKit
 
 class AccountDetailViewController: BaseViewController {
 
@@ -127,6 +128,7 @@ extension AccountDetailViewController {
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! MovementTableViewCell
+            cell.delegate = self
             cell.configureWith(movement: movements[row])
             return cell
         }
@@ -164,7 +166,9 @@ extension AccountDetailViewController {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        goToMovementDetails(movement: movements[indexPath.row])
+        if indexPath.section == MOVEMENTS_SECTION {
+            goToMovementDetails(movement: movements[indexPath.row])
+        }
     }
     
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
@@ -177,21 +181,18 @@ extension AccountDetailViewController {
         cell?.backgroundColor = ThemeManager.currentTheme().backgroundColor
     }
     
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        if indexPath.section == ACCOUNT_SECTION {
-            return .none
-        }
-        return .delete
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete, indexPath.section == MOVEMENTS_SECTION {
-            RealmManager.shared.delete(movements[indexPath.item])
-            movements.remove(at: indexPath.item)
-            tableView.deleteRows(at: [indexPath], with: .left)
-            NotificationCenter.default.post(name: .updateAccountCard, object: nil)
-        }
-    }
+//    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+//        if indexPath.section == ACCOUNT_SECTION {
+//            return .none
+//        }
+//        return .delete
+//    }
+//
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete, indexPath.section == MOVEMENTS_SECTION {
+//
+//        }
+//    }
 }
 
 extension AccountDetailViewController: AccountCardTableViewCellDelegate {
@@ -206,10 +207,49 @@ extension AccountDetailViewController: AccountCardTableViewCellDelegate {
         }
         present(activityViewController, animated: true)
     }
+    
+    func editAccount() {
+        let viewController = AddAccountViewController(nibName: "AddViewController", bundle: nil)
+        viewController.account = account
+        presentAsStork(UINavigationController(rootViewController: viewController))
+    }
 }
 
 extension AccountDetailViewController: AddMovementViewControllerDelegate {
     func didCreateMovement() {
         refresh()
+    }
+}
+
+extension AccountDetailViewController: SwipeTableViewCellDelegate {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        
+        if indexPath.section == MOVEMENTS_SECTION {
+            guard orientation == .right else { return nil }
+            
+            let deleteAction = SwipeAction(style: .destructive, title: "Delete".localized()) { (action, indexPath) in
+                RealmManager.shared.delete(self.movements[indexPath.item])
+                self.movements.remove(at: indexPath.item)
+                action.fulfill(with: .delete)
+                NotificationCenter.default.post(name: .updateAccountCard, object: nil)
+            }
+            
+            deleteAction.image = UIImage(named: "trash")
+            
+            return [deleteAction]
+        }
+        
+        return nil
+        
+    }
+    
+    
+    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
+        
+        var options = SwipeOptions()
+        options.expansionStyle = .destructive(automaticallyDelete: false)
+        options.transitionStyle = .drag
+        return options
+        
     }
 }
