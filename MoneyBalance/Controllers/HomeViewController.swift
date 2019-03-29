@@ -13,6 +13,12 @@ import SPStorkController
 
 class HomeViewController: BaseViewController {
     
+    private let ACCOUNTS_SECTION = 0
+    private let SAVING_SECTION = 1
+    private let accountsCellIdentifier = "accountsCellIdentifier"
+    private let titleCellIdentifier = "titleCellIdentifier"
+    private let totalCellIdentifier = "totalCellIdentifier"
+    
     /// NavigationBar title labe for adding a TapGestureRecognizer
     let titleNavbarView: UIView = {
         let view = UIView()
@@ -41,6 +47,7 @@ class HomeViewController: BaseViewController {
         return view
     }()
     var backgroundWasSet = false
+    private var accounts: [Account] = []
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -62,15 +69,21 @@ class HomeViewController: BaseViewController {
     
     override func setupView() {
         super.setupView()
+        tableView.backgroundColor = ThemeManager.currentTheme().backgroundColor
+        tableView.separatorStyle = .none
         view.addSubview(addMovementButton)
         view.addSubview(bottomBackgroundView)
         view.addSubview(tableView)
         addMovementButton.setConstraints(bottomAnchor: view.safeAreaLayoutGuide.bottomAnchor, centerXAnchor: view.centerXAnchor, bottomConstant: -20, widthConstant: 60, heightConstant: 60)
         bottomBackgroundView.setConstraints( leadingAnchor: view.leadingAnchor, bottomAnchor: view.bottomAnchor, trailingAnchor: view.trailingAnchor, heightConstant: 115)
         tableView.setConstraints(topAnchor: view.topAnchor, leadingAnchor: view.leadingAnchor, bottomAnchor: view.bottomAnchor, trailingAnchor: view.trailingAnchor)
-        tableView.register(UINib(nibName: "AccountTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        tableView.register(UINib(nibName: "AccountTableViewCell", bundle: nil), forCellReuseIdentifier: accountsCellIdentifier)
+        tableView.register(TitleTableViewCell.self, forCellReuseIdentifier: titleCellIdentifier)
+        tableView.register(UINib(nibName: "NameMoneyTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        tableView.register(UINib(nibName: "TotalAmountTableViewCell", bundle: nil), forCellReuseIdentifier: totalCellIdentifier)
         view.bringSubviewToFront(bottomBackgroundView)
         view.bringSubviewToFront(addMovementButton)
+        refresh()
     }
     
     /// Creates the design of the navigationItem.titleView and adds tapGestureRecognizer
@@ -89,7 +102,6 @@ class HomeViewController: BaseViewController {
         titleNavbarView.addGestureRecognizer(tapGestureRecognizer)
         titleNavbarView.isUserInteractionEnabled = true
         navigationItem.titleView = titleNavbarView
-
     }
     
     @objc private func goToSettings() {
@@ -108,15 +120,63 @@ class HomeViewController: BaseViewController {
         presentAsStork(UINavigationController(rootViewController: viewController), height: nil, showIndicator: true, hideIndicatorWhenScroll: true, showCloseButton: false, complection: nil)
     }
     
+    override func refresh() {
+        fetchAcconts()
+    }
+    
+    private func fetchAcconts() {
+        accounts = RealmManager.shared.getArray(ofType: Account.self) as! [Account]
+        tableView.reloadData()
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        if accounts.count == 0 {
+            return 1
+        }
+        return 2
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        switch section {
+        case ACCOUNTS_SECTION:
+            return 1
+        case SAVING_SECTION:
+            return accounts.count + 2
+        default:
+            return 0
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! AccountTableViewCell
-        cell.addAccountButton.tintColor = ThemeManager.currentTheme().accentColor
-        cell.delegate = self
-        return cell
+        let section = indexPath.section
+        let row = indexPath.row
+        
+        if section == ACCOUNTS_SECTION {
+            let cell = tableView.dequeueReusableCell(withIdentifier: accountsCellIdentifier, for: indexPath) as! AccountTableViewCell
+            cell.addAccountButton.tintColor = ThemeManager.currentTheme().accentColor
+            cell.delegate = self
+            return cell
+        } else {
+            if row == 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: titleCellIdentifier, for: indexPath) as! TitleTableViewCell
+                cell.configuereWith(title: "Savings".localized())
+                return cell
+            } else if row == accounts.count + 1 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: totalCellIdentifier, for: indexPath) as! TotalAmountTableViewCell
+                
+                var amount: Double = 0
+                for account in accounts {
+                    amount += account.money
+                }
+                cell.configuereWith(amount: amount)
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! NameMoneyTableViewCell
+                cell.configureWith(account: accounts[row - 1])
+                return cell
+            }
+        }
+        
     }
     
 }

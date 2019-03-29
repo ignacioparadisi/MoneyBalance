@@ -48,6 +48,8 @@
 		4F9B8927224A9C3D002F5B6A /* AnimatedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9B8926224A9C3D002F5B6A /* AnimatedLabel.swift */; };
 		4F9B892A224ACC94002F5B6A /* MovementDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9B8928224ACC94002F5B6A /* MovementDetailViewController.swift */; };
 		4F9B892B224ACC94002F5B6A /* MovementDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F9B8929224ACC94002F5B6A /* MovementDetailViewController.xib */; };
+		4F9F116B224D996500D7098B /* TotalAmountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9F1169224D996500D7098B /* TotalAmountTableViewCell.swift */; };
+		4F9F116C224D996500D7098B /* TotalAmountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F9F116A224D996500D7098B /* TotalAmountTableViewCell.xib */; };
 		4FAE5C9E2236FFA600762300 /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAE5C9C2236FFA600762300 /* SwitchTableViewCell.swift */; };
 		4FAE5C9F2236FFA600762300 /* SwitchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FAE5C9D2236FFA600762300 /* SwitchTableViewCell.xib */; };
 		4FAE5CA1223703EC00762300 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAE5CA0223703EC00762300 /* Utils.swift */; };
@@ -75,6 +77,9 @@
 		4FF9E85022468A21009D4039 /* AddMovementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF9E84F22468A21009D4039 /* AddMovementViewController.swift */; };
 		4FF9E8592246A652009D4039 /* CurrencyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF9E8572246A652009D4039 /* CurrencyCollectionViewCell.swift */; };
 		4FF9E85A2246A652009D4039 /* CurrencyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FF9E8582246A652009D4039 /* CurrencyCollectionViewCell.xib */; };
+		4FFE9F1F224D94D400774C32 /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFE9F1E224D94D400774C32 /* TitleTableViewCell.swift */; };
+		4FFE9F22224D981700774C32 /* NameMoneyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFE9F20224D981700774C32 /* NameMoneyTableViewCell.swift */; };
+		4FFE9F23224D981700774C32 /* NameMoneyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE9F21224D981700774C32 /* NameMoneyTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -125,6 +130,8 @@
 		4F9B8926224A9C3D002F5B6A /* AnimatedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedLabel.swift; sourceTree = "<group>"; };
 		4F9B8928224ACC94002F5B6A /* MovementDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementDetailViewController.swift; sourceTree = "<group>"; };
 		4F9B8929224ACC94002F5B6A /* MovementDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovementDetailViewController.xib; sourceTree = "<group>"; };
+		4F9F1169224D996500D7098B /* TotalAmountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalAmountTableViewCell.swift; sourceTree = "<group>"; };
+		4F9F116A224D996500D7098B /* TotalAmountTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TotalAmountTableViewCell.xib; sourceTree = "<group>"; };
 		4FAE5C9C2236FFA600762300 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
 		4FAE5C9D2236FFA600762300 /* SwitchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwitchTableViewCell.xib; sourceTree = "<group>"; };
 		4FAE5CA0223703EC00762300 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -152,6 +159,9 @@
 		4FF9E84F22468A21009D4039 /* AddMovementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMovementViewController.swift; sourceTree = "<group>"; };
 		4FF9E8572246A652009D4039 /* CurrencyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCollectionViewCell.swift; sourceTree = "<group>"; };
 		4FF9E8582246A652009D4039 /* CurrencyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyCollectionViewCell.xib; sourceTree = "<group>"; };
+		4FFE9F1E224D94D400774C32 /* TitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
+		4FFE9F20224D981700774C32 /* NameMoneyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NameMoneyTableViewCell.swift; path = ../NameMoneyTableViewCell.swift; sourceTree = "<group>"; };
+		4FFE9F21224D981700774C32 /* NameMoneyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NameMoneyTableViewCell.xib; path = ../NameMoneyTableViewCell.xib; sourceTree = "<group>"; };
 		BEE5FE5E3E410EAC92F3321B /* Pods-MoneyBalance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoneyBalance.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MoneyBalance/Pods-MoneyBalance.debug.xcconfig"; sourceTree = "<group>"; };
 		F2532F3C39538BB9246994B5 /* Pods_MoneyBalance.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoneyBalance.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -208,11 +218,14 @@
 		4F5CA0B0222E2B2A00ED29D4 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				4F9F1168224D994600D7098B /* TotalAmountTableViewCell */,
+				4FFE9F25224D984100774C32 /* NameMoneyTableViewCell */,
 				4F7177142249B0D500F6C6CE /* MovementTableViewCell */,
 				4FBB4C2522471CDE00049F9B /* AccountCardTableViewCell */,
 				4F53897322383E23004832B5 /* AccountTableViewCell */,
 				4FED8A08222FF292009E3965 /* SwitchTableViewCell */,
 				4FED8A07222FF283009E3965 /* DefaultTableViewCell */,
+				4FFE9F1E224D94D400774C32 /* TitleTableViewCell.swift */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -343,6 +356,15 @@
 			path = MovementTypeCollectionViewCell;
 			sourceTree = "<group>";
 		};
+		4F9F1168224D994600D7098B /* TotalAmountTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				4F9F1169224D996500D7098B /* TotalAmountTableViewCell.swift */,
+				4F9F116A224D996500D7098B /* TotalAmountTableViewCell.xib */,
+			);
+			path = TotalAmountTableViewCell;
+			sourceTree = "<group>";
+		};
 		4FBB4C2522471CDE00049F9B /* AccountCardTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -438,6 +460,15 @@
 			path = CurrencyCollectionViewCell;
 			sourceTree = "<group>";
 		};
+		4FFE9F25224D984100774C32 /* NameMoneyTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				4FFE9F20224D981700774C32 /* NameMoneyTableViewCell.swift */,
+				4FFE9F21224D981700774C32 /* NameMoneyTableViewCell.xib */,
+			);
+			path = NameMoneyTableViewCell;
+			sourceTree = "<group>";
+		};
 		6384D3868611C6D56E39C5BF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -515,10 +546,12 @@
 				4F53898222384D1D004832B5 /* CurrenciesViewController.xib in Resources */,
 				4F5CA0AB222E18C800ED29D4 /* Localizable.strings in Resources */,
 				4FBB4C2D22472EB100049F9B /* AddAccountCollectionViewCell.xib in Resources */,
+				4FFE9F23224D981700774C32 /* NameMoneyTableViewCell.xib in Resources */,
 				4FECED2B224B22F3009B8271 /* ChartsViewController.xib in Resources */,
 				4F7177182249B10400F6C6CE /* MovementTableViewCell.xib in Resources */,
 				4F9B892B224ACC94002F5B6A /* MovementDetailViewController.xib in Resources */,
 				4F84DA2922483B2A009861F1 /* MovementTypeCollectionViewCell.xib in Resources */,
+				4F9F116C224D996500D7098B /* TotalAmountTableViewCell.xib in Resources */,
 				4F53897722383E41004832B5 /* AccountTableViewCell.xib in Resources */,
 				4F975E6C222F71E5009DA03C /* DefaultTableViewCell.xib in Resources */,
 				4FF9E85A2246A652009D4039 /* CurrencyCollectionViewCell.xib in Resources */,
@@ -613,6 +646,7 @@
 				4FBB4C2C22472EB100049F9B /* AddAccountCollectionViewCell.swift in Sources */,
 				4F95969C22386A5A00205D3D /* RealmManager.swift in Sources */,
 				4F84DA2C22484852009861F1 /* PickButton.swift in Sources */,
+				4FFE9F22224D981700774C32 /* NameMoneyTableViewCell.swift in Sources */,
 				4F7E3D4D222EA18A00112275 /* LauncherViewController.swift in Sources */,
 				4FF9E84822467398009D4039 /* UIImageView.swift in Sources */,
 				4FF9E8592246A652009D4039 /* CurrencyCollectionViewCell.swift in Sources */,
@@ -622,8 +656,10 @@
 				4FBB4C2322471CD800049F9B /* AccountCardTableViewCell.swift in Sources */,
 				4F7E3D57222EC84F00112275 /* Localize.swift in Sources */,
 				4F9B892A224ACC94002F5B6A /* MovementDetailViewController.swift in Sources */,
+				4FFE9F1F224D94D400774C32 /* TitleTableViewCell.swift in Sources */,
 				4FBB4C1E22470A4800049F9B /* AnimationControlller.swift in Sources */,
 				4F77FBCF2247CAE60088A9E4 /* NotificationCenter.swift in Sources */,
+				4F9F116B224D996500D7098B /* TotalAmountTableViewCell.swift in Sources */,
 				4F975E6B222F71E5009DA03C /* DefaultTableViewCell.swift in Sources */,
 				4F69508C222D919E008FD9EA /* AppDelegate.swift in Sources */,
 				4FBB4C3022473A3D00049F9B /* CustomTextField.swift in Sources */,
