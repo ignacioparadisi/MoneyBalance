@@ -14,6 +14,7 @@ class Category: Object {
     @objc dynamic var id: String = UUID().uuidString
     @objc dynamic var name: String = ""
     @objc dynamic var image: String = ""
+    @objc dynamic var color: String = ""
     
     override static func primaryKey() -> String? {
         return "id"

@@ -20,13 +20,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SzZ-yQ-4oB">
-                        <rect key="frame" x="16" y="16" width="211" height="21"/>
+                        <rect key="frame" x="77" y="16" width="150" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jfj-Qj-Svi">
-                        <rect key="frame" x="16" y="42" width="211" height="14.5"/>
+                        <rect key="frame" x="77" y="42" width="150" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -38,14 +38,33 @@
                             <constraint firstAttribute="width" constant="35" id="gGf-Gv-EWD"/>
                         </constraints>
                     </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wtL-dS-Lpi">
+                        <rect key="frame" x="16" y="14" width="45" height="45"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yaK-ZF-ydp">
+                                <rect key="frame" x="8" y="8" width="29" height="29"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="yaK-ZF-ydp" secondAttribute="bottom" constant="8" id="A9O-8u-Ij0"/>
+                            <constraint firstItem="yaK-ZF-ydp" firstAttribute="top" secondItem="wtL-dS-Lpi" secondAttribute="top" constant="8" id="I3T-1w-Sc9"/>
+                            <constraint firstAttribute="height" constant="45" id="dYH-sQ-Dhb"/>
+                            <constraint firstAttribute="trailing" secondItem="yaK-ZF-ydp" secondAttribute="trailing" constant="8" id="h3Y-ev-v9k"/>
+                            <constraint firstAttribute="width" constant="45" id="j1m-DM-pfn"/>
+                            <constraint firstItem="yaK-ZF-ydp" firstAttribute="leading" secondItem="wtL-dS-Lpi" secondAttribute="leading" constant="8" id="jIC-Uy-LRG"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="xjO-8s-hHU" firstAttribute="leading" secondItem="SzZ-yQ-4oB" secondAttribute="trailing" constant="16" id="9Wg-WK-MPa"/>
                     <constraint firstItem="xjO-8s-hHU" firstAttribute="leading" secondItem="jfj-Qj-Svi" secondAttribute="trailing" constant="16" id="LUF-fW-4UA"/>
-                    <constraint firstItem="jfj-Qj-Svi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Ti5-Mn-pRa"/>
-                    <constraint firstItem="SzZ-yQ-4oB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Ui4-GP-3Ru"/>
+                    <constraint firstItem="SzZ-yQ-4oB" firstAttribute="leading" secondItem="wtL-dS-Lpi" secondAttribute="trailing" constant="16" id="OhP-eE-4pZ"/>
+                    <constraint firstItem="wtL-dS-Lpi" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Rjw-Rd-6qd"/>
+                    <constraint firstItem="jfj-Qj-Svi" firstAttribute="leading" secondItem="wtL-dS-Lpi" secondAttribute="trailing" constant="16" id="Vfx-Ps-EJg"/>
                     <constraint firstAttribute="trailing" secondItem="xjO-8s-hHU" secondAttribute="trailing" constant="8" id="aRH-3G-06D"/>
                     <constraint firstItem="jfj-Qj-Svi" firstAttribute="top" secondItem="SzZ-yQ-4oB" secondAttribute="bottom" constant="5" id="cNi-TN-T0Q"/>
+                    <constraint firstItem="wtL-dS-Lpi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="hGR-i3-OCm"/>
                     <constraint firstAttribute="bottom" secondItem="jfj-Qj-Svi" secondAttribute="bottom" constant="16" id="kg2-ny-ARO"/>
                     <constraint firstItem="xjO-8s-hHU" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="oJn-sS-AjW"/>
                     <constraint firstItem="SzZ-yQ-4oB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="vQv-OU-Ycq"/>
@@ -54,7 +73,11 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="amountLabel" destination="SzZ-yQ-4oB" id="yaM-dc-L4c"/>
+                <outlet property="amountLabelLeadingConstraint" destination="OhP-eE-4pZ" id="gj6-6y-amb"/>
+                <outlet property="categoryBackgroundView" destination="wtL-dS-Lpi" id="FhJ-PW-fTg"/>
+                <outlet property="categoryImageView" destination="yaK-ZF-ydp" id="Ne2-lU-aSE"/>
                 <outlet property="dateLabel" destination="jfj-Qj-Svi" id="rgt-5A-4AG"/>
+                <outlet property="dateLabelLeadingConstraint" destination="Vfx-Ps-EJg" id="iuv-i5-8ZB"/>
                 <outlet property="movementTypeImage" destination="xjO-8s-hHU" id="JIy-ip-hIh"/>
             </connections>
             <point key="canvasLocation" x="52.799999999999997" y="61.619190404797607"/>

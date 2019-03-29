@@ -17,6 +17,8 @@
 "Currencies" = "Currencies";
 "Currency" = "Currency";
 "Settings" = "Settings";
+"Savings" = "Savings";
+"Total" = "Total";
 
 "Add" = "Add";
 "Add Movement" = "Add Movement";
@@ -49,8 +51,16 @@
 "Select an account" = "Select an account";
 "Date" = "Date";
 "Select a date" = "Select a date";
+"Category" = "Category";
+"Select a category" = "Select a category";
+"Description" = "Description";
+"Add a description for the movement" = "Add a description for the movement";
 
 "Detail" = "Detail";
+"Edit" = "Edit";
+"Delete account?" = "Delete account?";
+"Deleting the account is permanent. You won't be able to get it back." = "Deleting the account is permanent. You won't be able to get it back.";
+"Delete movement?" = "Delete movement?";
 
 // Settings
 "Language" = "Language";

@@ -8,14 +8,18 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var currentViewController: UIViewController?
+    private var currentSchemaVersion: UInt64 = 2
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        makeMigrations()
         
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = false
@@ -30,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // TODO: - Cuando se ejecuta no cambia el color de las letras de la celda de idioma
         ThemeManager.applayTheme(ThemeManager.currentTheme())
         RealmManager.shared.createCurrencies()
+        RealmManager.shared.createCategories()
         if let currentCurrency = RealmManager.shared.getArray(ofType: Currency.self, filter: "selected == true") as? [Currency], currentCurrency.count > 0 {
             Currency.setCurrent(currentCurrency[0])
         }
@@ -67,6 +72,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    private func makeMigrations() {
+        let config = Realm.Configuration(schemaVersion: currentSchemaVersion, migrationBlock: { migration, oldSchemaVersion in
+            if oldSchemaVersion < self.currentSchemaVersion {
+                migration.deleteData(forType: Category.className())
+            }
+        })
+        Realm.Configuration.defaultConfiguration = config
+    }
 
 }
 

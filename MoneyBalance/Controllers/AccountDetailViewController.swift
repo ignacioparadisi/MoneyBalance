@@ -174,7 +174,7 @@ extension AccountDetailViewController {
     }
     
     @objc private func deleteAccount() {
-        showDeleteAlert(with: "Delete account?".localized(), message: "Deleting this account is permanent, you won't be able to get ir back.", handler: nil)
+        showDeleteAlert(with: "Delete account?".localized(), message: "Deleting the account is permanent. You won't be able to get it back.".localized(), handler: nil)
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

@@ -54,6 +54,52 @@ class RealmManager {
         }
     }
     
+    func createCategories() {
+        if get(Category.self).count == 0 {
+            let food = Category()
+            food.name = "Food"
+            food.image = "food"
+            food.color = "F6946A"
+            add(food)
+            
+            let car = Category()
+            car.name = "Car"
+            car.image = "car"
+            car.color = "72BFFF"
+            add(car)
+            
+            let utilities = Category()
+            utilities.name = "Utilities"
+            utilities.image = "utilities"
+            utilities.color = "E198F7"
+            add(utilities)
+            
+            let shopping = Category()
+            shopping.name = "Shopping"
+            shopping.image = "shopping"
+            shopping.color = "F7C761"
+            add(shopping)
+            
+            let shop = Category()
+            shop.name = "Shop"
+            shop.image = "shop"
+            shop.color = "AA8AE9"
+            add(shop)
+            
+            let health = Category()
+            health.name = "Health"
+            health.image = "health"
+            health.color = "ED596F"
+            add(health)
+            
+            let trip = Category()
+            trip.name = "Trip"
+            trip.image = "trip"
+            trip.color = "7BCE70"
+            add(trip)
+        }
+    }
+    
     // MARK: - GET
     
     func get(_ type: Object.Type) -> Results<Object> {

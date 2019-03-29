@@ -14,18 +14,22 @@ protocol AddMovementViewControllerDelegate {
 
 class AddMovementViewController: AddViewController {
     
+    private let categoryCellIdentifier = "categoryCellIdentifier"
     private let movementTypes: [Movement.MovementType] = [.income, .outcome]
+    private var categories: [Category] = []
     private lazy var amountTextField: CustomTextField = {
         let textField = CustomTextField()
         textField.keyboardType = .decimalPad
         return textField
     }()
     private var typeCollectionView: UICollectionView!
+    private var categoryCollectionView: UICollectionView!
     private lazy var accountButton: PickButton = PickButton()
     private lazy var dateButton: PickButton = PickButton()
     private lazy var descriptionTextView: CustomTextView = CustomTextView()
     private var selectedTypeIndex = -1
     var selectedAccount: Account?
+    private var selectedCategory: Category?
     private var selectedDate: Date?
     var delegate: AddMovementViewControllerDelegate?
 
@@ -40,6 +44,7 @@ class AddMovementViewController: AddViewController {
         scrollView.scrollIndicatorInsets = scrollView.contentInset
         setupAmountSection()
         setupMovementTypeSection()
+        setupCategorySection()
         setupAccountSection()
         setupDateSection()
         setupDescriptionSection()
@@ -97,6 +102,39 @@ class AddMovementViewController: AddViewController {
     }
     
     
+    private func setupCategorySection() {
+        categories = RealmManager.shared.getArray(ofType: Category.self) as! [Category]
+        let contentInsets: CGFloat = 16
+        let collectionViewHeight: CGFloat = 50
+        let titleLabel = TitleLabel()
+        let descriptionLabel = UILabel()
+        let layout = UICollectionViewFlowLayout()
+        
+        titleLabel.text = "Category".localized()
+        descriptionLabel.textColor = ThemeManager.currentTheme().textColor
+        descriptionLabel.text = "Select a category".localized()
+        layout.itemSize = CGSize(width: 50, height: 50)
+        layout.minimumInteritemSpacing = 8
+        layout.scrollDirection = .horizontal
+        categoryCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        categoryCollectionView.delegate = self
+        categoryCollectionView.dataSource = self
+        categoryCollectionView.backgroundColor = .clear
+        categoryCollectionView.showsHorizontalScrollIndicator = false
+        categoryCollectionView.contentInset = UIEdgeInsets(top: 0, left: contentInsets, bottom: 0, right: contentInsets)
+        categoryCollectionView.register(UINib(nibName: "CategoryCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: categoryCellIdentifier)
+        
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(descriptionLabel)
+        contentView.addSubview(categoryCollectionView)
+        
+        titleLabel.setConstraints(topAnchor: typeCollectionView.bottomAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: titleTopConstant, leadingConstant: leadingConstant, trailingConstant: trailingConstant)
+        descriptionLabel.setConstraints(topAnchor: titleLabel.bottomAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: descriptionTopConstant, leadingConstant: leadingConstant,  trailingConstant: trailingConstant)
+        categoryCollectionView.setConstraints(topAnchor: descriptionLabel.bottomAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: textFieldTopConstant, heightConstant: collectionViewHeight)
+        categoryCollectionView.setConstraints(heightConstant: collectionViewHeight)
+    }
+    
+    
     private func setupAccountSection() {
         let titleLabel: TitleLabel = TitleLabel()
         
@@ -112,7 +150,7 @@ class AddMovementViewController: AddViewController {
         contentView.addSubview(titleLabel)
         contentView.addSubview(accountButton)
         
-        setupConstraints(for: accountButton, titleTopConstraint: typeCollectionView.bottomAnchor, titleLabel: titleLabel)
+        setupConstraints(for: accountButton, titleTopConstraint: categoryCollectionView.bottomAnchor, titleLabel: titleLabel)
         accountButton.setConstraints(heightConstant: 55)
     }
     
@@ -149,7 +187,7 @@ class AddMovementViewController: AddViewController {
     @objc private func presentDatePicker() {
         let viewController =  DateSelectionViewController()
         viewController.delegate = self
-        presentAsStork(UINavigationController(rootViewController: viewController), height: 300)
+        presentAsStork(UINavigationController(rootViewController: viewController), height: 300, showIndicator: false, hideIndicatorWhenScroll: false, showCloseButton: false, complection: nil)
     }
     
     private func setupDescriptionSection() {
@@ -208,6 +246,7 @@ class AddMovementViewController: AddViewController {
         }
         movement.type = movementTypes[selectedTypeIndex].rawValue
         movement.account = selectedAccount
+        movement.category = selectedCategory
         movement.date = selectedDate ?? Date()
         movement.movDescription = descriptionTextView.text
         RealmManager.shared.add(movement)
@@ -221,27 +260,54 @@ class AddMovementViewController: AddViewController {
 extension AddMovementViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return movementTypes.count
+        if collectionView == typeCollectionView {
+             return movementTypes.count
+        }
+        return categories.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! MovementTypeCollectionViewCell
-        cell.textLabel.text = movementTypes[indexPath.item].rawValue.localized()
-        return cell
+        if collectionView == typeCollectionView {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! MovementTypeCollectionViewCell
+            cell.textLabel.text = movementTypes[indexPath.item].rawValue.localized()
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: categoryCellIdentifier, for: indexPath) as! CategoryCollectionViewCell
+            cell.configureWith(category: categories[indexPath.row])
+            if selectedCategory == categories[indexPath.row] {
+                
+            }
+            return cell
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedTypeIndex = indexPath.item
-        let cell = collectionView.cellForItem(at: indexPath) as! MovementTypeCollectionViewCell
-        cell.backgroundColor = ThemeManager.currentTheme().accentColor
-        cell.textLabel.textColor = .white
-        shouldEnabledButton()
+        if collectionView == typeCollectionView {
+            selectedTypeIndex = indexPath.item
+            let cell = collectionView.cellForItem(at: indexPath) as! MovementTypeCollectionViewCell
+            cell.backgroundColor = ThemeManager.currentTheme().accentColor
+            cell.textLabel.textColor = .white
+            shouldEnabledButton()
+        } else {
+            let cell = collectionView.cellForItem(at: indexPath) as! CategoryCollectionViewCell
+            selectedCategory = categories[indexPath.row]
+            cell.backgroundColor = UIColor(categories[indexPath.row].color)
+            cell.imageView.tintColor = .white
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as! MovementTypeCollectionViewCell
-        cell.backgroundColor = ThemeManager.currentTheme().lightBackgroundColor
-        cell.textLabel.textColor = .lightGray
+        if collectionView == typeCollectionView {
+            let cell = collectionView.cellForItem(at: indexPath) as! MovementTypeCollectionViewCell
+            cell.backgroundColor = ThemeManager.currentTheme().lightBackgroundColor
+            cell.textLabel.textColor = .lightGray
+        } else {
+            // TODO: - Arreglar crash cuando se deselecciona una celda que está fuera de la pantalla
+            let cell = collectionView.cellForItem(at: indexPath) as! CategoryCollectionViewCell
+            cell.backgroundColor = ThemeManager.currentTheme().lightBackgroundColor
+            cell.imageView.tintColor = .lightGray
+        }
     }
 }
 

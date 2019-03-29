@@ -28,6 +28,7 @@ class DateSelectionViewController: BaseViewController {
     override func setupView() {
         super.setupView()
         picker.backgroundColor = .clear
+        picker.datePickerMode = .date
         picker.setValue(ThemeManager.currentTheme().textColor, forKeyPath: "textColor")
         
         view.addSubview(picker)

@@ -17,6 +17,8 @@
 "Currencies" = "Monedas";
 "Currency" = "Moneda";
 "Settings" = "Ajustes";
+"Savings" = "Ahorros";
+"Total" = "Total";
 
 "Add" = "Agregar";
 "Add Movement" = "Agregar Movimiento";
@@ -49,8 +51,16 @@
 "Select an account" = "Selecciona una cuenta";
 "Date" = "Fecha";
 "Select a date" = "Selecciona una fecha";
+"Category" = "Categoría";
+"Select a category" = "Selecciona una categoría";
+"Description" = "Descripción";
+"Add a description for the movement" = "Añade una descripción para el movimiento";
 
 "Detail" = "Detalle";
+"Edit" = "Editar";
+"Delete account?" = "¿Deseas eliminar la cuenta?";
+"Deleting the account is permanent. You won't be able to get it back." = "Deleting the account is permanent. You won't be able to get it back.";
+"Delete movement?" = "¿Desea eliminar el movimiento?";
 
 // Settings
 "Language" = "Lenguaje";
