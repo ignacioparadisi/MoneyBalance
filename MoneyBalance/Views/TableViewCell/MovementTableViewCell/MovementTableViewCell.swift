@@ -18,8 +18,7 @@ class MovementTableViewCell: SwipeTableViewCell {
     @IBOutlet weak var categoryImageView: UIImageView!
     @IBOutlet weak var amountLabelLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var dateLabelLeadingConstraint: NSLayoutConstraint!
-    
-    
+        
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none

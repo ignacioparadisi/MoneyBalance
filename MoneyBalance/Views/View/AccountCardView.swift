@@ -8,13 +8,13 @@
 
 import UIKit
 
-protocol AccountCardViewDelegate {
+protocol AccountCardViewDelegate: class {
     func shareAccount( _ text: String)
 }
 
 class AccountCardView: UIView {
 
-    var delegate: AccountCardViewDelegate?
+    weak var delegate: AccountCardViewDelegate?
     var amountLabel: AnimatedLabel = {
         let label = AnimatedLabel()
         label.textColor = .white
@@ -90,7 +90,6 @@ class AccountCardView: UIView {
         amountLabel.countFromZero(to: account.money, duration: .none)
         accountNumberLabel.text = account.number
     }
-    
     
     @objc private func shareButtonAction() {
         let text = "Name".localized() + ": \n"

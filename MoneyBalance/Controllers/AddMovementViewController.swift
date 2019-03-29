@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol AddMovementViewControllerDelegate {
+protocol AddMovementViewControllerDelegate: class {
     func didCreateMovement()
 }
 
@@ -31,7 +31,7 @@ class AddMovementViewController: AddViewController {
     var selectedAccount: Account?
     private var selectedCategory: Category?
     private var selectedDate: Date?
-    var delegate: AddMovementViewControllerDelegate?
+    weak var delegate: AddMovementViewControllerDelegate?
 
     override func setupNavigationBar() {
         super.setupNavigationBar()
@@ -96,11 +96,10 @@ class AddMovementViewController: AddViewController {
         contentView.addSubview(typeCollectionView)
         
         titleLabel.setConstraints(topAnchor: amountTextField.bottomAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: titleTopConstant, leadingConstant: leadingConstant, trailingConstant: trailingConstant)
-        descriptionLabel.setConstraints(topAnchor: titleLabel.bottomAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: descriptionTopConstant, leadingConstant: leadingConstant,  trailingConstant: trailingConstant)
+        descriptionLabel.setConstraints(topAnchor: titleLabel.bottomAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: descriptionTopConstant, leadingConstant: leadingConstant, trailingConstant: trailingConstant)
         typeCollectionView.setConstraints(topAnchor: descriptionLabel.bottomAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: textFieldTopConstant, heightConstant: collectionViewHeight)
         typeCollectionView.setConstraints(heightConstant: collectionViewHeight)
     }
-    
     
     private func setupCategorySection() {
         categories = RealmManager.shared.getArray(ofType: Category.self) as! [Category]
@@ -129,11 +128,10 @@ class AddMovementViewController: AddViewController {
         contentView.addSubview(categoryCollectionView)
         
         titleLabel.setConstraints(topAnchor: typeCollectionView.bottomAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: titleTopConstant, leadingConstant: leadingConstant, trailingConstant: trailingConstant)
-        descriptionLabel.setConstraints(topAnchor: titleLabel.bottomAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: descriptionTopConstant, leadingConstant: leadingConstant,  trailingConstant: trailingConstant)
+        descriptionLabel.setConstraints(topAnchor: titleLabel.bottomAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: descriptionTopConstant, leadingConstant: leadingConstant, trailingConstant: trailingConstant)
         categoryCollectionView.setConstraints(topAnchor: descriptionLabel.bottomAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: textFieldTopConstant, heightConstant: collectionViewHeight)
         categoryCollectionView.setConstraints(heightConstant: collectionViewHeight)
     }
-    
     
     private func setupAccountSection() {
         let titleLabel: TitleLabel = TitleLabel()

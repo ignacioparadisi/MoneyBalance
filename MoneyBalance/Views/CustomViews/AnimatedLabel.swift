@@ -45,7 +45,7 @@ class AnimatedLabel: TitleLabel {
     private var timer: CADisplayLink?
     private var currentValue: Double {
         if progress >= totalTime { return destinationValue }
-        return startingValue + Double((update(t: Float(progress / totalTime)) * Float(destinationValue - startingValue)))
+        return startingValue + Double((update(time: Float(progress / totalTime)) * Float(destinationValue - startingValue)))
     }
     
     func count(from: Double, to: Double, duration: AnimationDuration = .fast) {
@@ -89,20 +89,20 @@ class AnimatedLabel: TitleLabel {
         timer?.add(to: .main, forMode: .tracking)
     }
     
-    private func update(t: Float) -> Float {
-        var t = t
+    private func update(time: Float) -> Float {
+        var time = time
         switch countingEffect {
         case .linear:
-            return t
+            return time
         case .easeIn:
-            return powf(t, rate)
+            return powf(time, rate)
         case .easeInOut:
             var sign: Float = 1
             if Int(rate) % 2 == 0 { sign = -1}
-            t *= 2
-            return t < 1 ? 0.5 * powf(t, rate) : (sign * 0.5) * (powf(t - 2, rate) + sign * 2)
+            time *= 2
+            return time < 1 ? 0.5 * powf(time, rate) : (sign * 0.5) * (powf(time - 2, rate) + sign * 2)
         case .easeOut:
-            return 1.0 - powf((1.0 - t), rate)
+            return 1.0 - powf((1.0 - time), rate)
         }
     }
 

@@ -9,14 +9,14 @@
 import UIKit
 import SPStorkController
 
-protocol AddNewCurrencyViewControllerDelegate {
+protocol AddNewCurrencyViewControllerDelegate: class {
     func selectedCurrencyChanged()
 }
 
 class AddNewCurrencyViewController: BaseViewController {
     
     private var currencies: [Currency] = []
-    var delegate: AddNewCurrencyViewControllerDelegate?
+    weak var delegate: AddNewCurrencyViewControllerDelegate?
 
     override func setupNavigationBar() {
         super.setupNavigationBar()

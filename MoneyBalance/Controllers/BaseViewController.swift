@@ -89,13 +89,4 @@ extension BaseViewController: UITableViewDataSource {
 
 // MARK: - [extension] UITableViewDelegate
 extension BaseViewController: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let cell = tableView.cellForRow(at: indexPath)
-//        cell?.backgroundColor = ThemeManager.currentTheme().highlightTableViewCellColor
-//    }
-//    
-//    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-//        let cell = tableView.cellForRow(at: indexPath)
-//        cell?.backgroundColor = ThemeManager.currentTheme().backgroundColor
-//    }
 }

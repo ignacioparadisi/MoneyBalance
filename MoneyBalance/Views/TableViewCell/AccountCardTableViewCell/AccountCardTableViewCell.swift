@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol AccountCardTableViewCellDelegate {
+protocol AccountCardTableViewCellDelegate: class {
     func shareAccount(_ text: String)
     func editAccount()
 }
@@ -32,7 +32,7 @@ class AccountCardTableViewCell: UITableViewCell {
         button.layer.masksToBounds = false
         return button
     }()
-    var delegate: AccountCardTableViewCellDelegate?
+    weak var delegate: AccountCardTableViewCellDelegate?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -79,16 +79,15 @@ class AccountCardTableViewCell: UITableViewCell {
         }
         
         if view.center.x <= 60, velocity.x < 0 {
-            translation.x = translation.x * 1/2
+            translation.x *= 1/2
         }
         
         if view.center.x <= -frame.width / 4 {
             translation.x = 0
         }
         
-        if gestureRecognizer.view != nil  {
-            view.center = CGPoint(x:view.center.x + translation.x,
-                                  y:view.center.y)
+        if gestureRecognizer.view != nil {
+            view.center = CGPoint(x: view.center.x + translation.x, y: view.center.y)
         }
         gestureRecognizer.setTranslation(CGPoint.zero, in: self.view)
         

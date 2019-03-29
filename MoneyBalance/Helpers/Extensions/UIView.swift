@@ -53,8 +53,7 @@ extension UIView {
         if let centerYAnchor = centerYAnchor {
             constraints.append(self.centerYAnchor.constraint(equalTo: centerYAnchor))
         }
-        
-        
+                
         if let widthConstant = widthConstant {
             constraints.append(self.widthAnchor.constraint(equalToConstant: widthConstant))
         }

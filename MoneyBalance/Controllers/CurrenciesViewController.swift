@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol CurrenciesViewControllerDelegate {
+protocol CurrenciesViewControllerDelegate: class {
     func selectedCurrencyChanged()
 }
 
@@ -47,7 +47,7 @@ class CurrenciesViewController: BaseViewController {
         currencies.sort { (currency1, currency2) -> Bool in
             return currency1.name < currency2.name
         }
-        if currencies.count == 0 {
+        if currencies.isEmpty {
             setupAddCurrenciesView()
         } else {
             if addCurrencyViewWasSet {

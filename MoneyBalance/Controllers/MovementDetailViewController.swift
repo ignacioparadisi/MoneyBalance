@@ -53,7 +53,6 @@ class MovementDetailViewController: BaseViewController {
         
     }
     
-    
     private func setupDateSection() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE, MMM d, yyyy"
@@ -113,6 +112,4 @@ class MovementDetailViewController: BaseViewController {
 
     }
     
-    
-
 }

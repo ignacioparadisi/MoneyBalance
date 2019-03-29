@@ -10,9 +10,9 @@ import UIKit
 
 class SettingsViewController: BaseViewController {
     
-    private let LANGUAGE_SECTION = 0
-    private let THEME_SECTION = 1
-    private let AUTHENTICATION_SECTION = 2
+    private let languageSection = 0
+    private let themeSection = 1
+    private let authenticationSection = 2
     
     // Identifier for theme selection cell
     private let switchCellIdentifier = "switchCellIdentifier"
@@ -42,19 +42,19 @@ class SettingsViewController: BaseViewController {
         let section = indexPath.section
         
         switch section {
-        case LANGUAGE_SECTION:
+        case languageSection:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! DefaultTableViewCell
             cell.configureWith(title: "Language".localized(), accessoryType: .disclosureIndicator, selectedValue: Localize.getSelectedLanguageName())
             return cell
             
-        case THEME_SECTION:
+        case themeSection:
             let cell = tableView.dequeueReusableCell(withIdentifier: switchCellIdentifier, for: indexPath) as! SwitchTableViewCell
             cell.tag = tag(for: indexPath)
             cell.configureWith(theme: ThemeManager.currentTheme())
             cell.delegate = self
             return cell
             
-        case AUTHENTICATION_SECTION:
+        case authenticationSection:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! DefaultTableViewCell
             cell.configureWith(title: "Screen Lock".localized(), accessoryType: .disclosureIndicator)
             return cell
@@ -75,9 +75,9 @@ class SettingsViewController: BaseViewController {
     
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         switch section {
-        case LANGUAGE_SECTION:
+        case languageSection:
             return "Change app's language".localized()
-        case AUTHENTICATION_SECTION:
+        case authenticationSection:
             return "Require Touch ID to unlock this app".localized()
         default:
             return nil
@@ -86,11 +86,10 @@ class SettingsViewController: BaseViewController {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
-        case LANGUAGE_SECTION:
+        case languageSection:
             let viewController = LanguageSettingsViewController()
             navigationController?.pushViewController(viewController, animated: true)
-            break
-        case AUTHENTICATION_SECTION:
+        case authenticationSection:
             let viewController = ScreenLockSettingsViewController()
             navigationController?.pushViewController(viewController, animated: true)
         default:

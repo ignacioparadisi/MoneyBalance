@@ -25,7 +25,6 @@ class LauncherViewController: UIViewController, AuthenticationFailedViewDelegate
         return view
     }()
     
-    
     /// Sets the view controller that should be shown if authentication is successful
     ///
     /// - Parameter viewController: View controller that should be shown if authentication is successful
@@ -59,7 +58,7 @@ class LauncherViewController: UIViewController, AuthenticationFailedViewDelegate
         if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) {
             let reason = "Touch ID is required to use this app.".localized()
             
-            context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason) { [unowned self] (success, authenticationError) in
+            context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason) { [unowned self] success, _ in
                 DispatchQueue.main.async {
                     if success {
                         UIApplication.shared.keyWindow?.rootViewController = self.viewController

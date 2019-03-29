@@ -10,10 +10,10 @@ import Foundation
 
 class Utils {
     
-    private static let AUTHENTICATION_KEY: String = "authenticationKey"
+    private static let authenticationKey: String = "authenticationKey"
     
     static func isAuthenticationEnabled() -> Bool {
-        if let isOn = (UserDefaults.standard.value(forKey: AUTHENTICATION_KEY) as AnyObject).boolValue {
+        if let isOn = (UserDefaults.standard.value(forKey: authenticationKey) as AnyObject).boolValue {
             return isOn
         } else {
             return false
@@ -21,7 +21,7 @@ class Utils {
     }
     
     static func changeAuthenticationStatus(isOn: Bool) {
-        UserDefaults.standard.setValue(isOn, forKey: AUTHENTICATION_KEY)
+        UserDefaults.standard.setValue(isOn, forKey: authenticationKey)
         UserDefaults.standard.synchronize()
     }
     

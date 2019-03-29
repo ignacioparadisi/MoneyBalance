@@ -13,18 +13,18 @@ extension UIColor {
     ///
     /// - Parameter hex: Hexadecimal string representation
     convenience init(_ hex: String) {
-        var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+        var cString: String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         
-        if (cString.hasPrefix("#")) {
+        if cString.hasPrefix("#") {
             cString.remove(at: cString.startIndex)
         }
         
-        if ((cString.count) != 6) {
+        if (cString.count) != 6 {
             self.init(red: 127.5, green: 127.5, blue: 127.5, alpha: 1)
             return
         }
         
-        var rgbValue:UInt32 = 0
+        var rgbValue: UInt32 = 0
         Scanner(string: cString).scanHexInt32(&rgbValue)
         
         self.init(

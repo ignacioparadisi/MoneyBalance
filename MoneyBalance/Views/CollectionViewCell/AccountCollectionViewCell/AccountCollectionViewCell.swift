@@ -8,14 +8,14 @@
 
 import UIKit
 
-protocol AccountCollectionViewCellDelegate {
+protocol AccountCollectionViewCellDelegate: class {
     func shareAccount(_ text: String)
 }
 
 class AccountCollectionViewCell: UICollectionViewCell {
 
     lazy var view = AccountCardView()
-    var delegate: AccountCollectionViewCellDelegate?
+    weak var delegate: AccountCollectionViewCellDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)

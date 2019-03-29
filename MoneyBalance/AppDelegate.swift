@@ -18,7 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private var currentSchemaVersion: UInt64 = 2
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
         makeMigrations()
         
         IQKeyboardManager.shared.enable = true
@@ -30,12 +29,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = Utils.isAuthenticationEnabled() ? LauncherViewController(mainVC) : mainVC
+        
         // Apply theme before showing the views
-        // TODO: - Cuando se ejecuta no cambia el color de las letras de la celda de idioma
         ThemeManager.applayTheme(ThemeManager.currentTheme())
         RealmManager.shared.createCurrencies()
         RealmManager.shared.createCategories()
-        if let currentCurrency = RealmManager.shared.getArray(ofType: Currency.self, filter: "selected == true") as? [Currency], currentCurrency.count > 0 {
+        if let currentCurrency = RealmManager.shared.getArray(ofType: Currency.self, filter: "selected == true") as? [Currency], !currentCurrency.isEmpty {
             Currency.setCurrent(currentCurrency[0])
         }
         
@@ -80,6 +79,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
         Realm.Configuration.defaultConfiguration = config
     }
-
+    
 }
-

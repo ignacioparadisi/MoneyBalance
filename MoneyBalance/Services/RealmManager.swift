@@ -39,7 +39,7 @@ class RealmManager {
     }
     
     func createCurrencies() {
-        if get(Currency.self).count == 0 {
+        if get(Currency.self).isEmpty {
             let bs = Currency()
             bs.country = "Venezuela"
             bs.name = "Bs. S"
@@ -55,7 +55,7 @@ class RealmManager {
     }
     
     func createCategories() {
-        if get(Category.self).count == 0 {
+        if get(Category.self).isEmpty {
             let food = Category()
             food.name = "Food"
             food.image = "food"
@@ -133,7 +133,7 @@ class RealmManager {
     }
     
     func changeCurrency(_ currency: Currency) {
-        if let selectedCurrency = getArray(ofType: Currency.self, filter: "selected == true") as? [Currency], selectedCurrency.count > 0 {
+        if let selectedCurrency = getArray(ofType: Currency.self, filter: "selected == true") as? [Currency], !selectedCurrency.isEmpty {
             try! database.write {
                 selectedCurrency[0].selected = false
             }

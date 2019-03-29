@@ -66,9 +66,6 @@ class ChartsViewController: BaseViewController {
         let lineChartDataSet = LineChartDataSet(values: chartDataEntries, label: "Income")
         let lineData = LineChartData(dataSet: lineChartDataSet)
         lineChartView.data = lineData
-        
-        
     }
-
 
 }

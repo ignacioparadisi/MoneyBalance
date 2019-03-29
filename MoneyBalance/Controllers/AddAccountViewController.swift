@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol AddAccountViewControllerDelegate {
+protocol AddAccountViewControllerDelegate: class {
     func accountCreated()
 }
 
@@ -32,7 +32,7 @@ class AddAccountViewController: AddViewController {
         textField.returnKeyType = .done
         return textField
     }()
-    var delegate: AddAccountViewControllerDelegate?
+    weak var delegate: AddAccountViewControllerDelegate?
     var account: Account?
 
     override func setupNavigationBar() {

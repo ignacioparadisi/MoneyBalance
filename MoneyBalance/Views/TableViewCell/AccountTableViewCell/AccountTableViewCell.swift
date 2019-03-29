@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol AccountTableViewCellDelegate {
+protocol AccountTableViewCellDelegate: class {
     func goToAddAccount()
     func goToDetail(for account: Account)
     func shareAccount(_ text: String)
@@ -16,14 +16,14 @@ protocol AccountTableViewCellDelegate {
 
 class AccountTableViewCell: UITableViewCell {
 
-    private let ACCOUNTS_SECTION = 0
+    private let accountsSection = 0
     private let cellIdentifier = "cellIdentifier"
     private let emptyAccountsCellIdentifier = "emptyAccountsCellIdentifier"
     private let sectionInsets: CGFloat = 20.0
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet weak var titleLabel: TitleLabel!
     @IBOutlet weak var addAccountButton: UIButton!
-    var delegate: AccountTableViewCellDelegate?
+    weak var delegate: AccountTableViewCellDelegate?
     var accounts: [Account] = []
     
     override func awakeFromNib() {
@@ -42,7 +42,7 @@ class AccountTableViewCell: UITableViewCell {
     
     @objc private func didCreateAccount() {
         fetchAccounts()
-        let newAccountIndexPath = IndexPath(item: accounts.count - 1, section: ACCOUNTS_SECTION)
+        let newAccountIndexPath = IndexPath(item: accounts.count - 1, section: accountsSection)
         collectionView.scrollToItem(at: newAccountIndexPath, at: .centeredHorizontally, animated: true)
     }
     
@@ -61,14 +61,14 @@ class AccountTableViewCell: UITableViewCell {
 
 extension AccountTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if accounts.count == 0 {
+        if accounts.isEmpty {
             return 1
         }
         return accounts.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if accounts.count == 0 {
+        if accounts.isEmpty {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: emptyAccountsCellIdentifier, for: indexPath) as! AddAccountCollectionViewCell
             return cell
         }
@@ -82,7 +82,7 @@ extension AccountTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if accounts.count == 0 {
+        if accounts.isEmpty {
             delegate?.goToAddAccount()
             return
         }

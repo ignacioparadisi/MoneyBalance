@@ -8,7 +8,7 @@
 
 import UIKit
 
-let THEME_KEY = "SelectedTheme"
+let themeKey = "SelectedTheme"
 
 /// Defines the variables for the app theme
 enum Theme: Int {
@@ -142,8 +142,8 @@ struct ThemeManager {
     /// Defines which theme to use
     ///
     /// - Returns: Current selected theme
-    static func currentTheme() ->  Theme {
-        if let storedTheme = (UserDefaults.standard.value(forKey: THEME_KEY) as AnyObject).integerValue {
+    static func currentTheme() -> Theme {
+        if let storedTheme = (UserDefaults.standard.value(forKey: themeKey) as AnyObject).integerValue {
             return Theme(rawValue: storedTheme)!
         } else {
             return .light
@@ -171,7 +171,7 @@ struct ThemeManager {
     ///
     /// - Parameter theme: Selected theme
     private static func apply(_ theme: Theme) {
-        UserDefaults.standard.setValue(theme.rawValue, forKey: THEME_KEY)
+        UserDefaults.standard.setValue(theme.rawValue, forKey: themeKey)
         UserDefaults.standard.synchronize()
         
         setupNavigationBarAppearance(theme)

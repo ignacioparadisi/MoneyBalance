@@ -22,7 +22,7 @@ class Currency: Object {
         return "id"
     }
     
-    static var current: Currency? = nil
+    static var current: Currency?
     
     static func setCurrent(_ currency: Currency) {
         RealmManager.shared.changeCurrency(currency)

@@ -13,8 +13,8 @@ import SPStorkController
 
 class HomeViewController: BaseViewController {
     
-    private let ACCOUNTS_SECTION = 0
-    private let SAVING_SECTION = 1
+    private let accountsSection = 0
+    private let savingsSection = 1
     private let accountsCellIdentifier = "accountsCellIdentifier"
     private let titleCellIdentifier = "titleCellIdentifier"
     private let totalCellIdentifier = "totalCellIdentifier"
@@ -130,7 +130,7 @@ class HomeViewController: BaseViewController {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        if accounts.count == 0 {
+        if accounts.isEmpty {
             return 1
         }
         return 2
@@ -138,9 +138,9 @@ class HomeViewController: BaseViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case ACCOUNTS_SECTION:
+        case accountsSection:
             return 1
-        case SAVING_SECTION:
+        case savingsSection:
             return accounts.count + 2
         default:
             return 0
@@ -151,7 +151,7 @@ class HomeViewController: BaseViewController {
         let section = indexPath.section
         let row = indexPath.row
         
-        if section == ACCOUNTS_SECTION {
+        if section == accountsSection {
             let cell = tableView.dequeueReusableCell(withIdentifier: accountsCellIdentifier, for: indexPath) as! AccountTableViewCell
             cell.addAccountButton.tintColor = ThemeManager.currentTheme().accentColor
             cell.delegate = self
@@ -209,7 +209,7 @@ extension HomeViewController: AccountTableViewCellDelegate {
     private func showAddCurrencyAlert() {
         let alert = UIAlertController(title: "Add currency".localized(), message: "For creating a new account you should first add a currency.".localized(), preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil)
-        let addCurrencyAction = UIAlertAction(title: "Add".localized(), style: .default) { action in
+        let addCurrencyAction = UIAlertAction(title: "Add".localized(), style: .default) { _ in
             self.presentCurrenciesView()
         }
         

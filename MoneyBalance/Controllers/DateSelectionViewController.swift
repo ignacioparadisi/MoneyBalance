@@ -8,14 +8,14 @@
 
 import UIKit
 
-protocol DateSelectionViewControllerDelegate {
+protocol DateSelectionViewControllerDelegate: class {
     func didSelectDate(_ date: Date)
 }
 
 class DateSelectionViewController: BaseViewController {
 
     private lazy var picker = UIDatePicker()
-    var delegate: DateSelectionViewControllerDelegate?
+    weak var delegate: DateSelectionViewControllerDelegate?
     
     override func setupNavigationBar() {
         super.setupNavigationBar()

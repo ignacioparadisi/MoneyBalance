@@ -8,14 +8,14 @@
 
 import UIKit
 
-protocol CurrencyCollectionViewCellDelegate {
+protocol CurrencyCollectionViewCellDelegate: class {
     func deleteCurrency(at index: Int)
 }
 
 class CurrencyCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
-    var delegate: CurrencyCollectionViewCellDelegate?
+    weak var delegate: CurrencyCollectionViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()

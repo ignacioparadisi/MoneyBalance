@@ -12,8 +12,8 @@ import SwipeCellKit
 class AccountDetailViewController: BaseViewController {
 
     private let accountCellIdentifier = "accountCellIdentifier"
-    private let ACCOUNT_SECTION = 0
-    private let MOVEMENTS_SECTION = 1
+    private let accountSection = 0
+    private let movementsSection = 1
     var addMovementButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = ThemeManager.currentTheme().accentColor
@@ -118,7 +118,7 @@ extension AccountDetailViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case ACCOUNT_SECTION:
+        case accountSection:
             return 1
         default:
             return movements.count
@@ -130,7 +130,7 @@ extension AccountDetailViewController {
         let row = indexPath.row
         
         switch section {
-        case ACCOUNT_SECTION:
+        case accountSection:
             let cell = tableView.dequeueReusableCell(withIdentifier: accountCellIdentifier, for: indexPath) as! AccountCardTableViewCell
             cell.layoutIfNeeded()
             cell.delegate = self
@@ -147,7 +147,7 @@ extension AccountDetailViewController {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == ACCOUNT_SECTION {
+        if indexPath.section == accountSection {
             return view.frame.width * 2/3
         }
         return UITableView.automaticDimension
@@ -162,7 +162,7 @@ extension AccountDetailViewController {
         label.setConstraints(leadingAnchor: view.leadingAnchor, trailingAnchor: view.trailingAnchor, centerYAnchor: view.centerYAnchor, leadingConstant: 16, trailingConstant: -16)
         label.text = section == 0 ? "Account".localized().uppercased() : "Movements".localized().uppercased()
         
-        if section == ACCOUNT_SECTION {
+        if section == accountSection {
             let deleteButton = UIButton()
             deleteButton.setTitle("Delete".localized(), for: .normal)
             deleteButton.setTitleColor(ThemeManager.currentTheme().accentColor, for: .normal)
@@ -182,7 +182,7 @@ extension AccountDetailViewController {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == MOVEMENTS_SECTION {
+        if indexPath.section == movementsSection {
             goToMovementDetails(movement: movements[indexPath.row])
         }
     }
@@ -240,7 +240,7 @@ extension AccountDetailViewController: AddMovementViewControllerDelegate {
 extension AccountDetailViewController: SwipeTableViewCellDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         
-        if indexPath.section == MOVEMENTS_SECTION {
+        if indexPath.section == movementsSection {
             guard orientation == .right else { return nil }
             
             let deleteAction = SwipeAction(style: .destructive, title: "Delete".localized()) { (action, indexPath) in
@@ -260,7 +260,6 @@ extension AccountDetailViewController: SwipeTableViewCellDelegate {
         return nil
         
     }
-    
     
     func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
         

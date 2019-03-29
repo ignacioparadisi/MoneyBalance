@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol AuthenticationFailedViewDelegate {
+protocol AuthenticationFailedViewDelegate: class {
     func authenticate()
 }
 
@@ -18,7 +18,7 @@ class AuthenticationFailedView: UIView {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var touchIdButton: UIButton!
-    var delegate: AuthenticationFailedViewDelegate?
+    weak var delegate: AuthenticationFailedViewDelegate?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

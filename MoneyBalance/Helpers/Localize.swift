@@ -9,7 +9,7 @@
 import Foundation
 
 /// Key for getting the selected language from UserDefaults
-let LANGUAGE_KEY: String = "LanguageKey"
+let languageKey: String = "LanguageKey"
 
 class Localize {
     
@@ -18,10 +18,10 @@ class Localize {
     
     /// Sets selected language Bundle from file
     static func verifyLanguage() {
-        if UserDefaults.standard.value(forKey: LANGUAGE_KEY) == nil {
+        if UserDefaults.standard.value(forKey: languageKey) == nil {
             setLanguage("Base")
         }
-        let language = UserDefaults.standard.string(forKey: LANGUAGE_KEY)
+        let language = UserDefaults.standard.string(forKey: languageKey)
         if let path = Bundle.main.path(forResource: language, ofType: "lproj") {
             languageBundle = Bundle(path: path)
         } else {
@@ -31,10 +31,10 @@ class Localize {
     }
     
     static func getSelectedLanguageName() -> String {
-        if UserDefaults.standard.value(forKey: LANGUAGE_KEY) == nil {
+        if UserDefaults.standard.value(forKey: languageKey) == nil {
             return "English".localized()
         }
-        switch UserDefaults.standard.string(forKey: LANGUAGE_KEY) {
+        switch UserDefaults.standard.string(forKey: languageKey) {
         case "en":
             return "English".localized()
         case "es-US":
@@ -48,7 +48,7 @@ class Localize {
     ///
     /// - Parameter language: Selected language
     static func setLanguage(_ language: String) {
-        UserDefaults.standard.set(language, forKey: LANGUAGE_KEY)
+        UserDefaults.standard.set(language, forKey: languageKey)
         UserDefaults.standard.synchronize()
     }
     
