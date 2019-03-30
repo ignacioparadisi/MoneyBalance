@@ -158,7 +158,7 @@ class RealmManager {
     
     func update(_ object: Object) {
         try! database.write {
-            database.add(object)
+            database.add(object, update: true)
         }
     }
     

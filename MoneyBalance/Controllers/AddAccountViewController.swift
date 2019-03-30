@@ -108,7 +108,6 @@ class AddAccountViewController: AddViewController {
             updateAccount()
         }
         dismissPanel()
-        NotificationCenter.default.post(name: .didCreateAccount, object: nil)
     }
     
     private func createAccount() {
@@ -117,12 +116,18 @@ class AddAccountViewController: AddViewController {
         account.number = accountNumberTextField.text ?? ""
         account.currency = Currency.current
         RealmManager.shared.add(account)
+        NotificationCenter.default.post(name: .didCreateAccount, object: nil)
     }
     
     private func updateAccount() {
-        account!.bankName = nameTextField.text ?? ""
-        account!.number = accountNumberTextField.text ?? ""
-        RealmManager.shared.update(account!)
+        let account = Account()
+        account.id = self.account!.id
+        account.bankName = nameTextField.text ?? ""
+        account.number = accountNumberTextField.text ?? ""
+        account.currency = self.account!.currency
+        account.money = self.account!.money
+        RealmManager.shared.update(account)
+        NotificationCenter.default.post(name: .updateAccountCard, object: nil)
     }
 
 }
