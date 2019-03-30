@@ -37,7 +37,12 @@ class AddAccountViewController: AddViewController {
 
     override func setupNavigationBar() {
         super.setupNavigationBar()
-        title = "Add Account".localized()
+        if account == nil {
+            title = "Add Account".localized()
+        } else {
+            title = "Update Account".localized()
+            addButton.setTitle("Update".localized(), for: .normal)
+        }
     }
     
     override func setupView() {
@@ -47,11 +52,6 @@ class AddAccountViewController: AddViewController {
         nameTextField.setPlaceholder("Bank name".localized())
         accountNumberTitleLabel.text = "Account Number".localized()
         accountNumberTextField.setPlaceholder("Account number".localized())
-        
-        if let account = account {
-            nameTextField.text = account.bankName
-            accountNumberTextField.text = "\(account.number)"
-        }
         
         nameTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         accountNumberTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
@@ -70,6 +70,12 @@ class AddAccountViewController: AddViewController {
         accountNumberTextField.setConstraints(topAnchor: accountNumberTitleLabel.bottomAnchor, leadingAnchor: contentView.leadingAnchor, trailingAnchor: contentView.trailingAnchor, topConstant: textFieldTopConstant, leadingConstant: leadingConstant, trailingConstant: trailingConstant)
         
         shouldEnabledButton()
+        
+        if let account = account {
+            nameTextField.text = account.bankName
+            accountNumberTextField.text = "\(account.number)"
+            shouldEnabledButton()
+        }
     }
     
     @objc private func textFieldDidChange(_ textField: UITextField) {
@@ -92,18 +98,31 @@ class AddAccountViewController: AddViewController {
     }
     
     private func allFieldsAreFilled() -> Bool {
-        return nameTextField.text != "" && accountNumberTextField.text != ""
+        return nameTextField.text != "" 
     }
     
     override func addButtonAction(_ sender: Any) {
+        if account == nil {
+            createAccount()
+        } else {
+            updateAccount()
+        }
+        dismissPanel()
+        NotificationCenter.default.post(name: .didCreateAccount, object: nil)
+    }
+    
+    private func createAccount() {
         let account = Account()
         account.bankName = nameTextField.text ?? ""
         account.number = accountNumberTextField.text ?? ""
         account.currency = Currency.current
         RealmManager.shared.add(account)
-        dismissPanel()
-        NotificationCenter.default.post(name: .didCreateAccount, object: nil)
-        // delegate?.accountCreated()
+    }
+    
+    private func updateAccount() {
+        account!.bankName = nameTextField.text ?? ""
+        account!.number = accountNumberTextField.text ?? ""
+        RealmManager.shared.update(account!)
     }
 
 }

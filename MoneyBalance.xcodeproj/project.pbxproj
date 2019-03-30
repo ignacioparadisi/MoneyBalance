@@ -68,6 +68,7 @@
 		4FD4EBF922459A5F00079935 /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD4EBF822459A5F00079935 /* TitleLabel.swift */; };
 		4FD4EBFC2245C3C100079935 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD4EBFA2245C3C100079935 /* AddViewController.swift */; };
 		4FD4EBFD2245C3C100079935 /* AddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FD4EBFB2245C3C100079935 /* AddViewController.xib */; };
+		4FEC51CB224FDA6E00B671CC /* TitleTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEC51CA224FDA6E00B671CC /* TitleTableViewHeader.swift */; };
 		4FECED2A224B22F3009B8271 /* ChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FECED28224B22F3009B8271 /* ChartsViewController.swift */; };
 		4FECED2B224B22F3009B8271 /* ChartsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FECED29224B22F3009B8271 /* ChartsViewController.xib */; };
 		4FF9E8442246734A009D4039 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF9E8432246734A009D4039 /* UIView.swift */; };
@@ -79,7 +80,6 @@
 		4FF9E85022468A21009D4039 /* AddMovementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF9E84F22468A21009D4039 /* AddMovementViewController.swift */; };
 		4FF9E8592246A652009D4039 /* CurrencyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF9E8572246A652009D4039 /* CurrencyCollectionViewCell.swift */; };
 		4FF9E85A2246A652009D4039 /* CurrencyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FF9E8582246A652009D4039 /* CurrencyCollectionViewCell.xib */; };
-		4FFE9F1F224D94D400774C32 /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFE9F1E224D94D400774C32 /* TitleTableViewCell.swift */; };
 		4FFE9F22224D981700774C32 /* NameMoneyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFE9F20224D981700774C32 /* NameMoneyTableViewCell.swift */; };
 		4FFE9F23224D981700774C32 /* NameMoneyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE9F21224D981700774C32 /* NameMoneyTableViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -152,6 +152,7 @@
 		4FD4EBF822459A5F00079935 /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
 		4FD4EBFA2245C3C100079935 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		4FD4EBFB2245C3C100079935 /* AddViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddViewController.xib; sourceTree = "<group>"; };
+		4FEC51CA224FDA6E00B671CC /* TitleTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewHeader.swift; sourceTree = "<group>"; };
 		4FECED28224B22F3009B8271 /* ChartsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsViewController.swift; sourceTree = "<group>"; };
 		4FECED29224B22F3009B8271 /* ChartsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChartsViewController.xib; sourceTree = "<group>"; };
 		4FF9E8432246734A009D4039 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
@@ -163,7 +164,6 @@
 		4FF9E84F22468A21009D4039 /* AddMovementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMovementViewController.swift; sourceTree = "<group>"; };
 		4FF9E8572246A652009D4039 /* CurrencyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCollectionViewCell.swift; sourceTree = "<group>"; };
 		4FF9E8582246A652009D4039 /* CurrencyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyCollectionViewCell.xib; sourceTree = "<group>"; };
-		4FFE9F1E224D94D400774C32 /* TitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
 		4FFE9F20224D981700774C32 /* NameMoneyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NameMoneyTableViewCell.swift; path = ../NameMoneyTableViewCell.swift; sourceTree = "<group>"; };
 		4FFE9F21224D981700774C32 /* NameMoneyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NameMoneyTableViewCell.xib; path = ../NameMoneyTableViewCell.xib; sourceTree = "<group>"; };
 		BEE5FE5E3E410EAC92F3321B /* Pods-MoneyBalance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoneyBalance.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MoneyBalance/Pods-MoneyBalance.debug.xcconfig"; sourceTree = "<group>"; };
@@ -231,7 +231,6 @@
 				4F53897322383E23004832B5 /* AccountTableViewCell */,
 				4FED8A08222FF292009E3965 /* SwitchTableViewCell */,
 				4FED8A07222FF283009E3965 /* DefaultTableViewCell */,
-				4FFE9F1E224D94D400774C32 /* TitleTableViewCell.swift */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -404,6 +403,7 @@
 			children = (
 				4F71770E22497F1F00F6C6CE /* AccountCardView.swift */,
 				4FED8A05222FF25C009E3965 /* AuthenticationFailedView */,
+				4FEC51CA224FDA6E00B671CC /* TitleTableViewHeader.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -650,6 +650,7 @@
 			files = (
 				4F7E3D55222EBF0200112275 /* AuthenticationFailedView.swift in Sources */,
 				4F53898122384D1D004832B5 /* CurrenciesViewController.swift in Sources */,
+				4FEC51CB224FDA6E00B671CC /* TitleTableViewHeader.swift in Sources */,
 				4FF9E84A224673AC009D4039 /* Double.swift in Sources */,
 				4FD02422224908B000248B19 /* DateSelectionViewController.swift in Sources */,
 				4F5CA0A7222E170800ED29D4 /* LocaleCurrency.swift in Sources */,
@@ -681,7 +682,6 @@
 				4FBB4C2322471CD800049F9B /* AccountCardTableViewCell.swift in Sources */,
 				4F7E3D57222EC84F00112275 /* Localize.swift in Sources */,
 				4F9B892A224ACC94002F5B6A /* MovementDetailViewController.swift in Sources */,
-				4FFE9F1F224D94D400774C32 /* TitleTableViewCell.swift in Sources */,
 				4FBB4C1E22470A4800049F9B /* AnimationControlller.swift in Sources */,
 				4F77FBCF2247CAE60088A9E4 /* NotificationCenter.swift in Sources */,
 				4F9F116B224D996500D7098B /* TotalAmountTableViewCell.swift in Sources */,

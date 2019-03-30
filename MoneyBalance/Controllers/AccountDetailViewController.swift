@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwipeCellKit
 
 class AccountDetailViewController: BaseViewController {
 
@@ -71,12 +70,14 @@ class AccountDetailViewController: BaseViewController {
     
     override func refresh() {
         fetchMovements()
+        // tableView.reloadSections(IndexSet(integer: 1), with: .none)
+        tableView.reloadData()
     }
     
     private func fetchMovements() {
         movements = RealmManager.shared.getMovements(filter: "account.id == '\(account.id)'")
         // movements = RealmManager.shared.getArray(ofType: Movement.self, filter: "account.id == '\(account.id)'") as! [Movement]
-        tableView.reloadSections(IndexSet(integer: 1), with: .none)
+        
     }
     
     @objc private func goToAddMovement() {
@@ -139,7 +140,6 @@ extension AccountDetailViewController {
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! MovementTableViewCell
-            cell.delegate = self
             cell.configureWith(movement: movements[row])
             return cell
         }
@@ -154,31 +154,19 @@ extension AccountDetailViewController {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 42))
-        view.backgroundColor = ThemeManager.currentTheme().tableViewBackgroundColor
-        let label = UILabel()
-        label.textColor = ThemeManager.currentTheme().textColor
-        view.addSubview(label)
-        label.setConstraints(leadingAnchor: view.leadingAnchor, trailingAnchor: view.trailingAnchor, centerYAnchor: view.centerYAnchor, leadingConstant: 16, trailingConstant: -16)
-        label.text = section == 0 ? "Account".localized().uppercased() : "Movements".localized().uppercased()
-        
-        if section == accountSection {
-            let deleteButton = UIButton()
-            deleteButton.setTitle("Delete".localized(), for: .normal)
-            deleteButton.setTitleColor(ThemeManager.currentTheme().accentColor, for: .normal)
-            deleteButton.addTarget(self, action: #selector(deleteAccount), for: .touchUpInside)
-            view.addSubview(deleteButton)
-            deleteButton.setConstraints(trailingAnchor: view.trailingAnchor, centerYAnchor: view.centerYAnchor, trailingConstant: -16)
+        let view = TitleTableViewHeader()
+        switch section {
+        case accountSection:
+            view.titleLabel.text = "Account".localized()
+            view.setRightItem(with: "Delete".localized(), delegate: self)
+        default:
+            view.titleLabel.text = "Movements".localized()
         }
         return view
     }
     
-    @objc private func deleteAccount() {
+    private func deleteAccount() {
         showDeleteAlert(with: "Delete account?".localized(), message: "Deleting the account is permanent. You won't be able to get it back.".localized(), handler: nil)
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 42
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -197,18 +185,23 @@ extension AccountDetailViewController {
         cell?.backgroundColor = ThemeManager.currentTheme().backgroundColor
     }
     
-//    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-//        if indexPath.section == ACCOUNT_SECTION {
-//            return .none
-//        }
-//        return .delete
-//    }
-//
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete, indexPath.section == MOVEMENTS_SECTION {
-//
-//        }
-//    }
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        if indexPath.section == accountSection {
+            return .none
+        }
+        return .delete
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete, indexPath.section == movementsSection {
+            showDeleteAlert(with: "Delete movement?".localized(), message: "", handler: { _ in
+                RealmManager.shared.delete(self.movements[indexPath.item])
+                self.movements.remove(at: indexPath.item)
+                self.tableView.deleteRows(at: [indexPath], with: .left)
+                NotificationCenter.default.post(name: .updateAccountCard, object: nil)
+            })
+        }
+    }
 }
 
 extension AccountDetailViewController: AccountCardTableViewCellDelegate {
@@ -233,40 +226,14 @@ extension AccountDetailViewController: AccountCardTableViewCellDelegate {
 
 extension AccountDetailViewController: AddMovementViewControllerDelegate {
     func didCreateMovement() {
-        refresh()
+        fetchMovements()
+        let indexPath = IndexPath(row: 0, section: movementsSection)
+        tableView.insertRows(at: [indexPath], with: .right)
     }
 }
 
-extension AccountDetailViewController: SwipeTableViewCellDelegate {
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-        
-        if indexPath.section == movementsSection {
-            guard orientation == .right else { return nil }
-            
-            let deleteAction = SwipeAction(style: .destructive, title: "Delete".localized()) { (action, indexPath) in
-                self.showDeleteAlert(with: "Delete movement?".localized(), message: "", handler: { _ in
-                    RealmManager.shared.delete(self.movements[indexPath.item])
-                    self.movements.remove(at: indexPath.item)
-                    action.fulfill(with: .delete)
-                    NotificationCenter.default.post(name: .updateAccountCard, object: nil)
-                })
-            }
-            
-            deleteAction.image = UIImage(named: "trash")
-            
-            return [deleteAction]
-        }
-        
-        return nil
-        
-    }
-    
-    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
-        
-        var options = SwipeOptions()
-        options.expansionStyle = .destructive(automaticallyDelete: false)
-        options.transitionStyle = .drag
-        return options
-        
+extension AccountDetailViewController: TitleTableViewHeaderDelegate {
+    func tappedHeaderRightButton() {
+        deleteAccount()
     }
 }

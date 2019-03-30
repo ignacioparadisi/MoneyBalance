@@ -16,7 +16,7 @@ class HomeViewController: BaseViewController {
     private let accountsSection = 0
     private let savingsSection = 1
     private let accountsCellIdentifier = "accountsCellIdentifier"
-    private let titleCellIdentifier = "titleCellIdentifier"
+    private let titleHeaderIdentifier = "titleHeaderIdentifier"
     private let totalCellIdentifier = "totalCellIdentifier"
     
     /// NavigationBar title labe for adding a TapGestureRecognizer
@@ -53,7 +53,7 @@ class HomeViewController: BaseViewController {
         super.viewDidLayoutSubviews()
         if !backgroundWasSet {
             backgroundWasSet = true
-            let white: CGFloat = ThemeManager.currentTheme() == .light ? 0.94 : 0.09
+            let white: CGFloat = ThemeManager.currentTheme() == .light ? 1 : 0.07
             bottomBackgroundView.setGradientBackground(colorOne: UIColor(white: white, alpha: 0), colorTwo: UIColor(white: white, alpha: 1), locations: [0.0, 0.5], startPoint: CGPoint(x: 0.5, y: 0.0), endPoint: CGPoint(x: 0.5, y: 1.0))
         }
     }
@@ -78,9 +78,9 @@ class HomeViewController: BaseViewController {
         bottomBackgroundView.setConstraints( leadingAnchor: view.leadingAnchor, bottomAnchor: view.bottomAnchor, trailingAnchor: view.trailingAnchor, heightConstant: 115)
         tableView.setConstraints(topAnchor: view.topAnchor, leadingAnchor: view.leadingAnchor, bottomAnchor: view.bottomAnchor, trailingAnchor: view.trailingAnchor)
         tableView.register(UINib(nibName: "AccountTableViewCell", bundle: nil), forCellReuseIdentifier: accountsCellIdentifier)
-        tableView.register(TitleTableViewCell.self, forCellReuseIdentifier: titleCellIdentifier)
         tableView.register(UINib(nibName: "NameMoneyTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
         tableView.register(UINib(nibName: "TotalAmountTableViewCell", bundle: nil), forCellReuseIdentifier: totalCellIdentifier)
+        // tableView.register(TitleTableViewHeader.self, forHeaderFooterViewReuseIdentifier: titleHeaderIdentifier)
         view.bringSubviewToFront(bottomBackgroundView)
         view.bringSubviewToFront(addMovementButton)
         refresh()
@@ -125,8 +125,10 @@ class HomeViewController: BaseViewController {
     }
     
     private func fetchAcconts() {
-        accounts = RealmManager.shared.getArray(ofType: Account.self) as! [Account]
-        tableView.reloadData()
+        if let currency = Currency.current {
+            accounts = RealmManager.shared.getArray(ofType: Account.self, filter: "currency.id == '\(currency.id)'") as! [Account]
+            tableView.reloadData()
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -136,12 +138,24 @@ class HomeViewController: BaseViewController {
         return 2
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = TitleTableViewHeader()
+        switch section {
+        case accountsSection:
+            view.titleLabel.text = "Accounts".localized()
+            view.setRightItem(image: UIImage(named: "add"), delegate: self)
+        default:
+            view.titleLabel.text = "Savings".localized()
+        }
+        return view
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case accountsSection:
             return 1
         case savingsSection:
-            return accounts.count + 2
+            return accounts.count + 1
         default:
             return 0
         }
@@ -153,15 +167,10 @@ class HomeViewController: BaseViewController {
         
         if section == accountsSection {
             let cell = tableView.dequeueReusableCell(withIdentifier: accountsCellIdentifier, for: indexPath) as! AccountTableViewCell
-            cell.addAccountButton.tintColor = ThemeManager.currentTheme().accentColor
             cell.delegate = self
             return cell
         } else {
-            if row == 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: titleCellIdentifier, for: indexPath) as! TitleTableViewCell
-                cell.configuereWith(title: "Savings".localized())
-                return cell
-            } else if row == accounts.count + 1 {
+            if row == accounts.count {
                 let cell = tableView.dequeueReusableCell(withIdentifier: totalCellIdentifier, for: indexPath) as! TotalAmountTableViewCell
                 
                 var amount: Double = 0
@@ -172,13 +181,19 @@ class HomeViewController: BaseViewController {
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! NameMoneyTableViewCell
-                cell.configureWith(account: accounts[row - 1])
+                cell.configureWith(account: accounts[row])
                 return cell
             }
         }
         
     }
     
+}
+
+extension HomeViewController: TitleTableViewHeaderDelegate {
+    func tappedHeaderRightButton() {
+        goToAddAccount()
+    }
 }
 
 extension HomeViewController: CurrenciesViewControllerDelegate, AddNewCurrencyViewControllerDelegate {    

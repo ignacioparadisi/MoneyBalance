@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var currentViewController: UIViewController?
-    private var currentSchemaVersion: UInt64 = 2
+    private var currentSchemaVersion: UInt64 = 0
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         makeMigrations()
@@ -74,7 +74,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func makeMigrations() {
         let config = Realm.Configuration(schemaVersion: currentSchemaVersion, migrationBlock: { migration, oldSchemaVersion in
             if oldSchemaVersion < self.currentSchemaVersion {
-                migration.deleteData(forType: Category.className())
             }
         })
         Realm.Configuration.defaultConfiguration = config

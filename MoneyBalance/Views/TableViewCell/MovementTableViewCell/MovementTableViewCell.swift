@@ -9,7 +9,7 @@
 import UIKit
 import SwipeCellKit
 
-class MovementTableViewCell: SwipeTableViewCell {
+class MovementTableViewCell: UITableViewCell {
 
     @IBOutlet weak var movementTypeImage: UIImageView!
     @IBOutlet weak var amountLabel: UILabel!

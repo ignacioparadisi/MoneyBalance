@@ -97,6 +97,12 @@ class RealmManager {
             trip.image = "trip"
             trip.color = "7BCE70"
             add(trip)
+            
+            let income = Category()
+            income.name = "Income"
+            income.image = "dollar"
+            income.color = "11B809"
+            add(income)
         }
     }
     
@@ -147,6 +153,12 @@ class RealmManager {
         try! database.write {
             currency.owned = false
             currency.selected = false
+        }
+    }
+    
+    func update(_ object: Object) {
+        try! database.write {
+            database.add(object)
         }
     }
     

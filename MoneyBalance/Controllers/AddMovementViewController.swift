@@ -102,7 +102,7 @@ class AddMovementViewController: AddViewController {
     }
     
     private func setupCategorySection() {
-        categories = RealmManager.shared.getArray(ofType: Category.self) as! [Category]
+        categories = RealmManager.shared.getArray(ofType: Category.self, filter: "image != 'dollar'") as! [Category]
         let contentInsets: CGFloat = 16
         let collectionViewHeight: CGFloat = 50
         let titleLabel = TitleLabel()
@@ -243,8 +243,13 @@ class AddMovementViewController: AddViewController {
            movement.amount = Double(amount) ?? 0
         }
         movement.type = movementTypes[selectedTypeIndex].rawValue
+        if movementTypes[selectedTypeIndex] == .income {
+            let category = RealmManager.shared.getArray(ofType: Category.self, filter: "image == 'dollar'") as! [Category]
+            movement.category = category.first
+        } else {
+            movement.category = selectedCategory
+        }
         movement.account = selectedAccount
-        movement.category = selectedCategory
         movement.date = selectedDate ?? Date()
         movement.movDescription = descriptionTextView.text
         RealmManager.shared.add(movement)

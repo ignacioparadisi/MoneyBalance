@@ -21,8 +21,6 @@ class AccountTableViewCell: UITableViewCell {
     private let emptyAccountsCellIdentifier = "emptyAccountsCellIdentifier"
     private let sectionInsets: CGFloat = 20.0
     @IBOutlet private weak var collectionView: UICollectionView!
-    @IBOutlet weak var titleLabel: TitleLabel!
-    @IBOutlet weak var addAccountButton: UIButton!
     weak var delegate: AccountTableViewCellDelegate?
     var accounts: [Account] = []
     
@@ -30,8 +28,6 @@ class AccountTableViewCell: UITableViewCell {
         super.awakeFromNib()
         selectionStyle = .none
         NotificationCenter.default.addObserver(self, selector: #selector(didCreateAccount), name: .didCreateAccount, object: nil)
-        titleLabel.text = "Accounts".localized()
-        addAccountButton.setImage(UIImage(named: "add")?.withRenderingMode(.alwaysTemplate), for: .normal)
         collectionView.backgroundColor = .clear
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -52,11 +48,6 @@ class AccountTableViewCell: UITableViewCell {
         }
         collectionView.reloadData()
     }
-    
-    @IBAction func goToAddAccount(_ sender: Any) {
-        delegate?.goToAddAccount()
-    }
-    
 }
 
 extension AccountTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
