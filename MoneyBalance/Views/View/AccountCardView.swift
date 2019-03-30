@@ -101,6 +101,7 @@ class AccountCardView: UIView {
     }
     
     @objc private func refreshAmount() {
+        bankNameLabel.text = account?.bankName
         amountLabel.countFromCurrent(to: account?.money ?? 0.0)
     }
 }

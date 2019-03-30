@@ -10,14 +10,19 @@ import UIKit
 import LocalAuthentication
 import SPStorkController
 
-
 class HomeViewController: BaseViewController {
     
+    /// Number for accounts section
     private let accountsSection = 0
+    /// Number for savings section
     private let savingsSection = 1
+    /// Number for charts section
+    private let chartsSection = 2
+    /// Identifier for reusable accounts cell
     private let accountsCellIdentifier = "accountsCellIdentifier"
-    private let titleHeaderIdentifier = "titleHeaderIdentifier"
+    /// Identifier for reusalbe total cell
     private let totalCellIdentifier = "totalCellIdentifier"
+    private let chartsCellIdentifier = "chartsCellIdentifier"
     
     /// NavigationBar title labe for adding a TapGestureRecognizer
     let titleNavbarView: UIView = {
@@ -71,6 +76,7 @@ class HomeViewController: BaseViewController {
         super.setupView()
         tableView.backgroundColor = ThemeManager.currentTheme().backgroundColor
         tableView.separatorStyle = .none
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 115, right: 0)
         view.addSubview(addMovementButton)
         view.addSubview(bottomBackgroundView)
         view.addSubview(tableView)
@@ -80,6 +86,7 @@ class HomeViewController: BaseViewController {
         tableView.register(UINib(nibName: "AccountTableViewCell", bundle: nil), forCellReuseIdentifier: accountsCellIdentifier)
         tableView.register(UINib(nibName: "NameMoneyTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
         tableView.register(UINib(nibName: "TotalAmountTableViewCell", bundle: nil), forCellReuseIdentifier: totalCellIdentifier)
+        tableView.register(UINib(nibName: "ChartTableViewCell", bundle: nil), forCellReuseIdentifier: chartsCellIdentifier)
         // tableView.register(TitleTableViewHeader.self, forHeaderFooterViewReuseIdentifier: titleHeaderIdentifier)
         view.bringSubviewToFront(bottomBackgroundView)
         view.bringSubviewToFront(addMovementButton)
@@ -127,7 +134,9 @@ class HomeViewController: BaseViewController {
     private func fetchAcconts() {
         if let currency = Currency.current {
             accounts = RealmManager.shared.getArray(ofType: Account.self, filter: "currency.id == '\(currency.id)'") as! [Account]
-            tableView.reloadData()
+            UIView.transition(with: tableView, duration: 0.35, options: .transitionCrossDissolve, animations: {
+                self.tableView.reloadData()
+            })
         }
     }
     
@@ -135,7 +144,7 @@ class HomeViewController: BaseViewController {
         if accounts.isEmpty {
             return 1
         }
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -144,8 +153,12 @@ class HomeViewController: BaseViewController {
         case accountsSection:
             view.titleLabel.text = "Accounts".localized()
             view.setRightItem(image: UIImage(named: "add"), delegate: self)
-        default:
+        case savingsSection:
             view.titleLabel.text = "Savings".localized()
+        case chartsSection:
+            view.titleLabel.text = "Charts".localized()
+        default:
+            return nil
         }
         return view
     }
@@ -156,6 +169,8 @@ class HomeViewController: BaseViewController {
             return 1
         case savingsSection:
             return accounts.count + 1
+        case chartsSection:
+            return 1
         default:
             return 0
         }
@@ -165,11 +180,12 @@ class HomeViewController: BaseViewController {
         let section = indexPath.section
         let row = indexPath.row
         
-        if section == accountsSection {
+        switch section {
+        case accountsSection:
             let cell = tableView.dequeueReusableCell(withIdentifier: accountsCellIdentifier, for: indexPath) as! AccountTableViewCell
             cell.delegate = self
             return cell
-        } else {
+        case savingsSection:
             if row == accounts.count {
                 let cell = tableView.dequeueReusableCell(withIdentifier: totalCellIdentifier, for: indexPath) as! TotalAmountTableViewCell
                 
@@ -184,6 +200,12 @@ class HomeViewController: BaseViewController {
                 cell.configureWith(account: accounts[row])
                 return cell
             }
+        case chartsSection:
+            let cell = tableView.dequeueReusableCell(withIdentifier: chartsCellIdentifier, for: indexPath) as! ChartTableViewCell
+            cell.configureWith(accounts: accounts)
+            return cell
+        default:
+            return UITableViewCell()
         }
         
     }
@@ -199,7 +221,7 @@ extension HomeViewController: TitleTableViewHeaderDelegate {
 extension HomeViewController: CurrenciesViewControllerDelegate, AddNewCurrencyViewControllerDelegate {    
     func selectedCurrencyChanged() {
         titleLabel.text = Currency.current?.name
-        tableView.reloadData()
+        refresh()
     }
 }
 

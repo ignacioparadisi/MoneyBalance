@@ -82,8 +82,8 @@ class AddMovementViewController: AddViewController {
         titleLabel.text = "Movement type".localized()
         descriptionLabel.textColor = ThemeManager.currentTheme().textColor
         descriptionLabel.text = "Select a movement type".localized()
-        layout.itemSize = CGSize(width: view.frame.width / 2 - contentInsets - contentInsets / 2, height: collectionViewHeight)
-        layout.minimumInteritemSpacing = 8
+        layout.itemSize = CGSize(width: (view.frame.width / 2) - contentInsets - (contentInsets / 2), height: collectionViewHeight)
+        layout.minimumInteritemSpacing = contentInsets
         typeCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         typeCollectionView.delegate = self
         typeCollectionView.dataSource = self
@@ -276,9 +276,10 @@ extension AddMovementViewController: UICollectionViewDelegate, UICollectionViewD
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: categoryCellIdentifier, for: indexPath) as! CategoryCollectionViewCell
-            cell.configureWith(category: categories[indexPath.row])
-            if selectedCategory == categories[indexPath.row] {
-                
+            cell.configureWith(category: categories[indexPath.item])
+            if selectedCategory == categories[indexPath.item] {
+                cell.backgroundColor = UIColor(categories[indexPath.item].color)
+                cell.imageView.tintColor = .white
             }
             return cell
         }
@@ -297,6 +298,7 @@ extension AddMovementViewController: UICollectionViewDelegate, UICollectionViewD
             selectedCategory = categories[indexPath.row]
             cell.backgroundColor = UIColor(categories[indexPath.row].color)
             cell.imageView.tintColor = .white
+            categoryCollectionView.reloadData()
         }
     }
     
@@ -306,10 +308,10 @@ extension AddMovementViewController: UICollectionViewDelegate, UICollectionViewD
             cell.backgroundColor = ThemeManager.currentTheme().lightBackgroundColor
             cell.textLabel.textColor = .lightGray
         } else {
-            // TODO: - Arreglar crash cuando se deselecciona una celda que está fuera de la pantalla
-            let cell = collectionView.cellForItem(at: indexPath) as! CategoryCollectionViewCell
-            cell.backgroundColor = ThemeManager.currentTheme().lightBackgroundColor
-            cell.imageView.tintColor = .lightGray
+            if let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell {
+                cell.backgroundColor = ThemeManager.currentTheme().lightBackgroundColor
+                cell.imageView.tintColor = .lightGray
+            }
         }
     }
 }
