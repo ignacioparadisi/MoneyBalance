@@ -40,8 +40,10 @@ class AccountSelectionViewController: BaseViewController {
     }
     
     private func fetchAccounts() {
-        accounts = RealmManager.shared.getArray(ofType: Account.self) as! [Account]
-        picker.reloadAllComponents()
+        if let currency = Currency.current {
+            accounts = RealmManager.shared.getArray(ofType: Account.self, filter: "currency.id == '\(currency.id)'") as! [Account]
+            picker.reloadAllComponents()
+        }
     }
     
     @objc private func confirmSelection() {

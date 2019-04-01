@@ -116,6 +116,7 @@ class AddAccountViewController: AddViewController {
         account.number = accountNumberTextField.text ?? ""
         account.currency = Currency.current
         RealmManager.shared.add(account)
+        delegate?.accountCreated()
         NotificationCenter.default.post(name: .didCreateAccount, object: nil)
     }
     

@@ -8,20 +8,20 @@
 
 import UIKit
 
-protocol AccountTableViewCellDelegate: class {
+protocol AccountsTableViewCellDelegate: class {
     func goToAddAccount()
     func goToDetail(for account: Account)
     func shareAccount(_ text: String)
 }
 
-class AccountTableViewCell: UITableViewCell {
+class AccountsTableViewCell: UITableViewCell {
 
     private let accountsSection = 0
     private let cellIdentifier = "cellIdentifier"
     private let emptyAccountsCellIdentifier = "emptyAccountsCellIdentifier"
     private let sectionInsets: CGFloat = 20.0
     @IBOutlet private weak var collectionView: UICollectionView!
-    weak var delegate: AccountTableViewCellDelegate?
+    weak var delegate: AccountsTableViewCellDelegate?
     var accounts: [Account] = []
     
     override func awakeFromNib() {
@@ -36,9 +36,15 @@ class AccountTableViewCell: UITableViewCell {
         fetchAccounts()
     }
     
+    private func refresh() {
+        fetchAccounts()
+        collectionView.reloadData()
+    }
+    
     @objc private func didCreateAccount() {
         fetchAccounts()
         let newAccountIndexPath = IndexPath(item: accounts.count - 1, section: accountsSection)
+        collectionView.reloadData()
         collectionView.scrollToItem(at: newAccountIndexPath, at: .centeredHorizontally, animated: true)
     }
     
@@ -46,11 +52,10 @@ class AccountTableViewCell: UITableViewCell {
         if let currentCurrency = Currency.current {
             accounts = RealmManager.shared.getArray(ofType: Account.self, filter: "currency.id == '\(currentCurrency.id)'") as! [Account]
         }
-        collectionView.reloadData()
     }
 }
 
-extension AccountTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+extension AccountsTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if accounts.isEmpty {
             return 1
@@ -82,7 +87,7 @@ extension AccountTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
     }
 }
 
-extension AccountTableViewCell: UICollectionViewDelegateFlowLayout {
+extension AccountsTableViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width - (sectionInsets * 2), height: collectionView.frame.height - (sectionInsets * 2))
     }
@@ -100,7 +105,7 @@ extension AccountTableViewCell: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension AccountTableViewCell: AccountCollectionViewCellDelegate {
+extension AccountsTableViewCell: AccountCollectionViewCellDelegate {
     func shareAccount(_ text: String) {
         delegate?.shareAccount(text)
     }

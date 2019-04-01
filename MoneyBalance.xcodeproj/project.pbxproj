@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3088910116E2135EEB1016C1 /* Pods_MoneyBalance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2532F3C39538BB9246994B5 /* Pods_MoneyBalance.framework */; };
-		4F53897622383E41004832B5 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F53897422383E41004832B5 /* AccountTableViewCell.swift */; };
-		4F53897722383E41004832B5 /* AccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F53897522383E41004832B5 /* AccountTableViewCell.xib */; };
+		4F53897622383E41004832B5 /* AccountsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F53897422383E41004832B5 /* AccountsTableViewCell.swift */; };
+		4F53897722383E41004832B5 /* AccountsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F53897522383E41004832B5 /* AccountsTableViewCell.xib */; };
 		4F53897B22383FE1004832B5 /* AccountCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F53897922383FE1004832B5 /* AccountCollectionViewCell.swift */; };
 		4F53898122384D1D004832B5 /* CurrenciesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F53897F22384D1D004832B5 /* CurrenciesViewController.swift */; };
 		4F53898222384D1D004832B5 /* CurrenciesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F53898022384D1D004832B5 /* CurrenciesViewController.xib */; };
@@ -88,8 +88,8 @@
 
 /* Begin PBXFileReference section */
 		4EEFF79063FAA57FC1A78CF5 /* Pods-MoneyBalance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoneyBalance.release.xcconfig"; path = "Pods/Target Support Files/Pods-MoneyBalance/Pods-MoneyBalance.release.xcconfig"; sourceTree = "<group>"; };
-		4F53897422383E41004832B5 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
-		4F53897522383E41004832B5 /* AccountTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountTableViewCell.xib; sourceTree = "<group>"; };
+		4F53897422383E41004832B5 /* AccountsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsTableViewCell.swift; sourceTree = "<group>"; };
+		4F53897522383E41004832B5 /* AccountsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountsTableViewCell.xib; sourceTree = "<group>"; };
 		4F53897922383FE1004832B5 /* AccountCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCollectionViewCell.swift; sourceTree = "<group>"; };
 		4F53897F22384D1D004832B5 /* CurrenciesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesViewController.swift; sourceTree = "<group>"; };
 		4F53898022384D1D004832B5 /* CurrenciesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrenciesViewController.xib; sourceTree = "<group>"; };
@@ -198,8 +198,8 @@
 		4F53897322383E23004832B5 /* AccountTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				4F53897422383E41004832B5 /* AccountTableViewCell.swift */,
-				4F53897522383E41004832B5 /* AccountTableViewCell.xib */,
+				4F53897422383E41004832B5 /* AccountsTableViewCell.swift */,
+				4F53897522383E41004832B5 /* AccountsTableViewCell.xib */,
 			);
 			path = AccountTableViewCell;
 			sourceTree = "<group>";
@@ -575,7 +575,7 @@
 				4F9B892B224ACC94002F5B6A /* MovementDetailViewController.xib in Resources */,
 				4F84DA2922483B2A009861F1 /* MovementTypeCollectionViewCell.xib in Resources */,
 				4F9F116C224D996500D7098B /* TotalAmountTableViewCell.xib in Resources */,
-				4F53897722383E41004832B5 /* AccountTableViewCell.xib in Resources */,
+				4F53897722383E41004832B5 /* AccountsTableViewCell.xib in Resources */,
 				4F975E6C222F71E5009DA03C /* DefaultTableViewCell.xib in Resources */,
 				4FF9E85A2246A652009D4039 /* CurrencyCollectionViewCell.xib in Resources */,
 				4F695093222D919F008FD9EA /* Assets.xcassets in Resources */,
@@ -707,7 +707,7 @@
 				4F7E3D5A222ED13900112275 /* SettingsViewController.swift in Sources */,
 				4FF9E8462246736F009D4039 /* UIColor.swift in Sources */,
 				4F975E55222F3ACC009DA03C /* Theme.swift in Sources */,
-				4F53897622383E41004832B5 /* AccountTableViewCell.swift in Sources */,
+				4F53897622383E41004832B5 /* AccountsTableViewCell.swift in Sources */,
 				4FF9E85022468A21009D4039 /* AddMovementViewController.swift in Sources */,
 				4F6950A4222D94EC008FD9EA /* BaseViewController.swift in Sources */,
 				4F5CA0A5222E13A900ED29D4 /* Movement.swift in Sources */,

@@ -47,9 +47,14 @@ class AccountDetailViewController: BaseViewController {
     
     override func setupNavigationBar() {
         super.setupNavigationBar()
+        // addChartsButton()
+    }
+    
+    private func addChartsButton() {
         let image = UIImage(named: "bar_chart")
         let chartsButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(goToCharts))
         navigationItem.setRightBarButton(chartsButton, animated: false)
+
     }
     
     override func setupView() {
@@ -158,7 +163,7 @@ extension AccountDetailViewController {
         switch section {
         case accountSection:
             view.titleLabel.text = "Account".localized()
-            view.setRightItem(with: "Delete".localized(), delegate: self)
+            // view.setRightItem(with: "Delete".localized(), delegate: self)
         default:
             view.titleLabel.text = "Movements".localized()
         }

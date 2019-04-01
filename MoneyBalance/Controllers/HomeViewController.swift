@@ -83,7 +83,7 @@ class HomeViewController: BaseViewController {
         addMovementButton.setConstraints(bottomAnchor: view.safeAreaLayoutGuide.bottomAnchor, centerXAnchor: view.centerXAnchor, bottomConstant: -20, widthConstant: 60, heightConstant: 60)
         bottomBackgroundView.setConstraints( leadingAnchor: view.leadingAnchor, bottomAnchor: view.bottomAnchor, trailingAnchor: view.trailingAnchor, heightConstant: 115)
         tableView.setConstraints(topAnchor: view.topAnchor, leadingAnchor: view.leadingAnchor, bottomAnchor: view.bottomAnchor, trailingAnchor: view.trailingAnchor)
-        tableView.register(UINib(nibName: "AccountTableViewCell", bundle: nil), forCellReuseIdentifier: accountsCellIdentifier)
+        tableView.register(UINib(nibName: "AccountsTableViewCell", bundle: nil), forCellReuseIdentifier: accountsCellIdentifier)
         tableView.register(UINib(nibName: "NameMoneyTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
         tableView.register(UINib(nibName: "TotalAmountTableViewCell", bundle: nil), forCellReuseIdentifier: totalCellIdentifier)
         tableView.register(UINib(nibName: "ChartTableViewCell", bundle: nil), forCellReuseIdentifier: chartsCellIdentifier)
@@ -123,6 +123,14 @@ class HomeViewController: BaseViewController {
     }
     
     @objc private func goToAddMovement() {
+        if Currency.current == nil {
+            showAddCurrencyAlert()
+            return
+        }
+        if accounts.isEmpty {
+            showAddAccountAlert()
+            return
+        }
         let viewController = AddMovementViewController(nibName: "AddViewController", bundle: nil)
         presentAsStork(UINavigationController(rootViewController: viewController), height: nil, showIndicator: true, hideIndicatorWhenScroll: true, showCloseButton: false, complection: nil)
     }
@@ -182,7 +190,7 @@ class HomeViewController: BaseViewController {
         
         switch section {
         case accountsSection:
-            let cell = tableView.dequeueReusableCell(withIdentifier: accountsCellIdentifier, for: indexPath) as! AccountTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: accountsCellIdentifier, for: indexPath) as! AccountsTableViewCell
             cell.delegate = self
             return cell
         case savingsSection:
@@ -225,7 +233,7 @@ extension HomeViewController: CurrenciesViewControllerDelegate, AddNewCurrencyVi
     }
 }
 
-extension HomeViewController: AccountTableViewCellDelegate {
+extension HomeViewController: AccountsTableViewCellDelegate {
     func goToAddAccount() {
         if Currency.current == nil {
             showAddCurrencyAlert()
@@ -255,6 +263,18 @@ extension HomeViewController: AccountTableViewCellDelegate {
         present(alert, animated: true)
     }
     
+    private func showAddAccountAlert() {
+        let alert = UIAlertController(title: "Add account".localized(), message: "For creating a new movement you should first create an account.".localized(), preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil)
+        let addCurrencyAction = UIAlertAction(title: "Add".localized(), style: .default) { _ in
+            self.goToAddAccount()
+        }
+        
+        alert.addAction(cancelAction)
+        alert.addAction(addCurrencyAction)
+        present(alert, animated: true)
+    }
+    
     func shareAccount(_ text: String) {
         let activityViewController = UIActivityViewController(activityItems: [text], applicationActivities: nil)
         activityViewController.completionWithItemsHandler = { (_, completed, _, error) in
@@ -270,6 +290,6 @@ extension HomeViewController: AccountTableViewCellDelegate {
 
 extension HomeViewController: AddAccountViewControllerDelegate {
     func accountCreated() {
-        tableView.reloadData()
+        refresh()
     }
 }
