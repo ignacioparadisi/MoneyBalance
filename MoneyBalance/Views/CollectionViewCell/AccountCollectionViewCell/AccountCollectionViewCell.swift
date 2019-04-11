@@ -16,6 +16,11 @@ class AccountCollectionViewCell: UICollectionViewCell {
 
     lazy var view = AccountCardView()
     weak var delegate: AccountCollectionViewCellDelegate?
+    override var isHighlighted: Bool {
+        didSet {
+            shrink(down: isHighlighted)
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)

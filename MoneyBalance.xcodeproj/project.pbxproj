@@ -68,6 +68,7 @@
 		4FD4EBF922459A5F00079935 /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD4EBF822459A5F00079935 /* TitleLabel.swift */; };
 		4FD4EBFC2245C3C100079935 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD4EBFA2245C3C100079935 /* AddViewController.swift */; };
 		4FD4EBFD2245C3C100079935 /* AddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FD4EBFB2245C3C100079935 /* AddViewController.xib */; };
+		4FEA7C5B2260026600ED6FBB /* UICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA7C5A2260026600ED6FBB /* UICollectionViewCell.swift */; };
 		4FEC51CB224FDA6E00B671CC /* TitleTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEC51CA224FDA6E00B671CC /* TitleTableViewHeader.swift */; };
 		4FEC51CF22502CB700B671CC /* ChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEC51CD22502CB700B671CC /* ChartTableViewCell.swift */; };
 		4FEC51D022502CB700B671CC /* ChartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FEC51CE22502CB700B671CC /* ChartTableViewCell.xib */; };
@@ -154,6 +155,7 @@
 		4FD4EBF822459A5F00079935 /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
 		4FD4EBFA2245C3C100079935 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		4FD4EBFB2245C3C100079935 /* AddViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddViewController.xib; sourceTree = "<group>"; };
+		4FEA7C5A2260026600ED6FBB /* UICollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewCell.swift; sourceTree = "<group>"; };
 		4FEC51CA224FDA6E00B671CC /* TitleTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewHeader.swift; sourceTree = "<group>"; };
 		4FEC51CD22502CB700B671CC /* ChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTableViewCell.swift; sourceTree = "<group>"; };
 		4FEC51CE22502CB700B671CC /* ChartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChartTableViewCell.xib; sourceTree = "<group>"; };
@@ -459,6 +461,7 @@
 				4FF9E84B224673C0009D4039 /* String.swift */,
 				4F77FBCC2247C29E0088A9E4 /* UViewController.swift */,
 				4F77FBCE2247CAE60088A9E4 /* NotificationCenter.swift */,
+				4FEA7C5A2260026600ED6FBB /* UICollectionViewCell.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -687,6 +690,7 @@
 				4FBB4C2C22472EB100049F9B /* AddAccountCollectionViewCell.swift in Sources */,
 				4F95969C22386A5A00205D3D /* RealmManager.swift in Sources */,
 				4F84DA2C22484852009861F1 /* PickButton.swift in Sources */,
+				4FEA7C5B2260026600ED6FBB /* UICollectionViewCell.swift in Sources */,
 				4FFE9F22224D981700774C32 /* NameMoneyTableViewCell.swift in Sources */,
 				4F7E3D4D222EA18A00112275 /* LauncherViewController.swift in Sources */,
 				4FF9E84822467398009D4039 /* UIImageView.swift in Sources */,

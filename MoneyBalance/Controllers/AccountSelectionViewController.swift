@@ -16,7 +16,7 @@ class AccountSelectionViewController: BaseViewController {
     
     private lazy var picker = UIPickerView()
     private var accounts: [Account] = []
-    var delegate: AccountSelectionViewControllerDelegate?
+    weak var delegate: AccountSelectionViewControllerDelegate?
 
     override func setupNavigationBar() {
         super.setupNavigationBar()

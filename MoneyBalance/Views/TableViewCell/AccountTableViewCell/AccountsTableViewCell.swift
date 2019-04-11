@@ -28,6 +28,7 @@ class AccountsTableViewCell: UITableViewCell {
         super.awakeFromNib()
         selectionStyle = .none
         NotificationCenter.default.addObserver(self, selector: #selector(didCreateAccount), name: .didCreateAccount, object: nil)
+        collectionView.delaysContentTouches = false
         collectionView.backgroundColor = .clear
         collectionView.delegate = self
         collectionView.dataSource = self

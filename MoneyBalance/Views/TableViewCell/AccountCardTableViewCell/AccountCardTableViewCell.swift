@@ -33,6 +33,11 @@ class AccountCardTableViewCell: UITableViewCell {
         return button
     }()
     weak var delegate: AccountCardTableViewCellDelegate?
+    override var isHighlighted: Bool {
+        didSet {
+            view.shrink(down: isHighlighted)
+        }
+    }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
