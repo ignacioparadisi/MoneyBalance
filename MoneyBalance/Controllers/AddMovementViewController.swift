@@ -13,8 +13,7 @@ protocol AddMovementViewControllerDelegate: class {
 }
 
 class AddMovementViewController: AddViewController {
-    
-    private let categoryCellIdentifier = "categoryCellIdentifier"
+
     private let movementTypes: [Movement.MovementType] = [.income, .outcome]
     private var categories: [Category] = []
     private lazy var amountTextField: CustomTextField = {
@@ -89,7 +88,7 @@ class AddMovementViewController: AddViewController {
         typeCollectionView.dataSource = self
         typeCollectionView.backgroundColor = .clear
         typeCollectionView.contentInset = UIEdgeInsets(top: 0, left: contentInsets, bottom: 0, right: contentInsets)
-        typeCollectionView.register(UINib(nibName: "MovementTypeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
+        typeCollectionView.register(MovementTypeCollectionViewCell.self)
         
         contentView.addSubview(titleLabel)
         contentView.addSubview(descriptionLabel)
@@ -121,7 +120,7 @@ class AddMovementViewController: AddViewController {
         categoryCollectionView.backgroundColor = .clear
         categoryCollectionView.showsHorizontalScrollIndicator = false
         categoryCollectionView.contentInset = UIEdgeInsets(top: 0, left: contentInsets, bottom: 0, right: contentInsets)
-        categoryCollectionView.register(UINib(nibName: "CategoryCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: categoryCellIdentifier)
+        categoryCollectionView.register(CategoryCollectionViewCell.self)
         
         contentView.addSubview(titleLabel)
         contentView.addSubview(descriptionLabel)
@@ -271,11 +270,11 @@ extension AddMovementViewController: UICollectionViewDelegate, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == typeCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! MovementTypeCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(for: indexPath) as MovementTypeCollectionViewCell
             cell.textLabel.text = movementTypes[indexPath.item].rawValue.localized()
             return cell
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: categoryCellIdentifier, for: indexPath) as! CategoryCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(for: indexPath) as CategoryCollectionViewCell
             cell.configureWith(category: categories[indexPath.item])
             if selectedCategory == categories[indexPath.item] {
                 cell.backgroundColor = UIColor(categories[indexPath.item].color)

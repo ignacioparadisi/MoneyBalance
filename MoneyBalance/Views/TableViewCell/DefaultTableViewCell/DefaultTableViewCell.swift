@@ -8,8 +8,7 @@
 
 import UIKit
 
-class DefaultTableViewCell: UITableViewCell {
-
+class DefaultTableViewCell: UITableViewCell, ReusableView, NibLoadableView {
     
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var selectedValueLabel: UILabel!

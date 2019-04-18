@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MovementTypeCollectionViewCell: UICollectionViewCell {
+class MovementTypeCollectionViewCell: UICollectionViewCell, ReusableView, NibLoadableView {
 
     @IBOutlet weak var textLabel: UILabel!
     

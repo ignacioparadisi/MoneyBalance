@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CategoryCollectionViewCell: UICollectionViewCell {
+class CategoryCollectionViewCell: UICollectionViewCell, ReusableView, NibLoadableView {
 
     @IBOutlet weak var imageView: UIImageView!
     

@@ -19,7 +19,7 @@ class LanguageSettingsViewController: BaseViewController {
         super.setupView()
         view.addSubview(groupedTableView)
         groupedTableView.setConstraints(topAnchor: view.topAnchor, leadingAnchor: view.leadingAnchor, bottomAnchor: view.bottomAnchor, trailingAnchor: view.trailingAnchor)
-        groupedTableView.register(UINib(nibName: "DefaultTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        groupedTableView.register(DefaultTableViewCell.self)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -35,7 +35,7 @@ class LanguageSettingsViewController: BaseViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! DefaultTableViewCell
+        let cell = tableView.dequeueReusableCell(for: indexPath) as DefaultTableViewCell
         if indexPath.row == 0 {
             cell.configureWith(title: "English".localized())
         } else if indexPath.row == 1 {

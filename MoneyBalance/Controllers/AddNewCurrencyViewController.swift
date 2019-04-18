@@ -28,7 +28,7 @@ class AddNewCurrencyViewController: BaseViewController {
         super.setupView()
         view.addSubview(tableView)
         tableView.setConstraints(topAnchor: view.topAnchor, leadingAnchor: view.leadingAnchor, bottomAnchor: view.bottomAnchor, trailingAnchor: view.trailingAnchor)
-        tableView.register(UINib(nibName: "DefaultTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        tableView.register(DefaultTableViewCell.self)
         fetchCurrencies()
     }
     
@@ -43,7 +43,7 @@ class AddNewCurrencyViewController: BaseViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let currency = currencies[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! DefaultTableViewCell
+        let cell = tableView.dequeueReusableCell(for: indexPath) as DefaultTableViewCell
         cell.configureWith(title: currency.name, selectedValue: currency.country)
         return cell
     }

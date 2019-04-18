@@ -12,7 +12,7 @@ protocol AccountCollectionViewCellDelegate: class {
     func shareAccount(_ text: String)
 }
 
-class AccountCollectionViewCell: UICollectionViewCell {
+class AccountCollectionViewCell: UICollectionViewCell, ReusableView {
 
     lazy var view = AccountCardView()
     weak var delegate: AccountCollectionViewCellDelegate?

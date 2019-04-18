@@ -13,9 +13,6 @@ class SettingsViewController: BaseViewController {
     private let languageSection = 0
     private let themeSection = 1
     private let authenticationSection = 2
-    
-    // Identifier for theme selection cell
-    private let switchCellIdentifier = "switchCellIdentifier"
 
     override func setupNavigationBar() {
         super.setupNavigationBar()
@@ -26,8 +23,8 @@ class SettingsViewController: BaseViewController {
         super.setupView()
         view.addSubview(groupedTableView)
         groupedTableView.setConstraints(topAnchor: view.topAnchor, leadingAnchor: view.leadingAnchor, bottomAnchor: view.bottomAnchor, trailingAnchor: view.trailingAnchor)
-        groupedTableView.register(UINib(nibName: "DefaultTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
-        groupedTableView.register(UINib(nibName: "SwitchTableViewCell", bundle: nil), forCellReuseIdentifier: switchCellIdentifier)
+        groupedTableView.register(DefaultTableViewCell.self)
+        groupedTableView.register(SwitchTableViewCell.self)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -43,19 +40,19 @@ class SettingsViewController: BaseViewController {
         
         switch section {
         case languageSection:
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! DefaultTableViewCell
+            let cell = tableView.dequeueReusableCell(for: indexPath) as DefaultTableViewCell
             cell.configureWith(title: "Language".localized(), accessoryType: .disclosureIndicator, selectedValue: Localize.getSelectedLanguageName())
             return cell
             
         case themeSection:
-            let cell = tableView.dequeueReusableCell(withIdentifier: switchCellIdentifier, for: indexPath) as! SwitchTableViewCell
+            let cell = tableView.dequeueReusableCell(for: indexPath) as SwitchTableViewCell
             cell.tag = tag(for: indexPath)
             cell.configureWith(theme: ThemeManager.currentTheme())
             cell.delegate = self
             return cell
             
         case authenticationSection:
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! DefaultTableViewCell
+            let cell = tableView.dequeueReusableCell(for: indexPath) as DefaultTableViewCell
             cell.configureWith(title: "Screen Lock".localized(), accessoryType: .disclosureIndicator)
             return cell
         default:

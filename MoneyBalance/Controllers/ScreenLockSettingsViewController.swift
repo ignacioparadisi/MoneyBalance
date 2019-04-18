@@ -19,7 +19,7 @@ class ScreenLockSettingsViewController: BaseViewController {
         super.setupView()
         view.addSubview(groupedTableView)
         groupedTableView.setConstraints(topAnchor: view.topAnchor, leadingAnchor: view.leadingAnchor, bottomAnchor: view.bottomAnchor, trailingAnchor: view.trailingAnchor)
-        groupedTableView.register(UINib(nibName: "SwitchTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        groupedTableView.register(SwitchTableViewCell.self)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -35,7 +35,7 @@ class ScreenLockSettingsViewController: BaseViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! SwitchTableViewCell
+        let cell = tableView.dequeueReusableCell(for: indexPath) as SwitchTableViewCell
         cell.tag = tag(for: indexPath)
         cell.configureWith(title: "Require Touch ID".localized(), value: Utils.isAuthenticationEnabled())
         cell.delegate = self

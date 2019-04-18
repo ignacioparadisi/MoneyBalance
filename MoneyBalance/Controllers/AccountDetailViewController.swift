@@ -10,7 +10,6 @@ import UIKit
 
 class AccountDetailViewController: BaseViewController {
 
-    private let accountCellIdentifier = "accountCellIdentifier"
     private let accountSection = 0
     private let movementsSection = 1
     var addMovementButton: UIButton = {
@@ -67,8 +66,8 @@ class AccountDetailViewController: BaseViewController {
         tableView.setConstraints(topAnchor: view.topAnchor, leadingAnchor: view.leadingAnchor, bottomAnchor: view.bottomAnchor, trailingAnchor: view.trailingAnchor)
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 115, right: 0)
         tableView.scrollIndicatorInsets = tableView.contentInset
-        tableView.register(AccountCardTableViewCell.self, forCellReuseIdentifier: accountCellIdentifier)
-        tableView.register(UINib(nibName: "MovementTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        tableView.register(AccountCardTableViewCell.self, forCellReuseIdentifier: AccountCardTableViewCell.reusableIdentifier)
+        tableView.register(MovementTableViewCell.self)
         view.bringSubviewToFront(bottomBackgroundView)
         view.bringSubviewToFront(addMovementButton)
     }
@@ -137,14 +136,14 @@ extension AccountDetailViewController {
         
         switch section {
         case accountSection:
-            let cell = tableView.dequeueReusableCell(withIdentifier: accountCellIdentifier, for: indexPath) as! AccountCardTableViewCell
+            let cell = tableView.dequeueReusableCell(for: indexPath) as AccountCardTableViewCell
             cell.layoutIfNeeded()
             cell.delegate = self
             cell.configureWith(account: account)
             cell.view.setGradientBackground(colorOne: ThemeManager.currentTheme().accentColor, colorTwo: ThemeManager.currentTheme().gradientColor, cornerRadius: 10)
             return cell
         default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! MovementTableViewCell
+            let cell = tableView.dequeueReusableCell(for: indexPath) as MovementTableViewCell
             cell.configureWith(movement: movements[row])
             return cell
         }

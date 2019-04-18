@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddAccountCollectionViewCell: UICollectionViewCell {
+class AddAccountCollectionViewCell: UICollectionViewCell, ReusableView, NibLoadableView {
 
     @IBOutlet weak var textLabel: UILabel!
     

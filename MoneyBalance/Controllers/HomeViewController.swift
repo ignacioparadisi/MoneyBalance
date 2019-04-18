@@ -18,11 +18,6 @@ class HomeViewController: BaseViewController {
     private let savingsSection = 1
     /// Number for charts section
     private let chartsSection = 2
-    /// Identifier for reusable accounts cell
-    private let accountsCellIdentifier = "accountsCellIdentifier"
-    /// Identifier for reusalbe total cell
-    private let totalCellIdentifier = "totalCellIdentifier"
-    private let chartsCellIdentifier = "chartsCellIdentifier"
     
     /// NavigationBar title labe for adding a TapGestureRecognizer
     let titleNavbarView: UIView = {
@@ -83,10 +78,10 @@ class HomeViewController: BaseViewController {
         addMovementButton.setConstraints(bottomAnchor: view.safeAreaLayoutGuide.bottomAnchor, centerXAnchor: view.centerXAnchor, bottomConstant: -20, widthConstant: 60, heightConstant: 60)
         bottomBackgroundView.setConstraints( leadingAnchor: view.leadingAnchor, bottomAnchor: view.bottomAnchor, trailingAnchor: view.trailingAnchor, heightConstant: 115)
         tableView.setConstraints(topAnchor: view.topAnchor, leadingAnchor: view.leadingAnchor, bottomAnchor: view.bottomAnchor, trailingAnchor: view.trailingAnchor)
-        tableView.register(UINib(nibName: "AccountsTableViewCell", bundle: nil), forCellReuseIdentifier: accountsCellIdentifier)
-        tableView.register(UINib(nibName: "NameMoneyTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
-        tableView.register(UINib(nibName: "TotalAmountTableViewCell", bundle: nil), forCellReuseIdentifier: totalCellIdentifier)
-        tableView.register(UINib(nibName: "ChartTableViewCell", bundle: nil), forCellReuseIdentifier: chartsCellIdentifier)
+        tableView.register(AccountsTableViewCell.self)
+        tableView.register(NameMoneyTableViewCell.self)
+        tableView.register(TotalAmountTableViewCell.self)
+        tableView.register(ChartTableViewCell.self)
         // tableView.register(TitleTableViewHeader.self, forHeaderFooterViewReuseIdentifier: titleHeaderIdentifier)
         view.bringSubviewToFront(bottomBackgroundView)
         view.bringSubviewToFront(addMovementButton)
@@ -190,12 +185,12 @@ class HomeViewController: BaseViewController {
         
         switch section {
         case accountsSection:
-            let cell = tableView.dequeueReusableCell(withIdentifier: accountsCellIdentifier, for: indexPath) as! AccountsTableViewCell
+            let cell = tableView.dequeueReusableCell(for: indexPath) as AccountsTableViewCell
             cell.delegate = self
             return cell
         case savingsSection:
             if row == accounts.count {
-                let cell = tableView.dequeueReusableCell(withIdentifier: totalCellIdentifier, for: indexPath) as! TotalAmountTableViewCell
+                let cell = tableView.dequeueReusableCell(for: indexPath) as TotalAmountTableViewCell
                 
                 var amount: Double = 0
                 for account in accounts {
@@ -204,12 +199,12 @@ class HomeViewController: BaseViewController {
                 cell.configuereWith(amount: amount)
                 return cell
             } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! NameMoneyTableViewCell
+                let cell = tableView.dequeueReusableCell(for: indexPath) as NameMoneyTableViewCell
                 cell.configureWith(account: accounts[row])
                 return cell
             }
         case chartsSection:
-            let cell = tableView.dequeueReusableCell(withIdentifier: chartsCellIdentifier, for: indexPath) as! ChartTableViewCell
+            let cell = tableView.dequeueReusableCell(for: indexPath) as ChartTableViewCell
             cell.configureWith(accounts: accounts)
             return cell
         default:

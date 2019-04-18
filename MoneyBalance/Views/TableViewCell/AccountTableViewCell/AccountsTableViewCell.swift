@@ -14,11 +14,9 @@ protocol AccountsTableViewCellDelegate: class {
     func shareAccount(_ text: String)
 }
 
-class AccountsTableViewCell: UITableViewCell {
+class AccountsTableViewCell: UITableViewCell, ReusableView, NibLoadableView {
 
     private let accountsSection = 0
-    private let cellIdentifier = "cellIdentifier"
-    private let emptyAccountsCellIdentifier = "emptyAccountsCellIdentifier"
     private let sectionInsets: CGFloat = 20.0
     @IBOutlet private weak var collectionView: UICollectionView!
     weak var delegate: AccountsTableViewCellDelegate?
@@ -32,8 +30,8 @@ class AccountsTableViewCell: UITableViewCell {
         collectionView.backgroundColor = .clear
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(AccountCollectionViewCell.self, forCellWithReuseIdentifier: cellIdentifier)
-        collectionView.register(UINib(nibName: "AddAccountCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: emptyAccountsCellIdentifier)
+        collectionView.register(AccountCollectionViewCell.self, forCellWithReuseIdentifier: AccountCollectionViewCell.reusableIdentifier)
+        collectionView.register(AddAccountCollectionViewCell.self)
         fetchAccounts()
     }
     
@@ -66,16 +64,15 @@ extension AccountsTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if accounts.isEmpty {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: emptyAccountsCellIdentifier, for: indexPath) as! AddAccountCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(for: indexPath) as AddAccountCollectionViewCell
             return cell
         }
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! AccountCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(for: indexPath) as AccountCollectionViewCell
         cell.delegate = self
         cell.configureWith(account: accounts[indexPath.item])
         cell.setGradientBackground(colorOne: ThemeManager.currentTheme().accentColor, colorTwo: ThemeManager.currentTheme().gradientColor, cornerRadius: 10)
         return cell
         
-
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

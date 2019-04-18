@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TotalAmountTableViewCell: UITableViewCell {
+class TotalAmountTableViewCell: UITableViewCell, ReusableView, NibLoadableView {
 
     @IBOutlet weak var amountLabel: UILabel!
     

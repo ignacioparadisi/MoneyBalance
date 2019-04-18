@@ -38,7 +38,7 @@ class CurrenciesViewController: BaseViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = .clear
-        collectionView.register(UINib(nibName: "CurrencyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
+        collectionView.register(CurrencyCollectionViewCell.self)
         fetchCurrencies()
     }
     
@@ -98,7 +98,7 @@ extension CurrenciesViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! CurrencyCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(for: indexPath) as CurrencyCollectionViewCell
         cell.delegate = self
         cell.tag = indexPath.item
         cell.configuereWith(currency: currencies[indexPath.item])

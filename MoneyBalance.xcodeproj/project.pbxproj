@@ -28,6 +28,9 @@
 		4F7177132249930500F6C6CE /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7177122249930500F6C6CE /* CustomTextView.swift */; };
 		4F7177172249B10400F6C6CE /* MovementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7177152249B10400F6C6CE /* MovementTableViewCell.swift */; };
 		4F7177182249B10400F6C6CE /* MovementTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F7177162249B10400F6C6CE /* MovementTableViewCell.xib */; };
+		4F73954322680B95000A02A5 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F73954222680B95000A02A5 /* ReusableView.swift */; };
+		4F73954522680CD7000A02A5 /* NibLoadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F73954422680CD7000A02A5 /* NibLoadableView.swift */; };
+		4F73954722680D37000A02A5 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F73954622680D37000A02A5 /* UITableView.swift */; };
 		4F77FBCD2247C29E0088A9E4 /* UViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F77FBCC2247C29E0088A9E4 /* UViewController.swift */; };
 		4F77FBCF2247CAE60088A9E4 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F77FBCE2247CAE60088A9E4 /* NotificationCenter.swift */; };
 		4F77FBD7224817E90088A9E4 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F77FBD6224817E90088A9E4 /* Category.swift */; };
@@ -68,7 +71,7 @@
 		4FD4EBF922459A5F00079935 /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD4EBF822459A5F00079935 /* TitleLabel.swift */; };
 		4FD4EBFC2245C3C100079935 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD4EBFA2245C3C100079935 /* AddViewController.swift */; };
 		4FD4EBFD2245C3C100079935 /* AddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FD4EBFB2245C3C100079935 /* AddViewController.xib */; };
-		4FEA7C5B2260026600ED6FBB /* UICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA7C5A2260026600ED6FBB /* UICollectionViewCell.swift */; };
+		4FEA7C5B2260026600ED6FBB /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA7C5A2260026600ED6FBB /* UICollectionView.swift */; };
 		4FEC51CB224FDA6E00B671CC /* TitleTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEC51CA224FDA6E00B671CC /* TitleTableViewHeader.swift */; };
 		4FEC51CF22502CB700B671CC /* ChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEC51CD22502CB700B671CC /* ChartTableViewCell.swift */; };
 		4FEC51D022502CB700B671CC /* ChartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FEC51CE22502CB700B671CC /* ChartTableViewCell.xib */; };
@@ -113,6 +116,9 @@
 		4F7177122249930500F6C6CE /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		4F7177152249B10400F6C6CE /* MovementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementTableViewCell.swift; sourceTree = "<group>"; };
 		4F7177162249B10400F6C6CE /* MovementTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovementTableViewCell.xib; sourceTree = "<group>"; };
+		4F73954222680B95000A02A5 /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
+		4F73954422680CD7000A02A5 /* NibLoadableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadableView.swift; sourceTree = "<group>"; };
+		4F73954622680D37000A02A5 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		4F77FBCC2247C29E0088A9E4 /* UViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UViewController.swift; sourceTree = "<group>"; };
 		4F77FBCE2247CAE60088A9E4 /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		4F77FBD6224817E90088A9E4 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -155,7 +161,7 @@
 		4FD4EBF822459A5F00079935 /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
 		4FD4EBFA2245C3C100079935 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		4FD4EBFB2245C3C100079935 /* AddViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddViewController.xib; sourceTree = "<group>"; };
-		4FEA7C5A2260026600ED6FBB /* UICollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewCell.swift; sourceTree = "<group>"; };
+		4FEA7C5A2260026600ED6FBB /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
 		4FEC51CA224FDA6E00B671CC /* TitleTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewHeader.swift; sourceTree = "<group>"; };
 		4FEC51CD22502CB700B671CC /* ChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTableViewCell.swift; sourceTree = "<group>"; };
 		4FEC51CE22502CB700B671CC /* ChartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChartTableViewCell.xib; sourceTree = "<group>"; };
@@ -263,6 +269,7 @@
 		4F69508A222D919E008FD9EA /* MoneyBalance */ = {
 			isa = PBXGroup;
 			children = (
+				4F73954122680B80000A02A5 /* Protocols */,
 				4F69509F222D933D008FD9EA /* Controllers */,
 				4F6950A1222D935E008FD9EA /* Views */,
 				4F69509E222D9326008FD9EA /* Helpers */,
@@ -345,6 +352,15 @@
 				4F7177162249B10400F6C6CE /* MovementTableViewCell.xib */,
 			);
 			path = MovementTableViewCell;
+			sourceTree = "<group>";
+		};
+		4F73954122680B80000A02A5 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				4F73954222680B95000A02A5 /* ReusableView.swift */,
+				4F73954422680CD7000A02A5 /* NibLoadableView.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		4F77FBCB2247BD400088A9E4 /* CustomViews */ = {
@@ -461,7 +477,8 @@
 				4FF9E84B224673C0009D4039 /* String.swift */,
 				4F77FBCC2247C29E0088A9E4 /* UViewController.swift */,
 				4F77FBCE2247CAE60088A9E4 /* NotificationCenter.swift */,
-				4FEA7C5A2260026600ED6FBB /* UICollectionViewCell.swift */,
+				4FEA7C5A2260026600ED6FBB /* UICollectionView.swift */,
+				4F73954622680D37000A02A5 /* UITableView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -690,7 +707,7 @@
 				4FBB4C2C22472EB100049F9B /* AddAccountCollectionViewCell.swift in Sources */,
 				4F95969C22386A5A00205D3D /* RealmManager.swift in Sources */,
 				4F84DA2C22484852009861F1 /* PickButton.swift in Sources */,
-				4FEA7C5B2260026600ED6FBB /* UICollectionViewCell.swift in Sources */,
+				4FEA7C5B2260026600ED6FBB /* UICollectionView.swift in Sources */,
 				4FFE9F22224D981700774C32 /* NameMoneyTableViewCell.swift in Sources */,
 				4F7E3D4D222EA18A00112275 /* LauncherViewController.swift in Sources */,
 				4FF9E84822467398009D4039 /* UIImageView.swift in Sources */,
@@ -702,6 +719,7 @@
 				4F7E3D57222EC84F00112275 /* Localize.swift in Sources */,
 				4F9B892A224ACC94002F5B6A /* MovementDetailViewController.swift in Sources */,
 				4FBB4C1E22470A4800049F9B /* AnimationControlller.swift in Sources */,
+				4F73954522680CD7000A02A5 /* NibLoadableView.swift in Sources */,
 				4F77FBCF2247CAE60088A9E4 /* NotificationCenter.swift in Sources */,
 				4F9F116B224D996500D7098B /* TotalAmountTableViewCell.swift in Sources */,
 				4F975E6B222F71E5009DA03C /* DefaultTableViewCell.swift in Sources */,
@@ -712,11 +730,13 @@
 				4FF9E8462246736F009D4039 /* UIColor.swift in Sources */,
 				4F975E55222F3ACC009DA03C /* Theme.swift in Sources */,
 				4F53897622383E41004832B5 /* AccountsTableViewCell.swift in Sources */,
+				4F73954722680D37000A02A5 /* UITableView.swift in Sources */,
 				4FF9E85022468A21009D4039 /* AddMovementViewController.swift in Sources */,
 				4F6950A4222D94EC008FD9EA /* BaseViewController.swift in Sources */,
 				4F5CA0A5222E13A900ED29D4 /* Movement.swift in Sources */,
 				4FEC51CF22502CB700B671CC /* ChartTableViewCell.swift in Sources */,
 				4F6950A6222D95E8008FD9EA /* HomeViewController.swift in Sources */,
+				4F73954322680B95000A02A5 /* ReusableView.swift in Sources */,
 				4F7177172249B10400F6C6CE /* MovementTableViewCell.swift in Sources */,
 				4F5CA0A2222E0C7B00ED29D4 /* MovementsViewController.swift in Sources */,
 				4FD4EBF922459A5F00079935 /* TitleLabel.swift in Sources */,
@@ -805,7 +825,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -861,7 +881,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

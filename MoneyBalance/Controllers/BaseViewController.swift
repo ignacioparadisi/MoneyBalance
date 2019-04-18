@@ -10,8 +10,6 @@ import UIKit
 
 class BaseViewController: UIViewController {
     
-    /// Default identifier for a table view cell
-    let cellIdentifier = "cellIdentifier"
     /// Table view
     lazy var tableView: UITableView = {
         let tv = UITableView()

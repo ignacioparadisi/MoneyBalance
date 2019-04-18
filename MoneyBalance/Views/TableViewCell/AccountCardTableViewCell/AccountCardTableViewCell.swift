@@ -13,7 +13,7 @@ protocol AccountCardTableViewCellDelegate: class {
     func editAccount()
 }
 
-class AccountCardTableViewCell: UITableViewCell {
+class AccountCardTableViewCell: UITableViewCell, ReusableView {
 
     lazy var view = AccountCardView()
     lazy var buttonBackgroundView: UIView = {

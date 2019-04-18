@@ -9,7 +9,7 @@
 import UIKit
 import Charts
 
-class ChartTableViewCell: UITableViewCell {
+class ChartTableViewCell: UITableViewCell, ReusableView, NibLoadableView {
     
     @IBOutlet weak var chart: PieChartView!
     

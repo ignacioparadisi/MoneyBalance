@@ -12,7 +12,7 @@ protocol CurrencyCollectionViewCellDelegate: class {
     func deleteCurrency(at index: Int)
 }
 
-class CurrencyCollectionViewCell: UICollectionViewCell {
+class CurrencyCollectionViewCell: UICollectionViewCell, ReusableView, NibLoadableView {
 
     @IBOutlet weak var nameLabel: UILabel!
     weak var delegate: CurrencyCollectionViewCellDelegate?

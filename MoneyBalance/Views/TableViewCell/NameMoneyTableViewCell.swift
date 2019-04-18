@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NameMoneyTableViewCell: UITableViewCell {
+class NameMoneyTableViewCell: UITableViewCell, ReusableView, NibLoadableView {
 
     @IBOutlet weak var amountLabel: UILabel!
     
